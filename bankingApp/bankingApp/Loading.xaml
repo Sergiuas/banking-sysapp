@@ -1,0 +1,20 @@
+﻿<Window x:Class="bankingApp.Loading"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bankingApp"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Loading" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
+    <Grid>
+        <Image x:Name="loading" gif:ImageBehavior.RepeatBehavior="Forever" HorizontalAlignment="Center" Height="316" Margin="0,106,0,0" VerticalAlignment="Top" Width="316" Source="/loading.gif" gif:ImageBehavior.AnimatedSource="/loading.gif" />
+        <!--<Image x:Name="loading" gif:ImageBehavior.RepeatBehavior="Forever" HorizontalAlignment="Left" Height="441" VerticalAlignment="Top" Width="795" Margin="0,-7,0,0" Source="/resouces/loading.gif" gif:ImageBehavior.AnimatedSource="/resources/loading.gif"/>-->
+
+
+    </Grid>
+</Window>
