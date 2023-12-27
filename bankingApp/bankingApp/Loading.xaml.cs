@@ -32,7 +32,7 @@ namespace bankingApp
             // Initialize the dispatcher timer
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(OpenLoginPage);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
         }
 

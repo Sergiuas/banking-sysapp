@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Data.Linq;
+using System.Security.Cryptography;
 
 namespace bankingApp
 {
@@ -63,9 +64,6 @@ namespace bankingApp
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
 
-
-            //verificare login
-
             string username = txtUsername.Text;
             string password = txtPassword.Password;
 
@@ -94,8 +92,16 @@ namespace bankingApp
 
         private bool CheckLogin(string username, string password)
         {
-            // TODO: check at the register to not exist more than one user with the same credentials
-            var user = db.users.SingleOrDefault(u => u.username == username && u.password == password);
+            byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
+            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
+            string encoded = BitConverter.ToString(hash)
+               // without dashes
+               .Replace("-", string.Empty)
+               // make lowercase
+               .ToLower();
+
+            var user = db.Users.SingleOrDefault(u => u.Username == username && u.PasswordHash == encoded);
+
             if(user == null)
             return false;
             

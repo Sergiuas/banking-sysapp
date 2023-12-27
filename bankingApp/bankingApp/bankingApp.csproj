@@ -135,7 +135,6 @@
     </EmbeddedResource>
     <None Include="bsapp.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>bsapp.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="bsapp.dbml.layout">

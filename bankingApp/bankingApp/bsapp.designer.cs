@@ -30,9 +30,9 @@ namespace bankingApp
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertuser(user instance);
-    partial void Updateuser(user instance);
-    partial void Deleteuser(user instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public bsappDataContext() : 
@@ -65,124 +65,412 @@ namespace bankingApp
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<user> users
+		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
-				return this.GetTable<user>();
+				return this.GetTable<User>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
-	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _UserID;
 		
-		private string _username;
+		private string _Username;
 		
-		private string _email;
+		private string _PasswordHash;
 		
-		private string _password;
+		private string _Email;
+		
+		private string _Type;
+		
+		private System.Nullable<System.DateTime> _LastLogin;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _Address;
+		
+		private string _PhoneNumber;
+		
+		private System.Nullable<System.DateTime> _DateOfBirth;
+		
+		private string _ProfilePicture;
+		
+		private System.Nullable<bool> _TwoFactorAuthEnabled;
+		
+		private string _SecurityQuestion;
+		
+		private string _SecurityAnswer;
+		
+		private System.Nullable<bool> _RememberMe;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnusernameChanging(string value);
-    partial void OnusernameChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnPasswordHashChanging(string value);
+    partial void OnPasswordHashChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    partial void OnLastLoginChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastLoginChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnDateOfBirthChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateOfBirthChanged();
+    partial void OnProfilePictureChanging(string value);
+    partial void OnProfilePictureChanged();
+    partial void OnTwoFactorAuthEnabledChanging(System.Nullable<bool> value);
+    partial void OnTwoFactorAuthEnabledChanged();
+    partial void OnSecurityQuestionChanging(string value);
+    partial void OnSecurityQuestionChanged();
+    partial void OnSecurityAnswerChanging(string value);
+    partial void OnSecurityAnswerChanged();
+    partial void OnRememberMeChanging(System.Nullable<bool> value);
+    partial void OnRememberMeChanged();
     #endregion
 		
-		public user()
+		public User()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserID
 		{
 			get
 			{
-				return this._id;
+				return this._UserID;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._UserID != value))
 				{
-					this.OnidChanging(value);
+					this.OnUserIDChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string username
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Username
 		{
 			get
 			{
-				return this._username;
+				return this._Username;
 			}
 			set
 			{
-				if ((this._username != value))
+				if ((this._Username != value))
 				{
-					this.OnusernameChanging(value);
+					this.OnUsernameChanging(value);
 					this.SendPropertyChanging();
-					this._username = value;
-					this.SendPropertyChanged("username");
-					this.OnusernameChanged();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string email
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordHash", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string PasswordHash
 		{
 			get
 			{
-				return this._email;
+				return this._PasswordHash;
 			}
 			set
 			{
-				if ((this._email != value))
+				if ((this._PasswordHash != value))
 				{
-					this.OnemailChanging(value);
+					this.OnPasswordHashChanging(value);
 					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
+					this._PasswordHash = value;
+					this.SendPropertyChanged("PasswordHash");
+					this.OnPasswordHashChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string password
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Email
 		{
 			get
 			{
-				return this._password;
+				return this._Email;
 			}
 			set
 			{
-				if ((this._password != value))
+				if ((this._Email != value))
 				{
-					this.OnpasswordChanging(value);
+					this.OnEmailChanging(value);
 					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastLogin", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastLogin
+		{
+			get
+			{
+				return this._LastLogin;
+			}
+			set
+			{
+				if ((this._LastLogin != value))
+				{
+					this.OnLastLoginChanging(value);
+					this.SendPropertyChanging();
+					this._LastLogin = value;
+					this.SendPropertyChanged("LastLogin");
+					this.OnLastLoginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(255)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="NVarChar(20)")]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOfBirth", DbType="Date")]
+		public System.Nullable<System.DateTime> DateOfBirth
+		{
+			get
+			{
+				return this._DateOfBirth;
+			}
+			set
+			{
+				if ((this._DateOfBirth != value))
+				{
+					this.OnDateOfBirthChanging(value);
+					this.SendPropertyChanging();
+					this._DateOfBirth = value;
+					this.SendPropertyChanged("DateOfBirth");
+					this.OnDateOfBirthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePicture", DbType="NVarChar(255)")]
+		public string ProfilePicture
+		{
+			get
+			{
+				return this._ProfilePicture;
+			}
+			set
+			{
+				if ((this._ProfilePicture != value))
+				{
+					this.OnProfilePictureChanging(value);
+					this.SendPropertyChanging();
+					this._ProfilePicture = value;
+					this.SendPropertyChanged("ProfilePicture");
+					this.OnProfilePictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TwoFactorAuthEnabled", DbType="Bit")]
+		public System.Nullable<bool> TwoFactorAuthEnabled
+		{
+			get
+			{
+				return this._TwoFactorAuthEnabled;
+			}
+			set
+			{
+				if ((this._TwoFactorAuthEnabled != value))
+				{
+					this.OnTwoFactorAuthEnabledChanging(value);
+					this.SendPropertyChanging();
+					this._TwoFactorAuthEnabled = value;
+					this.SendPropertyChanged("TwoFactorAuthEnabled");
+					this.OnTwoFactorAuthEnabledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SecurityQuestion", DbType="NVarChar(255)")]
+		public string SecurityQuestion
+		{
+			get
+			{
+				return this._SecurityQuestion;
+			}
+			set
+			{
+				if ((this._SecurityQuestion != value))
+				{
+					this.OnSecurityQuestionChanging(value);
+					this.SendPropertyChanging();
+					this._SecurityQuestion = value;
+					this.SendPropertyChanged("SecurityQuestion");
+					this.OnSecurityQuestionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SecurityAnswer", DbType="NVarChar(255)")]
+		public string SecurityAnswer
+		{
+			get
+			{
+				return this._SecurityAnswer;
+			}
+			set
+			{
+				if ((this._SecurityAnswer != value))
+				{
+					this.OnSecurityAnswerChanging(value);
+					this.SendPropertyChanging();
+					this._SecurityAnswer = value;
+					this.SendPropertyChanged("SecurityAnswer");
+					this.OnSecurityAnswerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RememberMe", DbType="Bit")]
+		public System.Nullable<bool> RememberMe
+		{
+			get
+			{
+				return this._RememberMe;
+			}
+			set
+			{
+				if ((this._RememberMe != value))
+				{
+					this.OnRememberMeChanging(value);
+					this.SendPropertyChanging();
+					this._RememberMe = value;
+					this.SendPropertyChanged("RememberMe");
+					this.OnRememberMeChanged();
 				}
 			}
 		}

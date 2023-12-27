@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -82,7 +83,7 @@ namespace bankingApp
 
 
             // TODO: verificare username imediat ce se completeaza textboxul
-            var user = db.users.SingleOrDefault(u => u.username == username || u.email == email);
+            var user = db.Users.SingleOrDefault(u => u.Username == username || u.Email == email);
             if (user != null)
             {
                 MessageBox.Show("Username/Mail deja folosit");
@@ -90,11 +91,23 @@ namespace bankingApp
             }
 
                 // TODO: verificare daca userul exista / daca datele sunt bune 
-                user newUser = new user();
-            newUser.username = username;
-            newUser.email = email;
-            newUser.password = password;
-            db.users.InsertOnSubmit(newUser);
+            User newUser = new User();
+            newUser.Username = username;
+            newUser.Email = email;
+            newUser.Type = "Client";
+            newUser.FirstName = "-";
+            newUser.LastName = "-";
+
+            byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
+            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
+            string encoded = BitConverter.ToString(hash)
+               // without dashes
+               .Replace("-", string.Empty)
+               // make lowercase
+               .ToLower();
+
+            newUser.PasswordHash = encoded;
+            db.Users.InsertOnSubmit(newUser);
             db.SubmitChanges();
 
             MessageBox.Show("Signup successful!");
