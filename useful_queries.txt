@@ -1,0 +1,18 @@
+CREATE TABLE Users (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    Username NVARCHAR(255) NOT NULL,
+    PasswordHash NVARCHAR(255) NOT NULL,
+    Email NVARCHAR(255) NOT NULL,
+    [Type] NVARCHAR(50) CHECK ([Type] IN ('Client', 'Bank Manager', 'Administrator')) NOT NULL,
+    LastLogin DATETIME,
+    FirstName NVARCHAR(255) NOT NULL,
+    LastName NVARCHAR(255) NOT NULL,
+    Address NVARCHAR(255),
+    PhoneNumber NVARCHAR(20),
+    DateOfBirth DATE,
+    ProfilePicture NVARCHAR(255),
+    TwoFactorAuthEnabled BIT,
+    SecurityQuestion NVARCHAR(255),
+    SecurityAnswer NVARCHAR(255),
+    RememberMe BIT
+);

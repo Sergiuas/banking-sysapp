@@ -1,0 +1,84 @@
+	1. Users Table:
+		• UserID (Primary Key)
+		• Username
+		• Password
+		• Email
+		• Type (Client, Bank Manager, Administrator)
+		• LastLogin
+		• FirstName
+		• LastName
+		• Address
+		• PhoneNumber
+		• DateOfBirth
+		• ProfilePicture
+		• TwoFactorAuthEnabled
+		• SecurityQuestion
+		• SecurityAnswer
+		• RememberMe?
+		
+	2. Contacts Table: 
+		• ContactID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+
+	3. Cards Table:
+		• CardID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+		• CardNumber
+		• CardType (Credit, Debit)
+		• Balance
+		• Blocked (Boolean)
+		• ExpiryDate
+		• IssuingBank?
+	
+	4. Transactions Table:
+		• TransactionID (Primary Key)
+		• CardSourceID (Foreign Key referencing Cards.CardID)
+		• CardDestId
+		• TransactionType (Deposit?, Withdrawal?, Transfer, etc.)
+		• Amount
+		• Timestamp
+		• MerchantName
+		• TransactionCategory
+	
+	5. SavingsGoals Table:
+		• SavingsGoalID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+		• GoalName
+		• GoalAmount
+		• CurrentSavings
+		
+	6. Messages Table:
+		• MessageID (Primary Key)
+		• SenderID (Foreign Key referencing Users.UserID)
+		• RecipientID (Foreign Key referencing Users.UserID)
+		• Timestamp
+		• Subject
+		• Body
+	
+	
+	7. Bank Managers Table:
+		• ManagerID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+		• IssuingBank?
+		
+	8. Administrator Table:
+		• ActionID (Primary Key)
+		• AdministratorID (Foreign Key referencing Users.UserID)
+
+	9. MonthlyStatements Table:
+		• MonthlyStatementID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+		• Month
+		• Year
+		• TotalDeposits
+		• TotalWithdrawals
+		• TotalTransfers
+		• NetBalance
+		
+	10. Budgets Table:
+		• BudgetID (Primary Key)
+		• UserID (Foreign Key referencing Users.UserID)
+		• Category
+		• BudgetAmount
+		CurrentSpending
+
