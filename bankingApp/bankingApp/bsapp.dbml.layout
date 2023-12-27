@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="bsapp">
   <DataContextMoniker Name="/bsappDataContext" />
   <nestedChildShapes>
-    <classShape Id="984f83e0-5232-48bf-8878-e148fa355d26" absoluteBounds="7.625, 2.25, 2, 3.8862125651041666">
+    <classShape Id="c6293ad6-0995-4772-a982-e292cea523f9" absoluteBounds="8.375, 2.875, 2, 3.8862125651041666">
       <DataClassMoniker Name="/bsappDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="f68fce0f-ce6b-4455-9733-00dfac477277" absoluteBounds="7.64, 2.71, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="28fab37a-54fc-4b89-b327-f0b601f3f993" absoluteBounds="8.39, 3.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

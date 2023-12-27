@@ -28,8 +28,8 @@ namespace bankingApp
         public MainWindow()
         {
             InitializeComponent();
-            this.db= new bsappDataContext();
-       
+            this.db = new bsappDataContext();
+
         }
 
         public bool isDarkTheme { get; set; }
@@ -37,8 +37,8 @@ namespace bankingApp
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
             ITheme theme = _paletteHelper.GetTheme();
-            
-            if(isDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
+
+            if (isDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
             {
                 isDarkTheme = false;
                 theme.SetBaseTheme(Theme.Light);
@@ -67,19 +67,21 @@ namespace bankingApp
             string username = txtUsername.Text;
             string password = txtPassword.Password;
 
-            
+
             bool isAuthenticated = CheckLogin(username, password);
 
             if (isAuthenticated)
             {
-                MessageBox.Show("Login successful!");
+               // MessageBox.Show("Login successful!");
                 UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
                 userWindow.Show();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                incorrectDataLabel.Visibility = Visibility.Visible;
+                txtPassword.Clear();
+                txtUsername.Clear();
             }
         }
 
@@ -100,7 +102,7 @@ namespace bankingApp
                // make lowercase
                .ToLower();
 
-            var user = db.Users.SingleOrDefault(u => u.Username == username && u.PasswordHash == encoded);
+            var user = db.Users.SingleOrDefault(u => (u.Username == username && u.PasswordHash == encoded) || (u.Email == username && u.PasswordHash == encoded));
 
             if(user == null)
             return false;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,17 @@ namespace bankingApp
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private enum SignUpError
+        {
+            PASSWORD_MATCH,
+            PASSWORD_FORMAT,
+            INVALID_MAIL,
+            MAIL_USED,
+            INVALID_USERNAME,
+            USERNAME_USED,
+            OK
+        };
+
         public SignUpWindow(bool isDarkTheme, PaletteHelper _paletteHelper)
         {
             this.isDarkTheme = isDarkTheme;
@@ -60,8 +72,6 @@ namespace bankingApp
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
 
-
-            // TODO: write red text above every text box is not filled;
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Password.ToString()) || string.IsNullOrEmpty(txtConfirmPassword.Password.ToString())) {
 
                 MessageBox.Show("Complete all the textboxes first.");
@@ -71,32 +81,46 @@ namespace bankingApp
             string email = txtEmail.Text;
             string password = txtPassword.Password.ToString();
             string confirmPassword = txtConfirmPassword.Password.ToString();
+            string firstName = txtFirstName.ToString();
+            string lastName = txtLastName.ToString();
 
-           
-            if (password!=confirmPassword)
+            switch(checkSignUp(username, email, firstName, lastName, password, confirmPassword))
             {
-                MessageBox.Show("Passwords dont match");
-                return;
+                case SignUpError.PASSWORD_MATCH:
+                    incorrectDataLabel.Content = "Passwords do not match.";
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                case SignUpError.PASSWORD_FORMAT:
+                    incorrectDataLabel.Content = "Invalid password format."; // TODO: use a message more useful
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                case SignUpError.INVALID_USERNAME:
+                    incorrectDataLabel.Content = "Invalid username";
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                case SignUpError.INVALID_MAIL:
+                    incorrectDataLabel.Content = "Invalid email";
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                case SignUpError.USERNAME_USED:
+                    incorrectDataLabel.Content = "Username already used.";
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                case SignUpError.MAIL_USED:
+                    incorrectDataLabel.Content = "Email already used.";
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    return;
+                default:
+                    break;
             }
 
             bsappDataContext db = new bsappDataContext();
-
-
-            // TODO: verificare username imediat ce se completeaza textboxul
-            var user = db.Users.SingleOrDefault(u => u.Username == username || u.Email == email);
-            if (user != null)
-            {
-                MessageBox.Show("Username/Mail deja folosit");
-                return;
-            }
-
-                // TODO: verificare daca userul exista / daca datele sunt bune 
             User newUser = new User();
             newUser.Username = username;
             newUser.Email = email;
             newUser.Type = "Client";
-            newUser.FirstName = "-";
-            newUser.LastName = "-";
+            newUser.FirstName = firstName;
+            newUser.LastName = lastName;
 
             byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
@@ -116,5 +140,48 @@ namespace bankingApp
             this.Close();
 
         }
-    }
+        private SignUpError checkSignUp(string username, string email, string firstName, string lastName, string password, string confirmPassword)
+        {
+            bsappDataContext db = new bsappDataContext();
+
+            if (password != confirmPassword)
+                return SignUpError.PASSWORD_MATCH;
+
+            if (!MailIsValid(email))
+                return SignUpError.INVALID_MAIL;
+
+            var user = db.Users.SingleOrDefault(u => u.Email == email);
+            if (user != null)
+                return SignUpError.MAIL_USED;
+
+            user = db.Users.SingleOrDefault(u => u.Username == username);
+            if (user != null)
+                return SignUpError.USERNAME_USED;
+
+            if (!password.Any(char.IsDigit) || !password.Any(char.IsSymbol))
+                return SignUpError.PASSWORD_FORMAT;
+
+            return SignUpError.OK;
+        }
+        private void btnBackLogin_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow login = new MainWindow();
+            login.Show();
+            this.Close();
+        }
+
+         private bool MailIsValid(string email)
+        {
+            try
+            {
+                MailAddress mailAddress = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+    }   
 }
