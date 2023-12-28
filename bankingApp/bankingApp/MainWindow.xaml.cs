@@ -68,11 +68,21 @@ namespace bankingApp
             string password = txtPassword.Password;
 
 
-            bool isAuthenticated = CheckLogin(username, password);
+            var user = CheckLogin(username, password);
 
-            if (isAuthenticated)
+            if (user!=null)
             {
-               // MessageBox.Show("Login successful!");
+                UserSingleton userInstance=UserSingleton.Instance;
+
+                UserType type;
+                if (user.Type == "ADMINISTRATOR")
+                    type = UserType.ADMINISTRATOR;
+                else if (user.Type == "MANAGER")
+                    type = UserType.MANAGER;
+                else type = UserType.CLIENT;
+
+                userInstance.build(user.Username, user.PasswordHash, user.Email, user.FirstName, user.LastName, user.PhoneNumber, user.Address, user.DateOfBirth.ToString(), type);
+
                 UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
                 userWindow.Show();
                 this.Close();
@@ -92,7 +102,7 @@ namespace bankingApp
             this.Close();
         }
 
-        private bool CheckLogin(string username, string password)
+        private User CheckLogin(string username, string password)
         {
             byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
@@ -103,11 +113,8 @@ namespace bankingApp
                .ToLower();
 
             var user = db.Users.SingleOrDefault(u => (u.Username == username && u.PasswordHash == encoded) || (u.Email == username && u.PasswordHash == encoded));
-
-            if(user == null)
-            return false;
             
-            return true;
+            return user;
         }
     }
 }

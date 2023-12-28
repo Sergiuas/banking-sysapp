@@ -1,4 +1,4 @@
-﻿<Window x:Class="bankingApp.UserWindow"
+<Window x:Class="bankingApp.UserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -198,7 +198,7 @@
                     <Button Style="{StaticResource MaterialDesignIconButton}" Height="40" Width="40" materialDesign:ButtonAssist.CornerRadius="6" DockPanel.Dock="Right">
                         <materialDesign:PackIcon Kind="Search"/>
                     </Button>
-                    <TextBlock Text="20 Sep 2022, Monday" Foreground="SlateGray" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0 0 20 0"/>
+                    <TextBlock Text="20 Sep 2022, Monday" Foreground="SlateGray" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0 0 20 0" />
                 </DockPanel>
 
                 <materialDesign:ColorZone Mode="Custom" Background="MistyRose" Foreground="LightSalmon" CornerRadius="15" Padding="40 20" Margin="0 35 0 0">
@@ -425,7 +425,13 @@
                                    Margin="0 15 0 7"
                                    TextAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Text="Nume Prenume"/>
+                                 >
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="firstName" />
+                                    <Binding Path="lastName" />
+                                </MultiBinding>
+                            </TextBlock.Text></TextBlock>  
                         <TextBlock Text="Member"
                                    FontSize="11"
                                    FontWeight="SemiBold"

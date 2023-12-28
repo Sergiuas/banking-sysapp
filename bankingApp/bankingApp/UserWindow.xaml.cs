@@ -27,10 +27,14 @@ namespace bankingApp
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private UserSingleton userInstance = UserSingleton.Instance;
+
         public UserWindow(bool isDarkTheme, PaletteHelper _paletteHelper)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
+            DataContext = userInstance;
+
             InitializeComponent();
         }
 
