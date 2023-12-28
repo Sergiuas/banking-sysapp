@@ -419,12 +419,13 @@
                                Height="80" Width="80"
                                HorizontalAlignment="Center"
                                Margin="0 25 0 0"/>
-                        <TextBlock FontSize="12"
+                        <TextBlock x:Name="txtNumePrenume"
+                            FontSize="12"
                                    FontWeight="Bold"
                                    Margin="0 15 0 7"
                                    TextAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Text="Racianu Gabriel"/>
+                                   Text="Nume Prenume"/>
                         <TextBlock Text="Member"
                                    FontSize="11"
                                    FontWeight="SemiBold"
