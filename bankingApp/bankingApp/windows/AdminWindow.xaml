@@ -176,13 +176,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnExit" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15" Click="Button_Click">
+                            Margin="0 0 0 15" Click="btnExit_Click" >
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Cancel"
                                                      VerticalAlignment="Center"

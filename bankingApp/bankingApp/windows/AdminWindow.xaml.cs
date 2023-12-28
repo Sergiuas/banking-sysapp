@@ -79,10 +79,6 @@ namespace bankingApp.windows
             storyboard.Begin();
 
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -114,6 +110,11 @@ namespace bankingApp.windows
         {
             UserListPage Page = new UserListPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page; //new Uri("/pages/adminPages/UserListPage.xaml", UriKind.RelativeOrAbsolute);
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

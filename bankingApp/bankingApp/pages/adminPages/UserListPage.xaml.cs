@@ -38,6 +38,7 @@ namespace bankingApp.pages.adminPages
         {
             ICollection<User> users = db.Users.Where(u => u.Type == "user")
                 .ToList();
+            lblUsers.Text = $"{users.Count} Users";
             userTable.ItemsSource = users;
         }
         private void toggleTheme(object sender, RoutedEventArgs e)
