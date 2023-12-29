@@ -46,6 +46,45 @@
                       Background="{DynamicResource PrimaryHueLightBrush}"
                       x:Name="userTable"
                       Height="400"/>
+                <Grid HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="&lt;&lt;"
+                            IsEnabled="{Binding IsFirstEnabled}"
+                            ToolTip="First page" Margin="5"
+                            Command="{Binding FirstCommand}"
+                            Grid.Column="0"/>
+                    <Button Content="&lt;" 
+                            Margin="5"
+                            IsEnabled="{Binding IsPreviousEnabled}"
+                            ToolTip="Previous page"
+                            Command="{Binding PreviousCommand}"
+                            Grid.Column="1"/>
+                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Width="50">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}Page {0} of {1}">
+                                <Binding Path="CurrentPage"/>
+                                <Binding Path="NumberOfPages"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <Button Content=">"  Margin="5"
+                            IsEnabled="{Binding IsNextEnabled}" 
+                            ToolTip="Next page"
+                            Command="{Binding NextCommand}"
+                            Grid.Column="3"/>
+                    <Button Content=">>"
+                            Margin="5" IsEnabled="{Binding IsLastEnabled}"
+                            ToolTip="Last page"
+                            Command="{Binding LastCommand}"
+                            Grid.Column="4"/>
+                </Grid>
+
             </StackPanel>
         </materialDesign:ColorZone>
         <Grid Margin="0 30 0 0">
