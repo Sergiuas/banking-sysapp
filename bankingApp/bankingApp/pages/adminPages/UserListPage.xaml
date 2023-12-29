@@ -15,7 +15,7 @@
                                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                   CornerRadius="15" Padding="40 20"
                                   Margin="0 35 0 0">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                 <Grid Margin="0 0 0 12">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -43,14 +43,16 @@
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
-                      Background="{DynamicResource PrimaryHueLightBrush}"
-                      x:Name="userTable"
-                      Height="400"/>
+                          Background="{DynamicResource PrimaryHueLightBrush}"
+                          x:Name="userTable"
+                          Height="400"
+                          CanUserAddRows="False"
+                          />
                 <Grid HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
@@ -58,14 +60,18 @@
                             IsEnabled="{Binding IsFirstEnabled}"
                             ToolTip="First page" Margin="5"
                             Command="{Binding FirstCommand}"
-                            Grid.Column="0"/>
+                            Grid.Column="0"
+                            x:Name="btnFirstPage" Click="btnFirstPage_Click"/>
                     <Button Content="&lt;" 
                             Margin="5"
                             IsEnabled="{Binding IsPreviousEnabled}"
                             ToolTip="Previous page"
                             Command="{Binding PreviousCommand}"
-                            Grid.Column="1"/>
-                    <TextBlock VerticalAlignment="Center" Grid.Column="2" Width="50">
+                            Grid.Column="1"
+                            x:Name="btnPrevPage" Click="btnPrevPage_Click"/>
+                    <Button Grid.Column="2"
+                            Margin="5">
+                    <TextBlock VerticalAlignment="Center">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{}Page {0} of {1}">
                                 <Binding Path="CurrentPage"/>
@@ -73,16 +79,17 @@
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
+                    </Button>
                     <Button Content=">"  Margin="5"
-                            IsEnabled="{Binding IsNextEnabled}" 
                             ToolTip="Next page"
-                            Command="{Binding NextCommand}"
-                            Grid.Column="3"/>
+                            Grid.Column="3"
+                            x:Name="btnNextPage" Click="btnNextPage_Click"/>
                     <Button Content=">>"
                             Margin="5" IsEnabled="{Binding IsLastEnabled}"
                             ToolTip="Last page"
                             Command="{Binding LastCommand}"
-                            Grid.Column="4"/>
+                            Grid.Column="4"
+                            x:Name="btnLastPage" Click="btnLastPage_Click"/>
                 </Grid>
 
             </StackPanel>
@@ -123,7 +130,7 @@
                                              VerticalAlignment="Center"
                                              Margin="0 0 20 0"
                                              Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
-                    <TextBlock Text="Edit"
+                    <TextBlock Text="Delete"
                                Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                 </WrapPanel>
             </Button>
