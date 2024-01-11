@@ -33,7 +33,7 @@
                         <Button x:Name="btn_exit" ToolTip="Close Application" Content="Exit Application" Click="exitApp"></Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
-                <Image Margin="0 60 0 5" Source="resources/logo.png" Height="100"></Image>
+                <Image Margin="0 60 0 5" Source="/resources/logo.png" Height="100"></Image>
                 <TextBlock Margin="0 25 0 5" HorizontalAlignment="Center" FontSize="28"
                            FontWeight="Bold" Text="Welcome back!"/>
                 <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center"

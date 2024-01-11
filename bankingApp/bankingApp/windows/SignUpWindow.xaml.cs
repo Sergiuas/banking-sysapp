@@ -130,7 +130,7 @@ namespace bankingApp
                // make lowercase
                .ToLower();
 
-            newUser.PasswordHash = encoded;
+            newUser.Password = encoded;
             db.Users.InsertOnSubmit(newUser);
             db.SubmitChanges();
 
@@ -159,7 +159,7 @@ namespace bankingApp
                 return SignUpError.USERNAME_USED;
 
             //if (!password.Any(char.IsDigit) || !password.Any(char.IsSymbol))
-                //return SignUpError.PASSWORD_FORMAT;
+            //    return SignUpError.PASSWORD_FORMAT;
 
             return SignUpError.OK;
         }

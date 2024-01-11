@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Data.Linq;
 using System.Security.Cryptography;
+using bankingApp.windows;
 
 namespace bankingApp
 {
@@ -68,30 +69,30 @@ namespace bankingApp
             string password = txtPassword.Password;
 
 
-            var user = CheckLogin(username, password);
+            UserTypes auth = CheckLogin(username, password);
 
-            if (user!=null)
+            switch (auth)
             {
-                UserSingleton userInstance=UserSingleton.Instance;
-
-                UserType type;
-                if (user.Type == "ADMINISTRATOR")
-                    type = UserType.ADMINISTRATOR;
-                else if (user.Type == "MANAGER")
-                    type = UserType.MANAGER;
-                else type = UserType.CLIENT;
-
-                userInstance.build(user.Username, user.PasswordHash, user.Email, user.FirstName, user.LastName, user.PhoneNumber, user.Address, user.DateOfBirth.ToString(), type);
-
-                UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
-                userWindow.Show();
-                this.Close();
-            }
-            else
-            {
-                incorrectDataLabel.Visibility = Visibility.Visible;
-                txtPassword.Clear();
-                txtUsername.Clear();
+                case UserTypes.ADMIN:
+                    AdminWindow adminWindow = new AdminWindow(isDarkTheme, _paletteHelper, db);
+                    adminWindow.Show();
+                    this.Close();
+                    break;
+                //case UserTypes.MANAGER:
+                //    ManagerWindow managerWindow = new ManagerWindow(isDarkTheme, _paletteHelper);
+                //    managerWindow.Show();
+                //    this.Close();
+                //    break;
+                case UserTypes.USER:
+                    UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
+                    userWindow.Show();
+                    this.Close();
+                    break;
+                default:
+                    incorrectDataLabel.Visibility = Visibility.Visible;
+                    txtPassword.Clear();
+                    txtUsername.Clear();
+                    break;
             }
         }
 
@@ -102,7 +103,14 @@ namespace bankingApp
             this.Close();
         }
 
-        private User CheckLogin(string username, string password)
+        enum UserTypes
+        {
+            ADMIN,
+            MANAGER,
+            USER,
+            INVALID
+        };
+        private UserTypes CheckLogin(string username, string password)
         {
             byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
@@ -112,9 +120,25 @@ namespace bankingApp
                // make lowercase
                .ToLower();
 
-            var user = db.Users.SingleOrDefault(u => (u.Username == username && u.PasswordHash == encoded) || (u.Email == username && u.PasswordHash == encoded));
-            
-            return user;
+            var user = db.Users.SingleOrDefault(u => (u.Username == username && u.Password == encoded) || (u.Email == username && u.Password == encoded));
+
+            if (user == null)
+            {
+                return UserTypes.INVALID;
+            }
+
+            switch (user.Type)
+            {
+                case "admin":
+                    return UserTypes.ADMIN;
+                case "manager":
+                    return UserTypes.MANAGER;
+                case "user":
+                    return UserTypes.USER;
+                default:
+                    return UserTypes.INVALID;
+            }
+
         }
     }
 }
