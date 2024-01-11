@@ -78,11 +78,11 @@ namespace bankingApp
                     adminWindow.Show();
                     this.Close();
                     break;
-                //case UserTypes.MANAGER:
-                //    ManagerWindow managerWindow = new ManagerWindow(isDarkTheme, _paletteHelper);
-                //    managerWindow.Show();
-                //    this.Close();
-                //    break;
+                case UserTypes.MANAGER:
+                    ManagerWindow managerwindow = new ManagerWindow(isDarkTheme, _paletteHelper,db);
+                    managerwindow.Show();
+                    this.Close();
+                    break;
                 case UserTypes.USER:
                     UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
                     userWindow.Show();

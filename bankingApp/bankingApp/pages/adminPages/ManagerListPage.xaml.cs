@@ -95,7 +95,7 @@ namespace bankingApp.pages.adminPages
             _paletteHelper.SetTheme(theme);
         }
 
-        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             if (((UserListDataContext)this.DataContext).CurrentPage == ((UserListDataContext)this.DataContext).NumberOfPages) return;
             int start = ((UserListDataContext)this.DataContext).CurrentPage * 10;
@@ -108,7 +108,7 @@ namespace bankingApp.pages.adminPages
             ((UserListDataContext)this.DataContext).CurrentPage++;
         }
 
-        private void btnLastPage_Click(object sender, RoutedEventArgs e)
+        private void btnPrevPage_Click_1(object sender, RoutedEventArgs e)
         {
             int start = (((UserListDataContext)this.DataContext).NumberOfPages - 1) * 10;
             int count;
@@ -120,7 +120,7 @@ namespace bankingApp.pages.adminPages
             ((UserListDataContext)this.DataContext).CurrentPage = ((UserListDataContext)this.DataContext).NumberOfPages;
         }
 
-        private void btnPrevPage_Click(object sender, RoutedEventArgs e)
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             if (((UserListDataContext)this.DataContext).CurrentPage == 1) return;
             ((UserListDataContext)this.DataContext).CurrentPage--;
@@ -133,7 +133,7 @@ namespace bankingApp.pages.adminPages
             userTable.ItemsSource = usersShown;
         }
 
-        private void btnFirstPage_Click(object sender, RoutedEventArgs e)
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             int count;
             if (10 > users.Count)
