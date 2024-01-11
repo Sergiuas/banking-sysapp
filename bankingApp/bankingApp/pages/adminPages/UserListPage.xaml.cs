@@ -36,24 +36,51 @@ namespace bankingApp.pages.adminPages
             InitializeComponent();
             InitializeDataGrid();
         }
-        
-        private void InitializeDataGrid()
+
+        private void InitializeDataGrid(string searchedUsername="")
         {
-            users = db.Users.Where(u => u.Type == "user")
-                .Select(u => new ShowUser
-                {
-                    Name = $"{u.FirstName} {u.LastName}",
-                    Email = u.Email,
-                    Username = u.Username,
-                    Cards = 0,
-                    LastLogin = u.LastLogin
-                })
-                .ToList();
+            if (string.IsNullOrEmpty(searchedUsername))
+            {
+                users = db.Users.Where(u => u.Type == "user")
+                    .Select(u => new ShowUser
+                    {
+                        Name = $"{u.FirstName} {u.LastName}",
+                        Email = u.Email,
+                        Username = u.Username,
+                        Cards = 0,
+                        LastLogin = u.LastLogin
+                    })
+                    .ToList();
+            }
+            else
+            {
+                users = db.Users.Where(u => u.Type == "user" && u.Username.Contains(searchedUsername))
+                        .Select(u => new ShowUser
+                        {
+                            Name = $"{u.FirstName} {u.LastName}",
+                            Email = u.Email,
+                            Username = u.Username,
+                            Cards = 0,
+                            LastLogin = u.LastLogin
+                        })
+                    .ToList();
+            }
+            
             lblUsers.Text = $"{users.Count} Users";
-            List<ShowUser> usersShown = users.GetRange(0, 10);
-            userTable.ItemsSource = usersShown;
-            ((UserListDataContext)this.DataContext).NumberOfPages = users.Count/10;
-            if (users.Count % 10 != 0) ((UserListDataContext)this.DataContext).NumberOfPages++; 
+
+            if (users.Count > 10)
+            {
+                List<ShowUser> usersShown = users.GetRange(0, 10);
+                userTable.ItemsSource = usersShown;
+                ((UserListDataContext)this.DataContext).NumberOfPages = users.Count / 10;
+                if (users.Count % 10 != 0) ((UserListDataContext)this.DataContext).NumberOfPages++;
+            }
+            else
+            {
+                List<ShowUser> usersShown = users.GetRange(0, users.Count);
+                userTable.ItemsSource = usersShown;
+                ((UserListDataContext)this.DataContext).NumberOfPages = 1;
+            }
         }
         
         private void toggleTheme(object sender, RoutedEventArgs e)
@@ -137,6 +164,21 @@ namespace bankingApp.pages.adminPages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            ShowUser selectedUser = (ShowUser)userTable.SelectedItem;
+            string selectedUsername = selectedUser.Username;
+
+           User user = db.Users.Single(u => u.Username == selectedUsername);
+            db.Users.DeleteOnSubmit(user);
+            db.SubmitChanges();
+
+            string searchText = txtUsernameSearch.Text.Trim();
+            InitializeDataGrid(searchText);
+        }
+
+        private void txtUsernameSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = txtUsernameSearch.Text.Trim();
+            InitializeDataGrid(searchText);
 
         }
     }
