@@ -26,11 +26,11 @@
                 <ColumnDefinition Width="*" MinWidth="200"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 10 0 10"
+            <TextBlock Margin="30 10 0 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Username" Grid.Column="0"/>
-            <TextBox Margin="0 10 20 10"
+            <TextBox Margin="0 10 20 25"
                      Grid.Column="1"
                      x:Name="txtUsername"
                      Width="300" FontSize="14"
@@ -46,11 +46,11 @@
                 <ColumnDefinition Width="*" MinWidth="200"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 10 0 10"
+            <TextBlock Margin="30 10 0 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Email" Grid.Column="0"/>
-            <TextBox Margin="0 10 20 10"
+            <TextBox Margin="0 10 20 25"
                      Grid.Column="1"
                      x:Name="txtEmail"
                      Width="300" FontSize="14"
@@ -67,11 +67,11 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 15 10 10"
+            <TextBlock Margin="30 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Password" Grid.Column="0"/>
-            <TextBox Margin="0 10 10 10"
+            <TextBox Margin="0 10 10 25"
                      Grid.Column="1"
                      x:Name="txtPasword"
                      HorizontalAlignment="Stretch" FontSize="14"
@@ -80,11 +80,11 @@
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
                      Style="{StaticResource MaterialDesignTextBox}"/>
-            <TextBlock Margin="10 15 10 10"
+            <TextBlock Margin="10 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Confirm Password" Grid.Column="2"/>
-            <TextBox Margin="0 10 20 10"
+            <TextBox Margin="0 10 20 25"
                      Grid.Column="3"
                      x:Name="txtConfirmPasword"
                      HorizontalAlignment="Stretch" FontSize="14"
@@ -107,11 +107,11 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 15 10 10"
+            <TextBlock Margin="30 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="First Name" Grid.Column="0"/>
-            <TextBox Margin="0 10 10 10"
+            <TextBox Margin="0 10 10 25"
                      Grid.Column="1"
                      x:Name="txtFirstName"
                      HorizontalAlignment="Stretch" FontSize="14"
@@ -120,11 +120,11 @@
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
                      Style="{StaticResource MaterialDesignTextBox}"/>
-            <TextBlock Margin="10 15 10 10"
+            <TextBlock Margin="10 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Last Name" Grid.Column="2"/>
-            <TextBox Margin="0 10 20 10"
+            <TextBox Margin="0 10 20 25"
                      Grid.Column="3"
                      x:Name="txtLastName"
                      HorizontalAlignment="Stretch" FontSize="14"
@@ -139,11 +139,11 @@
                 <ColumnDefinition Width="*" MinWidth="200"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 10 0 10"
+            <TextBlock Margin="30 10 0 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Address" Grid.Column="0"/>
-            <TextBox Margin="0 10 20 10"
+            <TextBox Margin="0 10 20 25"
                      Grid.Column="1"
                      x:Name="txtAddress"
                      Width="300" FontSize="14"
@@ -161,11 +161,11 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="30 15 10 10"
+            <TextBlock Margin="30 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
                        Text="Phone" Grid.Column="0"/>
-            <TextBox Margin="0 10 10 10"
+            <TextBox Margin="0 10 10 25"
                      Grid.Column="1"
                      x:Name="txtPhone"
                      HorizontalAlignment="Stretch" FontSize="14"
@@ -174,19 +174,18 @@
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
                      Style="{StaticResource MaterialDesignTextBox}"/>
-            <TextBlock Margin="10 15 10 10"
+            <TextBlock Margin="10 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
-                       Text="Last Name" Grid.Column="2"/>
-            <TextBox Margin="0 10 20 10"
-                     Grid.Column="3"
-                     x:Name="txtBirthDate"
-                     HorizontalAlignment="Stretch" FontSize="14"
-                     materialDesign:HintAssist.Hint="Enter Last Name"
-                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
-                     BorderThickness="2"
-                     BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                       Text="Birthday" Grid.Column="2"/>
+            <DatePicker Margin="0 10 20 25"
+                        Grid.Column="3"
+                        x:Name="dateBirthday"
+                        HorizontalAlignment="Stretch" FontSize="14"
+                        materialDesign:HintAssist.Hint="Enter Last Name"
+                        Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                        BorderThickness="2"
+                        BorderBrush="{DynamicResource MaterialDesignDivider}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>

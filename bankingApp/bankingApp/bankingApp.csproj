@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="classes\ShowUser.cs" />
     <Compile Include="classes\UserListDataContext.cs" />
+    <Compile Include="classes\UserSingleton.cs" />
     <Compile Include="pages\adminPages\adminDashboardPage.xaml.cs">
       <DependentUpon>adminDashboardPage.xaml</DependentUpon>
     </Compile>
