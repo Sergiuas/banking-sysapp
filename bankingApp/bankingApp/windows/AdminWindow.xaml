@@ -94,13 +94,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnManagerList" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnManagerList_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="ListStatus" 
                                                      VerticalAlignment="Center"
@@ -122,7 +122,7 @@
                                                      VerticalAlignment="Center"
                                                      Margin="0 0 20 0"
                                                      Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
-                            <TextBlock Text="Add User"
+                            <TextBlock Text="Add Manager"
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
@@ -138,7 +138,7 @@
                                                      VerticalAlignment="Center"
                                                      Margin="0 0 20 0"
                                                      Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
-                            <TextBlock Text="Edit User"
+                            <TextBlock Text="Edit Manager"
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
@@ -160,13 +160,13 @@
                                             Click="toggleTheme"></ToggleButton>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnSettings" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnSettings_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Settings" 
                                                      VerticalAlignment="Center"

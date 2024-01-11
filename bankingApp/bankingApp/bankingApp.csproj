@@ -86,8 +86,14 @@
     <Compile Include="pages\adminPages\adminDashboardPage.xaml.cs">
       <DependentUpon>adminDashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\adminPages\ManagerListPage.xaml.cs">
+      <DependentUpon>ManagerListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\adminPages\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\userPages\userDashboardPage.xaml.cs">
       <DependentUpon>userDashboardPage.xaml</DependentUpon>
@@ -108,7 +114,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\adminPages\ManagerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\adminPages\UserListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

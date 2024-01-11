@@ -1,4 +1,5 @@
 ﻿using bankingApp.pages.adminPages;
+using bankingApp.pages;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -115,6 +116,18 @@ namespace bankingApp.windows
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnManagerList_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerListPage Page = new ManagerListPage(isDarkTheme, _paletteHelper, db);
+            page.Content = Page;
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsPage Page = new SettingsPage(isDarkTheme, _paletteHelper, db);
+            page.Content = Page;
         }
     }
 }
