@@ -32,7 +32,13 @@ namespace bankingApp.pages.adminPages
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
             this.db = db;
-            this.user = this.db.Users.Single(u => u.Username == username);
+            if (username != "")
+            {
+                this.user = this.db.Users.Single(u => u.Username == username);
+            } else
+            {
+                 
+            }
             DataContext = this.user;
             InitializeComponent();
         }
