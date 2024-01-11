@@ -57,7 +57,7 @@
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
                           Background="{DynamicResource PrimaryHueLightBrush}"
                           x:Name="userTable"
-                          Height="400"
+                          Height="500"
                           CanUserAddRows="False"
                           IsReadOnly="True"
                           />

@@ -99,6 +99,9 @@
     <Compile Include="pages\adminPages\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\mangerPages\bankAccountsPage.xaml.cs">
+      <DependentUpon>bankAccountsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\mangerPages\transactionsPage.xaml.cs">
       <DependentUpon>transactionsPage.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,9 @@
     </Compile>
     <Compile Include="windows\ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\selectManagerWindow.xaml.cs">
+      <DependentUpon>selectManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\SignUpWindow.xaml.cs">
       <DependentUpon>SignUpWindow.xaml</DependentUpon>
@@ -143,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\adminPages\UserListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\mangerPages\bankAccountsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +193,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="windows\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\selectManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
