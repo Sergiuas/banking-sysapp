@@ -1,4 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,14 +77,14 @@ namespace bankingApp
                 MessageBox.Show("Complete all the textboxes first.");
                 return;
             }
-            string username = txtUsername.Text;
-            string email = txtEmail.Text;
+            string username = txtUsername.Text.ToString();
+            string email = txtEmail.Text.ToString();
             string password = txtPassword.Password.ToString();
             string confirmPassword = txtConfirmPassword.Password.ToString();
-            string firstName = txtFirstName.ToString();
-            string lastName = txtLastName.ToString();
+            string firstName = txtFirstName.Text.ToString();
+            string lastName = txtLastName.Text.ToString();
 
-            switch(checkSignUp(username, email, firstName, lastName, password, confirmPassword))
+            switch (checkSignUp(username, email, firstName, lastName, password, confirmPassword))
             {
                 case SignUpError.PASSWORD_MATCH:
                     incorrectDataLabel.Content = "Passwords do not match.";
