@@ -90,6 +90,9 @@
     <Compile Include="pages\adminPages\editManagerPage.xaml.cs">
       <DependentUpon>editManagerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\adminPages\editUserPage.xaml.cs">
+      <DependentUpon>editUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\adminPages\ManagerListPage.xaml.cs">
       <DependentUpon>ManagerListPage.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\adminPages\editManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\adminPages\editUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

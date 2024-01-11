@@ -17,17 +17,13 @@ using System.Windows.Shapes;
 
 namespace bankingApp.pages.adminPages
 {
-    /// <summary>
-    /// Interaction logic for editManagerPage.xaml
-    /// </summary>
-    public partial class editManagerPage : Page
+    public partial class editUserPage : Page
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
         User user;
-
-        public editManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db, string username)
+        public editUserPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db, string username)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -59,30 +55,29 @@ namespace bankingApp.pages.adminPages
             string password = txtPasword.Text;
             string confirmPassword = txtConfirmPasword.Text;
 
-            if (password.Length > 0 && password != confirmPassword)
-            {
+            if (password.Length > 0 && password!=confirmPassword) {
+            
+            byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
+            byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
+            string encoded = BitConverter.ToString(hash)
+               // without dashes
+               .Replace("-", string.Empty)
+               // make lowercase
+               .ToLower();
 
-                byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
-                byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
-                string encoded = BitConverter.ToString(hash)
-                   // without dashes
-                   .Replace("-", string.Empty)
-                   // make lowercase
-                   .ToLower();
-
-                password = encoded;
-                this.user.Password = password;
+            password = encoded;
+            this.user.Password = password;
             }
 
             db.SubmitChanges();
 
-            ManagerListPage Page = new ManagerListPage(isDarkTheme, _paletteHelper, db);
+            UserListPage Page = new UserListPage(isDarkTheme, _paletteHelper, db);
             MainContentFrame.Content = Page;
         }
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            ManagerListPage Page = new ManagerListPage(isDarkTheme, _paletteHelper, db);
+            UserListPage Page = new UserListPage(isDarkTheme, _paletteHelper, db);
             MainContentFrame.Content = Page;
         }
     }

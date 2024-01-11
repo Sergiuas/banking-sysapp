@@ -12,6 +12,8 @@
 
     <StackPanel Orientation="Vertical" 
                 HorizontalAlignment="Stretch">
+        <Frame x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
+
         <TextBlock Margin="0 25 0 5"
                    HorizontalAlignment="Center"
                    FontSize="28"
@@ -39,7 +41,7 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}" Text="{Binding Username, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -58,7 +60,8 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     Text="{Binding Email, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -119,7 +122,7 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}" Text="{Binding FirstName, Mode = TwoWay}"/>
             <TextBlock Margin="10 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
@@ -132,7 +135,7 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}" Text="{Binding LastName, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -152,7 +155,7 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}" Text="{Binding Address, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -173,7 +176,9 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     Text="{Binding PhoneNumber, Mode = TwoWay}"
+                     />
             <TextBlock Margin="10 15 10 25"
                        HorizontalAlignment="Left"
                        FontSize="14" FontWeight="Bold"
@@ -185,19 +190,29 @@
                         materialDesign:HintAssist.Hint="Enter Last Name"
                         Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                         BorderThickness="2"
-                        BorderBrush="{DynamicResource MaterialDesignDivider}"/>
+                        BorderBrush="{DynamicResource MaterialDesignDivider}" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" MinWidth="200"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Button Content="Submit"
-                    Grid.Column="1"
-                    HorizontalAlignment="Center"
-                    Margin="150 10 30 25"
-                    Width="150"
-                    ToolTip="First page"
+      Grid.Column="1"
+      HorizontalAlignment="Center"
+      Margin="30 10 30 25"
+      Width="150"
+      ToolTip="First page" Click="Button_Click"
+      />
+            <Button Content="Back"
+                    x:Name="backBtn"
+     Grid.Column="0"
+     HorizontalAlignment="Right"
+     Margin="0 10 30 25"
+     Width="150"
+     ToolTip="First page"
+     Style="{StaticResource MaterialDesignFlatDarkButton}" Click="backBtn_Click" 
+                BorderBrush="{StaticResource PrimaryHueDarkBrush}" BorderThickness="2"
                     />
         </Grid>
         
