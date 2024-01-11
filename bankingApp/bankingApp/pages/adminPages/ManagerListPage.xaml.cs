@@ -36,23 +36,46 @@ namespace bankingApp.pages.adminPages
             InitializeDataGrid();
         }
 
-        private void InitializeDataGrid()
+        private void InitializeDataGrid(string searchedUsername = "")
         {
-            users = db.Users.Where(u => u.Type == "manager")
-                .Select(u => new ShowUser
-                {
-                    Name = $"{u.FirstName} {u.LastName}",
-                    Email = u.Email,
-                    Username = u.Username,
-                    Cards = 0,
-                    LastLogin = u.LastLogin
-                })
-                .ToList();
+            if (string.IsNullOrEmpty(searchedUsername))
+            {
+                users = db.Users.Where(u => u.Type == "manager")
+                    .Select(u => new ShowUser
+                    {
+                        Name = $"{u.FirstName} {u.LastName}",
+                        Email = u.Email,
+                        Username = u.Username,
+                        Cards = 0,
+                        LastLogin = u.LastLogin
+                    })
+                    .ToList();
+            }
+            else
+            {
+                users = db.Users.Where(u => u.Type == "manager" && u.Username.Contains(searchedUsername))
+                        .Select(u => new ShowUser
+                        {
+                            Name = $"{u.FirstName} {u.LastName}",
+                            Email = u.Email,
+                            Username = u.Username,
+                            Cards = 0,
+                            LastLogin = u.LastLogin
+                        })
+                    .ToList();
+            }
             lblManagers.Text = $"{users.Count} Managers";
-            List<ShowUser> usersShown = users.GetRange(0, 5);
+            if (users.Count > 10) { 
+            List<ShowUser> usersShown = users.GetRange(0, 10);
             userTable.ItemsSource = usersShown;
-            ((UserListDataContext)this.DataContext).NumberOfPages = users.Count / 5;
-            if (users.Count % 5 != 0) ((UserListDataContext)this.DataContext).NumberOfPages++;
+            ((UserListDataContext)this.DataContext).NumberOfPages = users.Count / 10;
+            if (users.Count % 10 != 0) ((UserListDataContext)this.DataContext).NumberOfPages++; }
+            else
+            {
+                List<ShowUser> usersShown = users.GetRange(0, users.Count);
+                userTable.ItemsSource = usersShown;
+                ((UserListDataContext)this.DataContext).NumberOfPages = 1;
+            }
         }
 
         private void toggleTheme(object sender, RoutedEventArgs e)
@@ -75,11 +98,11 @@ namespace bankingApp.pages.adminPages
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
             if (((UserListDataContext)this.DataContext).CurrentPage == ((UserListDataContext)this.DataContext).NumberOfPages) return;
-            int start = ((UserListDataContext)this.DataContext).CurrentPage * 5;
+            int start = ((UserListDataContext)this.DataContext).CurrentPage * 10;
             int count;
-            if (start + 5 > users.Count)
+            if (start + 10 > users.Count)
                 count = users.Count - start;
-            else count = 5;
+            else count = 10;
             List<ShowUser> usersShown = users.GetRange(start, count);
             userTable.ItemsSource = usersShown;
             ((UserListDataContext)this.DataContext).CurrentPage++;
@@ -87,11 +110,11 @@ namespace bankingApp.pages.adminPages
 
         private void btnPrevPage_Click_1(object sender, RoutedEventArgs e)
         {
-            int start = (((UserListDataContext)this.DataContext).NumberOfPages - 1) * 5;
+            int start = (((UserListDataContext)this.DataContext).NumberOfPages - 1) * 10;
             int count;
-            if (start + 5 > users.Count)
+            if (start + 10 > users.Count)
                 count = users.Count - start;
-            else count = 5;
+            else count = 10;
             List<ShowUser> usersShown = users.GetRange(start, count);
             userTable.ItemsSource = usersShown;
             ((UserListDataContext)this.DataContext).CurrentPage = ((UserListDataContext)this.DataContext).NumberOfPages;
@@ -101,11 +124,11 @@ namespace bankingApp.pages.adminPages
         {
             if (((UserListDataContext)this.DataContext).CurrentPage == 1) return;
             ((UserListDataContext)this.DataContext).CurrentPage--;
-            int start = (((UserListDataContext)this.DataContext).CurrentPage - 1) * 5;
+            int start = (((UserListDataContext)this.DataContext).CurrentPage - 1) * 10;
             int count;
-            if (start + 5 > users.Count)
+            if (start + 10 > users.Count)
                 count = users.Count - start;
-            else count = 5;
+            else count = 10;
             List<ShowUser> usersShown = users.GetRange(start, count);
             userTable.ItemsSource = usersShown;
         }
@@ -113,9 +136,9 @@ namespace bankingApp.pages.adminPages
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
             int count;
-            if (5 > users.Count)
+            if (10 > users.Count)
                 count = users.Count;
-            else count = 5;
+            else count = 10;
             List<ShowUser> usersShown = users.GetRange(0, count);
             userTable.ItemsSource = usersShown;
             ((UserListDataContext)this.DataContext).CurrentPage = 1;
@@ -134,7 +157,21 @@ namespace bankingApp.pages.adminPages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            ShowUser selectedUser = (ShowUser)userTable.SelectedItem;
+            string selectedUsername = selectedUser.Username;
 
+            User user = db.Users.Single(u => u.Username == selectedUsername);
+            db.Users.DeleteOnSubmit(user);
+            db.SubmitChanges();
+
+            string searchText = txtSearchUsername.Text.Trim();
+            InitializeDataGrid(searchText);
+        }
+
+        private void txtSearchUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = txtSearchUsername.Text.Trim();
+            InitializeDataGrid(searchText);
         }
     }
 }

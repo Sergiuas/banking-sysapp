@@ -36,10 +36,10 @@
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0 0 15 0"
                                    />
-                        <TextBox  x:Name="txtUsername" Width="200" FontSize="12"
+                        <TextBox  x:Name="txtUsernameSearch" Width="200" FontSize="12"
                                   materialDesign:HintAssist.Hint="Search in Users" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtUsernameSearch_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
