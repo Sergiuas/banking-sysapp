@@ -20,11 +20,6 @@ using System.Windows.Shapes;
 
 namespace bankingApp.pages.adminPages
 {
-    /// <summary>
-    /// Interaction logic for UserListPage.xaml
-    /// </summary>
-
-    
 
     public partial class UserListPage : Page
     {
@@ -125,6 +120,24 @@ namespace bankingApp.pages.adminPages
             List<ShowUser> usersShown = users.GetRange(0, count);
             userTable.ItemsSource = usersShown;
             ((UserListDataContext)this.DataContext).CurrentPage = 1;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (userTable.SelectedCells.Count == 0) return;
+
+            // var selectedUser = userTable.SelectedItem;
+
+            ShowUser selectedUser = (ShowUser)userTable.SelectedItem;
+            string selectedUsername = selectedUser.Username;
+
+            editUserPage Page = new editUserPage(isDarkTheme, _paletteHelper, db, selectedUsername);
+            MainContentFrame.Content = Page;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
