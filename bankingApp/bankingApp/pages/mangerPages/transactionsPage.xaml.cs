@@ -1,5 +1,4 @@
-﻿using bankingApp.classes;
-using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,26 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace bankingApp.pages.adminPages
+namespace bankingApp.pages.mangerPages
 {
     /// <summary>
-    /// Interaction logic for ManagerListPage.xaml
+    /// Interaction logic for transactionsPage.xaml
     /// </summary>
-    public partial class ManagerListPage : Page
+    public partial class transactionsPage : Page
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
-        private List<ShowUser> users;
-        public ManagerListPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public transactionsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
             this.db = db;
-            this.DataContext = new UserListDataContext();
             InitializeComponent();
         }
-
         private void toggleTheme(object sender, RoutedEventArgs e)
         {
             ITheme theme = _paletteHelper.GetTheme();
@@ -57,7 +53,7 @@ namespace bankingApp.pages.adminPages
 
         }
 
-        private void btnPrevPage_Click_1(object sender, RoutedEventArgs e)
+        private void btnPrevPage_Click(object sender, RoutedEventArgs e)
         {
 
         }
