@@ -47,6 +47,7 @@
                           x:Name="userTable"
                           Height="400"
                           CanUserAddRows="False"
+                          IsReadOnly="True"
                           />
                 <Grid HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>
