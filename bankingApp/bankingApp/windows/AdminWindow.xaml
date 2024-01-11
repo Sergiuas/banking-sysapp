@@ -110,13 +110,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnAddManager" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnAddManager_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="User"
                                                      VerticalAlignment="Center"
@@ -126,13 +126,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnEditManager" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnEditManager_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Edit" 
                                                      VerticalAlignment="Center"
