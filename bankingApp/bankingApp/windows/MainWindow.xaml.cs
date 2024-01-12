@@ -84,7 +84,7 @@ namespace bankingApp
                     this.Close();
                     break;
                 case UserTypes.USER:
-                    UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper);
+                    UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper,db);
                     userWindow.Show();
                     this.Close();
                     break;

@@ -16,17 +16,17 @@ using System.Windows.Shapes;
 namespace bankingApp.pages.userPages
 {
     /// <summary>
-    /// Interaction logic for sendMoneyPage.xaml
+    /// Interaction logic for sendMessagePage.xaml
     /// </summary>
-    public partial class sendMoneyPage : Page
+    public partial class sendMessagePage : Page
     {
         bsappDataContext db;
-        public sendMoneyPage(bsappDataContext db)
+        public sendMessagePage(bsappDataContext db)
         {
             this.db = db;
             InitializeComponent();
         }
-
+        
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
 
@@ -44,24 +44,6 @@ namespace bankingApp.pages.userPages
 
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-            if(rb == radioBtnContact)
-            {
-                txtReceiver.Text = "Friend Name";
-                cbFriends.Visibility = Visibility.Visible;
-                txtIban.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                txtReceiver.Text = "Account Number";
-                cbFriends.Visibility = Visibility.Hidden;
-                txtIban.Visibility = Visibility.Visible;
-            }
 
         }
     }
