@@ -42,21 +42,21 @@
                                 <materialDesign:PackIcon Kind="FilterVariant" />
                             </materialDesign:PopupBox.ToggleContent>
                             <StackPanel>
-                                <RadioButton Content="Source" Margin="5 0 5 5" x:Name="rdoSource"/>
-                                <RadioButton Content="Destination" Margin="5" x:Name="rdoDestination"/>
-                                <RadioButton Content="Date" Margin="5 5 5 0" x:Name="rdoDate"/>
+                                <RadioButton Content="Source" Margin="5 0 5 5" x:Name="rdoSource" Checked="rdoSource_Checked" Unchecked="rdoSource_Unchecked"/>
+                                <RadioButton Content="Destination" Margin="5" x:Name="rdoDestination" Unloaded="rdoDestination_Unloaded" Checked="rdoDestination_Checked"/>
+                                <RadioButton Content="Date" Margin="5 5 5 0" x:Name="rdoDate" Checked="rdoDate_Checked" Unchecked="rdoDate_Unchecked"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
-                        <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
+                        <TextBox  x:Name="txtTransactionsSearch" Width="200" FontSize="12"
                                   materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtTransactionsSearch_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
                           Background="{DynamicResource MaterialDesignCardBackground}"
-                          x:Name="userTable"
+                          x:Name="transactionsTable"
                           Height="500"
                           CanUserAddRows="False"
                           IsReadOnly="True"

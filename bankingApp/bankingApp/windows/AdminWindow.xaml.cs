@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using bankingApp.classes;
 
 namespace bankingApp.windows
 {
@@ -26,14 +27,23 @@ namespace bankingApp.windows
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
+        private UserSingleton userInstance = UserSingleton.Instance;
         public AdminWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
             this.db = db;
+            DataContext = userInstance;
             InitializeComponent();
         }
 
+        private void WindowDragMove(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
         private void btnOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             btnCloseMenu.Visibility = Visibility.Visible;
@@ -148,6 +158,18 @@ namespace bankingApp.windows
                 editManagerPage Page = new editManagerPage(isDarkTheme, _paletteHelper, db, foo);
                 page.Content = Page;
             }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            editUserPage Page = new editUserPage(isDarkTheme, _paletteHelper, db, userInstance.username);
+            page.Content = Page;
+        }
+
+        private void btnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            adminDashboardPage Page = new adminDashboardPage();
+            page.Content = Page;
         }
     }
 }

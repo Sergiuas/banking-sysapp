@@ -17,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Data.Linq;
 using System.Security.Cryptography;
 using bankingApp.windows;
+using bankingApp.classes;
 
 namespace bankingApp
 {
@@ -32,6 +33,8 @@ namespace bankingApp
             this.db = new bsappDataContext();
 
         }
+
+
 
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
@@ -69,21 +72,40 @@ namespace bankingApp
             string password = txtPassword.Password;
 
 
-            UserTypes auth = CheckLogin(username, password);
+            User user = CheckLogin(username, password);
 
-            switch (auth)
+            UserSingleton userInstance = UserSingleton.Instance;
+            //if (auth!=UserTypes.INVALID)
+            //{
+
+            //    userInstance.build(user.Username, user.PasswordHash, user.Email, user.FirstName, user.LastName, user.PhoneNumber, user.Address, user.DateOfBirth.ToString(), type);
+
+            //}
+            if (user == null)
             {
-                case UserTypes.ADMIN:
+                incorrectDataLabel.Visibility = Visibility.Visible;
+                txtPassword.Clear();
+                txtUsername.Clear();
+                return;
+            }
+
+            switch (user.Type)
+            {
+               
+                case "admin":
+                    userInstance.build(user.UserID, user.Username, user.Password, user.Email, user.FirstName, user.LastName, UserTypes.ADMIN);
                     AdminWindow adminWindow = new AdminWindow(isDarkTheme, _paletteHelper, db);
                     adminWindow.Show();
                     this.Close();
                     break;
-                case UserTypes.MANAGER:
+                case "manager":
+                    userInstance.build(user.UserID, user.Username, user.Password, user.Email, user.FirstName, user.LastName, UserTypes.MANAGER);
                     ManagerWindow managerwindow = new ManagerWindow(isDarkTheme, _paletteHelper,db);
                     managerwindow.Show();
                     this.Close();
                     break;
-                case UserTypes.USER:
+                case "user":
+                    userInstance.build(user.UserID, user.Username, user.Password, user.Email, user.FirstName, user.LastName, UserTypes.USER);
                     UserWindow userWindow = new UserWindow(isDarkTheme, _paletteHelper,db);
                     userWindow.Show();
                     this.Close();
@@ -103,14 +125,7 @@ namespace bankingApp
             this.Close();
         }
 
-        enum UserTypes
-        {
-            ADMIN,
-            MANAGER,
-            USER,
-            INVALID
-        };
-        private UserTypes CheckLogin(string username, string password)
+        private User CheckLogin(string username, string password)
         {
             byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
@@ -122,22 +137,23 @@ namespace bankingApp
 
             var user = db.Users.SingleOrDefault(u => (u.Username == username && u.Password == encoded) || (u.Email == username && u.Password == encoded));
 
-            if (user == null)
-            {
-                return UserTypes.INVALID;
-            }
+            return user;
+            //if (user == null)
+            //{
+            //    return UserTypes.INVALID;
+            //}
 
-            switch (user.Type)
-            {
-                case "admin":
-                    return UserTypes.ADMIN;
-                case "manager":
-                    return UserTypes.MANAGER;
-                case "user":
-                    return UserTypes.USER;
-                default:
-                    return UserTypes.INVALID;
-            }
+            //switch (user.Type)
+            //{
+            //    case "admin":
+            //        return UserTypes.ADMIN;
+            //    case "manager":
+            //        return UserTypes.MANAGER;
+            //    case "user":
+            //        return UserTypes.USER;
+            //    default:
+            //        return UserTypes.INVALID;
+            //}
 
         }
     }

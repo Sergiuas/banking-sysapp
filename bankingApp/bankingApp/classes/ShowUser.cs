@@ -13,6 +13,6 @@ namespace bankingApp.classes
         public string Username { get; set; }
         public int Cards { get; set; }
         public DateTime? LastLogin { get; set; }
-        
+
     }
 }

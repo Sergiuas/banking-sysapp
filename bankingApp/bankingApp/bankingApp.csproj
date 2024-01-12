@@ -81,7 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bsapp.dbml</DependentUpon>
     </Compile>
+    <Compile Include="classes\ShowTransaction.cs" />
     <Compile Include="classes\ShowUser.cs" />
+    <Compile Include="classes\TransactionListDataContext.cs" />
     <Compile Include="classes\UserListDataContext.cs" />
     <Compile Include="classes\UserSingleton.cs" />
     <Compile Include="pages\adminPages\addManagerPage.xaml.cs">
