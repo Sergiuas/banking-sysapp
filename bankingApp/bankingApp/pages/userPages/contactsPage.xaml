@@ -20,12 +20,12 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="280"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Transactions"
+                    <TextBlock Text="Friends"
                                HorizontalAlignment="Left"
                                FontSize="16" FontWeight="Bold"
                                VerticalAlignment="Center"
                                Grid.Column="0"
-                               x:Name="lblTransactions"/>
+                               x:Name="lblFriends"/>
                     <StackPanel Grid.Column="1"
                                 HorizontalAlignment="Stretch"
                                 Orientation="Horizontal">
@@ -34,23 +34,10 @@
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0 0 5 0"
                                    />
-                        <materialDesign:PopupBox HorizontalAlignment="Right"
-                                                 PlacementMode="BottomAndAlignCentres"
-                                                 StaysOpen="False" Height="25"
-                                                 Margin="0 0 5 0">
-                            <materialDesign:PopupBox.ToggleContent>
-                                <materialDesign:PackIcon Kind="FilterVariant" />
-                            </materialDesign:PopupBox.ToggleContent>
-                            <StackPanel>
-                                <RadioButton Content="Source" Margin="5 0 5 5" x:Name="rdoSource"/>
-                                <RadioButton Content="Destination" Margin="5" x:Name="rdoDestination"/>
-                                <RadioButton Content="Date" Margin="5 5 5 0" x:Name="rdoDate"/>
-                            </StackPanel>
-                        </materialDesign:PopupBox>
-                        <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
-                                  materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
+                        <TextBox  x:Name="txtFriends" Width="200" FontSize="12"
+                                  materialDesign:HintAssist.Hint="Search in Friends" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtFriends_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
@@ -59,7 +46,7 @@
                           x:Name="userTable"
                           Height="400"
                           CanUserAddRows="False"
-                          IsReadOnly="True"
+                          IsReadOnly="True" MouseDoubleClick="userTable_MouseDoubleClick"
                           />
                 <Grid HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>

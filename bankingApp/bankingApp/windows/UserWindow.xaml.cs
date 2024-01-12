@@ -135,7 +135,7 @@ namespace bankingApp
 
         private void btnTransactions_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new sendMessagePage(db);
+            var Page = new transactionsPage(db);
             page.Content = Page;
         }
 

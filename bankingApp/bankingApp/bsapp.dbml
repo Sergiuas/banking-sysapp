@@ -1,15 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bsapp" Class="bsappDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=bsapp;Integrated Security=True" SettingsObjectName="bankingApp.Properties.Settings" SettingsPropertyName="bsappConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Budgets" Member="Budgets">
-    <Type Name="Budget">
-      <Column Name="BudgetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Category" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="BudgetAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="CurrentSpending" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Association Name="User_Budget" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Users" Member="Users">
     <Type Name="User">
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -29,73 +19,24 @@
       <Column Name="SecurityAnswer" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="RememberMe" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="User_Budget" Member="Budgets" ThisKey="UserID" OtherKey="UserID" Type="Budget" />
-      <Association Name="User_SavingsGoal" Member="SavingsGoals" ThisKey="UserID" OtherKey="UserID" Type="SavingsGoal" />
-      <Association Name="User_MonthlyStatement" Member="MonthlyStatements" ThisKey="UserID" OtherKey="UserID" Type="MonthlyStatement" />
-      <Association Name="User_Message" Member="Messages" ThisKey="UserID" OtherKey="RecipientID" Type="Message" />
-      <Association Name="User_Message1" Member="Messages1" ThisKey="UserID" OtherKey="SenderID" Type="Message" />
-      <Association Name="User_Contact" Member="Contacts" ThisKey="UserID" OtherKey="FriendID" Type="Contact" />
-      <Association Name="User_Contact1" Member="Contacts1" ThisKey="UserID" OtherKey="UserID" Type="Contact" />
       <Association Name="User_Card" Member="Cards" ThisKey="UserID" OtherKey="ManagerID" Type="Card" />
       <Association Name="User_Card1" Member="Cards1" ThisKey="UserID" OtherKey="UserID" Type="Card" />
+      <Association Name="User_Contact" Member="Contacts" ThisKey="UserID" OtherKey="FriendID" Type="Contact" />
+      <Association Name="User_Contact1" Member="Contacts1" ThisKey="UserID" OtherKey="UserID" Type="Contact" />
+      <Association Name="User_Message" Member="Messages" ThisKey="UserID" OtherKey="RecipientID" Type="Message" />
+      <Association Name="User_Message1" Member="Messages1" ThisKey="UserID" OtherKey="SenderID" Type="Message" />
+      <Association Name="User_MonthlyStatement" Member="MonthlyStatements" ThisKey="UserID" OtherKey="UserID" Type="MonthlyStatement" />
+      <Association Name="User_SavingsGoal" Member="SavingsGoals" ThisKey="UserID" OtherKey="UserID" Type="SavingsGoal" />
     </Type>
   </Table>
-  <Table Name="dbo.Transactions" Member="Transactions">
-    <Type Name="Transaction">
-      <Column Name="TransactionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CardSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CardDestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TransactionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="TransactionCurency" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="MessageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Message_Transaction" Member="Message" ThisKey="MessageID" OtherKey="MessageID" Type="Message" IsForeignKey="true" />
-      <Association Name="Card_Transaction" Member="Card" ThisKey="CardDestID" OtherKey="CardID" Type="Card" IsForeignKey="true" />
-      <Association Name="Card_Transaction1" Member="Card1" ThisKey="CardSourceID" OtherKey="CardID" Type="Card" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SavingsGoals" Member="SavingsGoals">
-    <Type Name="SavingsGoal">
-      <Column Name="SavingsGoalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.Budgets" Member="Budgets">
+    <Type Name="Budget">
+      <Column Name="BudgetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GoalName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="GoalAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="CurrentSavings" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Association Name="User_SavingsGoal" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.MonthlyStatements" Member="MonthlyStatements">
-    <Type Name="MonthlyStatement">
-      <Column Name="MonthlyStatementID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Month" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TotalDeposits" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="TotalWithdrawals" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="TotalTransfers" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Association Name="User_MonthlyStatement" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Messages" Member="Messages">
-    <Type Name="Message">
-      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SenderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RecipientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Body" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Message_Transaction" Member="Transactions" ThisKey="MessageID" OtherKey="MessageID" Type="Transaction" />
-      <Association Name="User_Message" Member="User" ThisKey="RecipientID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-      <Association Name="User_Message1" Member="User1" ThisKey="SenderID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Contacts" Member="Contacts">
-    <Type Name="Contact">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="FriendID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Pending" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="User_Contact" Member="User" ThisKey="FriendID" OtherKey="UserID" Type="User" IsForeignKey="true" />
-      <Association Name="User_Contact1" Member="User1" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="BudgetAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CurrentSpending" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Association Name="User_Budget" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Cards" Member="Cards">
@@ -112,6 +53,76 @@
       <Association Name="Card_Transaction1" Member="Transactions1" ThisKey="CardID" OtherKey="CardSourceID" Type="Transaction" />
       <Association Name="User_Card" Member="User" ThisKey="ManagerID" OtherKey="UserID" Type="User" IsForeignKey="true" />
       <Association Name="User_Card1" Member="User1" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contacts" Member="Contacts">
+    <Type Name="Contact">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FriendID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pending" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="User_Contact" Member="User" ThisKey="FriendID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_Contact1" Member="User1" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Messages" Member="Messages">
+    <Type Name="Message">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SenderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecipientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Message_Transaction" Member="Transactions" ThisKey="MessageID" OtherKey="MessageID" Type="Transaction" />
+      <Association Name="User_Message" Member="User" ThisKey="RecipientID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_Message1" Member="User1" ThisKey="SenderID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonthlyStatements" Member="MonthlyStatements">
+    <Type Name="MonthlyStatement">
+      <Column Name="MonthlyStatementID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Month" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalDeposits" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalWithdrawals" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="TotalTransfers" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="NetBalance" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Association Name="User_MonthlyStatement" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SavingsGoals" Member="SavingsGoals">
+    <Type Name="SavingsGoal">
+      <Column Name="SavingsGoalID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GoalName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="GoalAmount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CurrentSavings" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Association Name="User_SavingsGoal" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CardSourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CardDestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransactionCurency" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MessageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Card_Transaction" Member="Card" ThisKey="CardDestID" OtherKey="CardID" Type="Card" IsForeignKey="true" />
+      <Association Name="Card_Transaction1" Member="Card1" ThisKey="CardSourceID" OtherKey="CardID" Type="Card" IsForeignKey="true" />
+      <Association Name="Message_Transaction" Member="Message" ThisKey="MessageID" OtherKey="MessageID" Type="Message" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessagesView" Member="MessagesViews">
+    <Type Name="MessagesView">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SenderUsername" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="SenderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RecipientUsername" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="RecipientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>

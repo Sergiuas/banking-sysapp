@@ -22,22 +22,23 @@ namespace bankingApp.pages.userPages
     public partial class sendMessagePage : Page
     {
         bsappDataContext db;
-        public sendMessagePage(bsappDataContext db)
+        public int userID { get; set; }
+        public int friendID { get; set; }
+        public sendMessagePage(int userID,int friendID,bsappDataContext db)
         {
             this.db = db;
+            this.userID = userID;
+            this.friendID = friendID;
             InitializeComponent();
-            var list = new List<MessageBody>{ 
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody(),
-                                                new MessageBody()
-                                            };
+            List<MessageBody> list = db.MessagesViews.Where(x => (x.SenderID == userID && x.RecipientID == friendID) || (x.RecipientID == userID && x.SenderID == friendID))
+                .OrderBy(x => x.Timestamp).Select(x => new MessageBody
+            {
+                message = x.Body,
+                sender = x.SenderID == UserSingleton.Instance.UserID ? "You" : x.SenderUsername,
+                date = (DateTime)x.Timestamp,
+                isFriend = x.RecipientID == UserSingleton.Instance.UserID ? Visibility.Visible : Visibility.Hidden,
+                isUser = x.RecipientID == UserSingleton.Instance.UserID ? Visibility.Hidden : Visibility.Visible
+            }).ToList();
             lbMessage.ItemsSource = list;
 
         }

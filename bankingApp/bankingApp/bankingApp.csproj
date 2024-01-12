@@ -81,8 +81,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bsapp.dbml</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
     <Compile Include="classes\CardListDataContext.cs" />
     <Compile Include="classes\ShowCard.cs" />
+=======
+    <Compile Include="classes\Friend.cs" />
+>>>>>>> Stashed changes
     <Compile Include="classes\ShowTransaction.cs" />
     <Compile Include="classes\MessageBody.cs" />
     <Compile Include="classes\ShowUser.cs" />
