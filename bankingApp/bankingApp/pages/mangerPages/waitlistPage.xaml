@@ -34,16 +34,16 @@
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0 0 5 0"
                                    />
-                       <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
-                                  materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
+                       <TextBox  x:Name="txtCardSearch" Width="200" FontSize="12"
+                                  materialDesign:HintAssist.Hint="Search in Waitlist" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtCardSearch_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
                           Background="{DynamicResource MaterialDesignCardBackground}"
-                          x:Name="userTable"
+                          x:Name="cardsTable"
                           Height="400"
                           CanUserAddRows="False"
                           IsReadOnly="True"
