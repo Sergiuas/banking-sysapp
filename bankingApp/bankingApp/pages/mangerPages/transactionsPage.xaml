@@ -10,7 +10,7 @@
 
     <StackPanel>
         <materialDesign:ColorZone Mode="Light"
-                                  Background="{DynamicResource PrimaryHueLightBrush}"
+                                  Background="{DynamicResource MaterialDesignCardBackground}"
                                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                   CornerRadius="15" Padding="40 20"
                                   Margin="0 35 0 0">
@@ -55,7 +55,7 @@
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
-                          Background="{DynamicResource PrimaryHueLightBrush}"
+                          Background="{DynamicResource MaterialDesignCardBackground}"
                           x:Name="userTable"
                           Height="500"
                           CanUserAddRows="False"

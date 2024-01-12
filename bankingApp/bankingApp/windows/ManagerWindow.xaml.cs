@@ -117,7 +117,19 @@ namespace bankingApp.windows
 
         private void btnTransactions_Click(object sender, RoutedEventArgs e)
         {
-            transactionsPage Page = new transactionsPage(isDarkTheme, _paletteHelper, db);
+            transactionsPage Page = new transactionsPage(db);
+            page.Content = Page;
+        }
+
+        private void btnBankAccounts_Click(object sender, RoutedEventArgs e)
+        {
+            bankAccountsPage Page = new bankAccountsPage(db);
+            page.Content = Page;
+        }
+
+        private void btnWaitinglist_Click(object sender, RoutedEventArgs e)
+        {
+            waitlistPage Page = new waitlistPage(db);
             page.Content = Page;
         }
     }

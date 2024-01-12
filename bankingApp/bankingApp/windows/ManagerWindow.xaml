@@ -94,13 +94,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnWaitinglist" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="Green"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnWaitinglist_Click" >
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="ListBox" 
                                                      VerticalAlignment="Center"
@@ -110,13 +110,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnBankAccounts" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="Green"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnBankAccounts_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Bank" 
                                                      VerticalAlignment="Center"

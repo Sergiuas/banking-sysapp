@@ -102,6 +102,9 @@
     <Compile Include="pages\mangerPages\bankAccountsPage.xaml.cs">
       <DependentUpon>bankAccountsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\mangerPages\ticketsPage.xaml.cs">
+      <DependentUpon>ticketsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\mangerPages\transactionsPage.xaml.cs">
       <DependentUpon>transactionsPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\mangerPages\bankAccountsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\mangerPages\ticketsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
