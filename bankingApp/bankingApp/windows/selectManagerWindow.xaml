@@ -20,22 +20,30 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBox Margin="0 0 0 0"
+            <ComboBox Margin="0 0 0 0"
                      Grid.Row="0"
-                     x:Name="txtUsername"
+                     x:Name="cbUsername"
                      VerticalAlignment="Stretch"
                      FontSize="16" Height="40"
                      materialDesign:HintAssist.Hint="Enter Username"
-                     Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                     Background="{DynamicResource MaterialDesignComboBoxBackground}"
                      BorderThickness="2"
-                     BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}" TextChanged="txtUsername_TextChanged">
-                <TextBox.Resources>
+                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                      IsEditable="True" IsTextSearchEnabled="False"
+                      SelectionChanged="cbUsername_SelectionChanged"
+                      PreviewKeyUp="cbUsername_PreviewKeyUp"
+                      HorizontalContentAlignment="Center">
+                <ComboBox.Resources>
                     <Style TargetType="{x:Type materialDesign:SmartHint}">
                         <Setter Property="HorizontalAlignment" Value="Center"/>
                     </Style>
-                </TextBox.Resources>
-            </TextBox>
+                </ComboBox.Resources>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" HorizontalAlignment="Center" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Grid Grid.Row="1" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

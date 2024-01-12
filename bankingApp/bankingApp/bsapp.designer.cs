@@ -30,36 +30,30 @@ namespace bankingApp
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAdministratorAction(AdministratorAction instance);
-    partial void UpdateAdministratorAction(AdministratorAction instance);
-    partial void DeleteAdministratorAction(AdministratorAction instance);
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
-    partial void InsertBankManager(BankManager instance);
-    partial void UpdateBankManager(BankManager instance);
-    partial void DeleteBankManager(BankManager instance);
     partial void InsertBudget(Budget instance);
     partial void UpdateBudget(Budget instance);
     partial void DeleteBudget(Budget instance);
-    partial void InsertCard(Card instance);
-    partial void UpdateCard(Card instance);
-    partial void DeleteCard(Card instance);
-    partial void InsertContact(Contact instance);
-    partial void UpdateContact(Contact instance);
-    partial void DeleteContact(Contact instance);
-    partial void InsertMessage(Message instance);
-    partial void UpdateMessage(Message instance);
-    partial void DeleteMessage(Message instance);
-    partial void InsertMonthlyStatement(MonthlyStatement instance);
-    partial void UpdateMonthlyStatement(MonthlyStatement instance);
-    partial void DeleteMonthlyStatement(MonthlyStatement instance);
-    partial void InsertSavingsGoal(SavingsGoal instance);
-    partial void UpdateSavingsGoal(SavingsGoal instance);
-    partial void DeleteSavingsGoal(SavingsGoal instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
+    partial void InsertSavingsGoal(SavingsGoal instance);
+    partial void UpdateSavingsGoal(SavingsGoal instance);
+    partial void DeleteSavingsGoal(SavingsGoal instance);
+    partial void InsertMonthlyStatement(MonthlyStatement instance);
+    partial void UpdateMonthlyStatement(MonthlyStatement instance);
+    partial void DeleteMonthlyStatement(MonthlyStatement instance);
+    partial void InsertMessage(Message instance);
+    partial void UpdateMessage(Message instance);
+    partial void DeleteMessage(Message instance);
+    partial void InsertContact(Contact instance);
+    partial void UpdateContact(Contact instance);
+    partial void DeleteContact(Contact instance);
+    partial void InsertCard(Card instance);
+    partial void UpdateCard(Card instance);
+    partial void DeleteCard(Card instance);
     #endregion
 		
 		public bsappDataContext() : 
@@ -92,11 +86,11 @@ namespace bankingApp
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<AdministratorAction> AdministratorActions
+		public System.Data.Linq.Table<Budget> Budgets
 		{
 			get
 			{
-				return this.GetTable<AdministratorAction>();
+				return this.GetTable<Budget>();
 			}
 		}
 		
@@ -108,51 +102,11 @@ namespace bankingApp
 			}
 		}
 		
-		public System.Data.Linq.Table<BankManager> BankManagers
+		public System.Data.Linq.Table<Transaction> Transactions
 		{
 			get
 			{
-				return this.GetTable<BankManager>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Budget> Budgets
-		{
-			get
-			{
-				return this.GetTable<Budget>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Card> Cards
-		{
-			get
-			{
-				return this.GetTable<Card>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Contact> Contacts
-		{
-			get
-			{
-				return this.GetTable<Contact>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Message> Messages
-		{
-			get
-			{
-				return this.GetTable<Message>();
-			}
-		}
-		
-		public System.Data.Linq.Table<MonthlyStatement> MonthlyStatements
-		{
-			get
-			{
-				return this.GetTable<MonthlyStatement>();
+				return this.GetTable<Transaction>();
 			}
 		}
 		
@@ -164,24 +118,54 @@ namespace bankingApp
 			}
 		}
 		
-		public System.Data.Linq.Table<Transaction> Transactions
+		public System.Data.Linq.Table<MonthlyStatement> MonthlyStatements
 		{
 			get
 			{
-				return this.GetTable<Transaction>();
+				return this.GetTable<MonthlyStatement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Message> Messages
+		{
+			get
+			{
+				return this.GetTable<Message>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Contact> Contacts
+		{
+			get
+			{
+				return this.GetTable<Contact>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Card> Cards
+		{
+			get
+			{
+				return this.GetTable<Card>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AdministratorActions")]
-	public partial class AdministratorAction : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Budgets")]
+	public partial class Budget : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ActionID;
+		private int _BudgetID;
 		
-		private System.Nullable<int> _AdministratorID;
+		private System.Nullable<int> _UserID;
+		
+		private string _Category;
+		
+		private System.Nullable<decimal> _BudgetAmount;
+		
+		private System.Nullable<decimal> _CurrentSpending;
 		
 		private EntityRef<User> _User;
 		
@@ -189,63 +173,129 @@ namespace bankingApp
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnActionIDChanging(int value);
-    partial void OnActionIDChanged();
-    partial void OnAdministratorIDChanging(System.Nullable<int> value);
-    partial void OnAdministratorIDChanged();
+    partial void OnBudgetIDChanging(int value);
+    partial void OnBudgetIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnCategoryChanging(string value);
+    partial void OnCategoryChanged();
+    partial void OnBudgetAmountChanging(System.Nullable<decimal> value);
+    partial void OnBudgetAmountChanged();
+    partial void OnCurrentSpendingChanging(System.Nullable<decimal> value);
+    partial void OnCurrentSpendingChanged();
     #endregion
 		
-		public AdministratorAction()
+		public Budget()
 		{
 			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActionID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ActionID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BudgetID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BudgetID
 		{
 			get
 			{
-				return this._ActionID;
+				return this._BudgetID;
 			}
 			set
 			{
-				if ((this._ActionID != value))
+				if ((this._BudgetID != value))
 				{
-					this.OnActionIDChanging(value);
+					this.OnBudgetIDChanging(value);
 					this.SendPropertyChanging();
-					this._ActionID = value;
-					this.SendPropertyChanged("ActionID");
-					this.OnActionIDChanged();
+					this._BudgetID = value;
+					this.SendPropertyChanged("BudgetID");
+					this.OnBudgetIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdministratorID", DbType="Int")]
-		public System.Nullable<int> AdministratorID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
 		{
 			get
 			{
-				return this._AdministratorID;
+				return this._UserID;
 			}
 			set
 			{
-				if ((this._AdministratorID != value))
+				if ((this._UserID != value))
 				{
 					if (this._User.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnAdministratorIDChanging(value);
+					this.OnUserIDChanging(value);
 					this.SendPropertyChanging();
-					this._AdministratorID = value;
-					this.SendPropertyChanged("AdministratorID");
-					this.OnAdministratorIDChanged();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_AdministratorAction", Storage="_User", ThisKey="AdministratorID", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="VarChar(255)")]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BudgetAmount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> BudgetAmount
+		{
+			get
+			{
+				return this._BudgetAmount;
+			}
+			set
+			{
+				if ((this._BudgetAmount != value))
+				{
+					this.OnBudgetAmountChanging(value);
+					this.SendPropertyChanging();
+					this._BudgetAmount = value;
+					this.SendPropertyChanged("BudgetAmount");
+					this.OnBudgetAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentSpending", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> CurrentSpending
+		{
+			get
+			{
+				return this._CurrentSpending;
+			}
+			set
+			{
+				if ((this._CurrentSpending != value))
+				{
+					this.OnCurrentSpendingChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentSpending = value;
+					this.SendPropertyChanged("CurrentSpending");
+					this.OnCurrentSpendingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Budget", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -262,17 +312,17 @@ namespace bankingApp
 					if ((previousValue != null))
 					{
 						this._User.Entity = null;
-						previousValue.AdministratorActions.Remove(this);
+						previousValue.Budgets.Remove(this);
 					}
 					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.AdministratorActions.Add(this);
-						this._AdministratorID = value.UserID;
+						value.Budgets.Add(this);
+						this._UserID = value.UserID;
 					}
 					else
 					{
-						this._AdministratorID = default(Nullable<int>);
+						this._UserID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("User");
 				}
@@ -338,23 +388,23 @@ namespace bankingApp
 		
 		private System.Nullable<bool> _RememberMe;
 		
-		private EntitySet<AdministratorAction> _AdministratorActions;
-		
-		private EntitySet<BankManager> _BankManagers;
-		
 		private EntitySet<Budget> _Budgets;
 		
-		private EntitySet<Card> _Cards;
+		private EntitySet<SavingsGoal> _SavingsGoals;
 		
-		private EntitySet<Contact> _Contacts;
+		private EntitySet<MonthlyStatement> _MonthlyStatements;
 		
 		private EntitySet<Message> _Messages;
 		
 		private EntitySet<Message> _Messages1;
 		
-		private EntitySet<MonthlyStatement> _MonthlyStatements;
+		private EntitySet<Contact> _Contacts;
 		
-		private EntitySet<SavingsGoal> _SavingsGoals;
+		private EntitySet<Contact> _Contacts1;
+		
+		private EntitySet<Card> _Cards;
+		
+		private EntitySet<Card> _Cards1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -396,19 +446,19 @@ namespace bankingApp
 		
 		public User()
 		{
-			this._AdministratorActions = new EntitySet<AdministratorAction>(new Action<AdministratorAction>(this.attach_AdministratorActions), new Action<AdministratorAction>(this.detach_AdministratorActions));
-			this._BankManagers = new EntitySet<BankManager>(new Action<BankManager>(this.attach_BankManagers), new Action<BankManager>(this.detach_BankManagers));
 			this._Budgets = new EntitySet<Budget>(new Action<Budget>(this.attach_Budgets), new Action<Budget>(this.detach_Budgets));
-			this._Cards = new EntitySet<Card>(new Action<Card>(this.attach_Cards), new Action<Card>(this.detach_Cards));
-			this._Contacts = new EntitySet<Contact>(new Action<Contact>(this.attach_Contacts), new Action<Contact>(this.detach_Contacts));
+			this._SavingsGoals = new EntitySet<SavingsGoal>(new Action<SavingsGoal>(this.attach_SavingsGoals), new Action<SavingsGoal>(this.detach_SavingsGoals));
+			this._MonthlyStatements = new EntitySet<MonthlyStatement>(new Action<MonthlyStatement>(this.attach_MonthlyStatements), new Action<MonthlyStatement>(this.detach_MonthlyStatements));
 			this._Messages = new EntitySet<Message>(new Action<Message>(this.attach_Messages), new Action<Message>(this.detach_Messages));
 			this._Messages1 = new EntitySet<Message>(new Action<Message>(this.attach_Messages1), new Action<Message>(this.detach_Messages1));
-			this._MonthlyStatements = new EntitySet<MonthlyStatement>(new Action<MonthlyStatement>(this.attach_MonthlyStatements), new Action<MonthlyStatement>(this.detach_MonthlyStatements));
-			this._SavingsGoals = new EntitySet<SavingsGoal>(new Action<SavingsGoal>(this.attach_SavingsGoals), new Action<SavingsGoal>(this.detach_SavingsGoals));
+			this._Contacts = new EntitySet<Contact>(new Action<Contact>(this.attach_Contacts), new Action<Contact>(this.detach_Contacts));
+			this._Contacts1 = new EntitySet<Contact>(new Action<Contact>(this.attach_Contacts1), new Action<Contact>(this.detach_Contacts1));
+			this._Cards = new EntitySet<Card>(new Action<Card>(this.attach_Cards), new Action<Card>(this.detach_Cards));
+			this._Cards1 = new EntitySet<Card>(new Action<Card>(this.attach_Cards1), new Action<Card>(this.detach_Cards1));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int UserID
 		{
 			get
@@ -728,32 +778,6 @@ namespace bankingApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_AdministratorAction", Storage="_AdministratorActions", ThisKey="UserID", OtherKey="AdministratorID")]
-		public EntitySet<AdministratorAction> AdministratorActions
-		{
-			get
-			{
-				return this._AdministratorActions;
-			}
-			set
-			{
-				this._AdministratorActions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankManager", Storage="_BankManagers", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<BankManager> BankManagers
-		{
-			get
-			{
-				return this._BankManagers;
-			}
-			set
-			{
-				this._BankManagers.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Budget", Storage="_Budgets", ThisKey="UserID", OtherKey="UserID")]
 		public EntitySet<Budget> Budgets
 		{
@@ -767,29 +791,29 @@ namespace bankingApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card", Storage="_Cards", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<Card> Cards
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SavingsGoal", Storage="_SavingsGoals", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<SavingsGoal> SavingsGoals
 		{
 			get
 			{
-				return this._Cards;
+				return this._SavingsGoals;
 			}
 			set
 			{
-				this._Cards.Assign(value);
+				this._SavingsGoals.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact", Storage="_Contacts", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<Contact> Contacts
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_MonthlyStatement", Storage="_MonthlyStatements", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<MonthlyStatement> MonthlyStatements
 		{
 			get
 			{
-				return this._Contacts;
+				return this._MonthlyStatements;
 			}
 			set
 			{
-				this._Contacts.Assign(value);
+				this._MonthlyStatements.Assign(value);
 			}
 		}
 		
@@ -819,29 +843,55 @@ namespace bankingApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_MonthlyStatement", Storage="_MonthlyStatements", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<MonthlyStatement> MonthlyStatements
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact", Storage="_Contacts", ThisKey="UserID", OtherKey="FriendID")]
+		public EntitySet<Contact> Contacts
 		{
 			get
 			{
-				return this._MonthlyStatements;
+				return this._Contacts;
 			}
 			set
 			{
-				this._MonthlyStatements.Assign(value);
+				this._Contacts.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SavingsGoal", Storage="_SavingsGoals", ThisKey="UserID", OtherKey="UserID")]
-		public EntitySet<SavingsGoal> SavingsGoals
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact1", Storage="_Contacts1", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<Contact> Contacts1
 		{
 			get
 			{
-				return this._SavingsGoals;
+				return this._Contacts1;
 			}
 			set
 			{
-				this._SavingsGoals.Assign(value);
+				this._Contacts1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card", Storage="_Cards", ThisKey="UserID", OtherKey="ManagerID")]
+		public EntitySet<Card> Cards
+		{
+			get
+			{
+				return this._Cards;
+			}
+			set
+			{
+				this._Cards.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card1", Storage="_Cards1", ThisKey="UserID", OtherKey="UserID")]
+		public EntitySet<Card> Cards1
+		{
+			get
+			{
+				return this._Cards1;
+			}
+			set
+			{
+				this._Cards1.Assign(value);
 			}
 		}
 		
@@ -865,30 +915,6 @@ namespace bankingApp
 			}
 		}
 		
-		private void attach_AdministratorActions(AdministratorAction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_AdministratorActions(AdministratorAction entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_BankManagers(BankManager entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_BankManagers(BankManager entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
 		private void attach_Budgets(Budget entity)
 		{
 			this.SendPropertyChanging();
@@ -901,25 +927,25 @@ namespace bankingApp
 			entity.User = null;
 		}
 		
-		private void attach_Cards(Card entity)
+		private void attach_SavingsGoals(SavingsGoal entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = this;
 		}
 		
-		private void detach_Cards(Card entity)
+		private void detach_SavingsGoals(SavingsGoal entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
 		
-		private void attach_Contacts(Contact entity)
+		private void attach_MonthlyStatements(MonthlyStatement entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = this;
 		}
 		
-		private void detach_Contacts(Contact entity)
+		private void detach_MonthlyStatements(MonthlyStatement entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -949,946 +975,217 @@ namespace bankingApp
 			entity.User1 = null;
 		}
 		
-		private void attach_MonthlyStatements(MonthlyStatement entity)
+		private void attach_Contacts(Contact entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = this;
 		}
 		
-		private void detach_MonthlyStatements(MonthlyStatement entity)
+		private void detach_Contacts(Contact entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
 		
-		private void attach_SavingsGoals(SavingsGoal entity)
+		private void attach_Contacts1(Contact entity)
+		{
+			this.SendPropertyChanging();
+			entity.User1 = this;
+		}
+		
+		private void detach_Contacts1(Contact entity)
+		{
+			this.SendPropertyChanging();
+			entity.User1 = null;
+		}
+		
+		private void attach_Cards(Card entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = this;
 		}
 		
-		private void detach_SavingsGoals(SavingsGoal entity)
+		private void detach_Cards(Card entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BankManagers")]
-	public partial class BankManager : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ManagerID;
-		
-		private System.Nullable<int> _UserID;
-		
-		private string _IssuingBank;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnManagerIDChanging(int value);
-    partial void OnManagerIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    partial void OnIssuingBankChanging(string value);
-    partial void OnIssuingBankChanged();
-    #endregion
-		
-		public BankManager()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagerID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ManagerID
-		{
-			get
-			{
-				return this._ManagerID;
-			}
-			set
-			{
-				if ((this._ManagerID != value))
-				{
-					this.OnManagerIDChanging(value);
-					this.SendPropertyChanging();
-					this._ManagerID = value;
-					this.SendPropertyChanged("ManagerID");
-					this.OnManagerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssuingBank", DbType="VarChar(255)")]
-		public string IssuingBank
-		{
-			get
-			{
-				return this._IssuingBank;
-			}
-			set
-			{
-				if ((this._IssuingBank != value))
-				{
-					this.OnIssuingBankChanging(value);
-					this.SendPropertyChanging();
-					this._IssuingBank = value;
-					this.SendPropertyChanged("IssuingBank");
-					this.OnIssuingBankChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BankManager", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.BankManagers.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.BankManagers.Add(this);
-						this._UserID = value.UserID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Budgets")]
-	public partial class Budget : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BudgetID;
-		
-		private System.Nullable<int> _UserID;
-		
-		private string _Category;
-		
-		private System.Nullable<decimal> _BudgetAmount;
-		
-		private System.Nullable<decimal> _CurrentSpending;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBudgetIDChanging(int value);
-    partial void OnBudgetIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    partial void OnCategoryChanging(string value);
-    partial void OnCategoryChanged();
-    partial void OnBudgetAmountChanging(System.Nullable<decimal> value);
-    partial void OnBudgetAmountChanged();
-    partial void OnCurrentSpendingChanging(System.Nullable<decimal> value);
-    partial void OnCurrentSpendingChanged();
-    #endregion
-		
-		public Budget()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BudgetID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int BudgetID
-		{
-			get
-			{
-				return this._BudgetID;
-			}
-			set
-			{
-				if ((this._BudgetID != value))
-				{
-					this.OnBudgetIDChanging(value);
-					this.SendPropertyChanging();
-					this._BudgetID = value;
-					this.SendPropertyChanged("BudgetID");
-					this.OnBudgetIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="VarChar(255)")]
-		public string Category
-		{
-			get
-			{
-				return this._Category;
-			}
-			set
-			{
-				if ((this._Category != value))
-				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BudgetAmount", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> BudgetAmount
-		{
-			get
-			{
-				return this._BudgetAmount;
-			}
-			set
-			{
-				if ((this._BudgetAmount != value))
-				{
-					this.OnBudgetAmountChanging(value);
-					this.SendPropertyChanging();
-					this._BudgetAmount = value;
-					this.SendPropertyChanged("BudgetAmount");
-					this.OnBudgetAmountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentSpending", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> CurrentSpending
-		{
-			get
-			{
-				return this._CurrentSpending;
-			}
-			set
-			{
-				if ((this._CurrentSpending != value))
-				{
-					this.OnCurrentSpendingChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentSpending = value;
-					this.SendPropertyChanged("CurrentSpending");
-					this.OnCurrentSpendingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Budget", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Budgets.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Budgets.Add(this);
-						this._UserID = value.UserID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cards")]
-	public partial class Card : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CardID;
-		
-		private System.Nullable<int> _UserID;
-		
-		private string _CardNumber;
-		
-		private string _CardType;
-		
-		private System.Nullable<decimal> _Balance;
-		
-		private System.Nullable<bool> _Blocked;
-		
-		private System.Nullable<System.DateTime> _ExpiryDate;
-		
-		private string _IssuingBank;
-		
-		private EntitySet<Transaction> _Transactions;
-		
-		private EntitySet<Transaction> _Transactions1;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCardIDChanging(int value);
-    partial void OnCardIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    partial void OnCardNumberChanging(string value);
-    partial void OnCardNumberChanged();
-    partial void OnCardTypeChanging(string value);
-    partial void OnCardTypeChanged();
-    partial void OnBalanceChanging(System.Nullable<decimal> value);
-    partial void OnBalanceChanged();
-    partial void OnBlockedChanging(System.Nullable<bool> value);
-    partial void OnBlockedChanged();
-    partial void OnExpiryDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnExpiryDateChanged();
-    partial void OnIssuingBankChanging(string value);
-    partial void OnIssuingBankChanged();
-    #endregion
-		
-		public Card()
-		{
-			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			this._Transactions1 = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions1), new Action<Transaction>(this.detach_Transactions1));
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int CardID
-		{
-			get
-			{
-				return this._CardID;
-			}
-			set
-			{
-				if ((this._CardID != value))
-				{
-					this.OnCardIDChanging(value);
-					this.SendPropertyChanging();
-					this._CardID = value;
-					this.SendPropertyChanged("CardID");
-					this.OnCardIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardNumber", DbType="VarChar(16)")]
-		public string CardNumber
-		{
-			get
-			{
-				return this._CardNumber;
-			}
-			set
-			{
-				if ((this._CardNumber != value))
-				{
-					this.OnCardNumberChanging(value);
-					this.SendPropertyChanging();
-					this._CardNumber = value;
-					this.SendPropertyChanged("CardNumber");
-					this.OnCardNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardType", DbType="VarChar(50)")]
-		public string CardType
-		{
-			get
-			{
-				return this._CardType;
-			}
-			set
-			{
-				if ((this._CardType != value))
-				{
-					this.OnCardTypeChanging(value);
-					this.SendPropertyChanging();
-					this._CardType = value;
-					this.SendPropertyChanged("CardType");
-					this.OnCardTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Balance", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> Balance
-		{
-			get
-			{
-				return this._Balance;
-			}
-			set
-			{
-				if ((this._Balance != value))
-				{
-					this.OnBalanceChanging(value);
-					this.SendPropertyChanging();
-					this._Balance = value;
-					this.SendPropertyChanged("Balance");
-					this.OnBalanceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blocked", DbType="Bit")]
-		public System.Nullable<bool> Blocked
-		{
-			get
-			{
-				return this._Blocked;
-			}
-			set
-			{
-				if ((this._Blocked != value))
-				{
-					this.OnBlockedChanging(value);
-					this.SendPropertyChanging();
-					this._Blocked = value;
-					this.SendPropertyChanged("Blocked");
-					this.OnBlockedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiryDate", DbType="Date")]
-		public System.Nullable<System.DateTime> ExpiryDate
-		{
-			get
-			{
-				return this._ExpiryDate;
-			}
-			set
-			{
-				if ((this._ExpiryDate != value))
-				{
-					this.OnExpiryDateChanging(value);
-					this.SendPropertyChanging();
-					this._ExpiryDate = value;
-					this.SendPropertyChanged("ExpiryDate");
-					this.OnExpiryDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssuingBank", DbType="VarChar(255)")]
-		public string IssuingBank
-		{
-			get
-			{
-				return this._IssuingBank;
-			}
-			set
-			{
-				if ((this._IssuingBank != value))
-				{
-					this.OnIssuingBankChanging(value);
-					this.SendPropertyChanging();
-					this._IssuingBank = value;
-					this.SendPropertyChanged("IssuingBank");
-					this.OnIssuingBankChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction", Storage="_Transactions", ThisKey="CardID", OtherKey="CardDestID")]
-		public EntitySet<Transaction> Transactions
-		{
-			get
-			{
-				return this._Transactions;
-			}
-			set
-			{
-				this._Transactions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction1", Storage="_Transactions1", ThisKey="CardID", OtherKey="CardSourceID")]
-		public EntitySet<Transaction> Transactions1
-		{
-			get
-			{
-				return this._Transactions1;
-			}
-			set
-			{
-				this._Transactions1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Cards.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Cards.Add(this);
-						this._UserID = value.UserID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Transactions(Transaction entity)
+		private void attach_Cards1(Card entity)
 		{
 			this.SendPropertyChanging();
-			entity.Card = this;
+			entity.User1 = this;
 		}
 		
-		private void detach_Transactions(Transaction entity)
+		private void detach_Cards1(Card entity)
 		{
 			this.SendPropertyChanging();
-			entity.Card = null;
-		}
-		
-		private void attach_Transactions1(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Card1 = this;
-		}
-		
-		private void detach_Transactions1(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Card1 = null;
+			entity.User1 = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Contacts")]
-	public partial class Contact : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Transactions")]
+	public partial class Transaction : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _ContactID;
+		private int _TransactionID;
 		
-		private System.Nullable<int> _UserID;
+		private System.Nullable<int> _CardSourceID;
 		
-		private EntityRef<User> _User;
+		private System.Nullable<int> _CardDestID;
 		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnContactIDChanging(int value);
-    partial void OnContactIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    #endregion
+		private string _TransactionType;
 		
-		public Contact()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ContactID
-		{
-			get
-			{
-				return this._ContactID;
-			}
-			set
-			{
-				if ((this._ContactID != value))
-				{
-					this.OnContactIDChanging(value);
-					this.SendPropertyChanging();
-					this._ContactID = value;
-					this.SendPropertyChanged("ContactID");
-					this.OnContactIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Contacts.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Contacts.Add(this);
-						this._UserID = value.UserID;
-					}
-					else
-					{
-						this._UserID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Messages")]
-	public partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MessageID;
-		
-		private System.Nullable<int> _SenderID;
-		
-		private System.Nullable<int> _RecipientID;
+		private System.Nullable<decimal> _Amount;
 		
 		private System.Nullable<System.DateTime> _Timestamp;
 		
-		private string _Subject;
+		private string _TransactionCurency;
 		
-		private string _Body;
+		private System.Nullable<int> _MessageID;
 		
-		private EntityRef<User> _User;
+		private EntityRef<Message> _Message;
 		
-		private EntityRef<User> _User1;
+		private EntityRef<Card> _Card;
+		
+		private EntityRef<Card> _Card1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMessageIDChanging(int value);
-    partial void OnMessageIDChanged();
-    partial void OnSenderIDChanging(System.Nullable<int> value);
-    partial void OnSenderIDChanged();
-    partial void OnRecipientIDChanging(System.Nullable<int> value);
-    partial void OnRecipientIDChanged();
+    partial void OnTransactionIDChanging(int value);
+    partial void OnTransactionIDChanged();
+    partial void OnCardSourceIDChanging(System.Nullable<int> value);
+    partial void OnCardSourceIDChanged();
+    partial void OnCardDestIDChanging(System.Nullable<int> value);
+    partial void OnCardDestIDChanged();
+    partial void OnTransactionTypeChanging(string value);
+    partial void OnTransactionTypeChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
     partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
     partial void OnTimestampChanged();
-    partial void OnSubjectChanging(string value);
-    partial void OnSubjectChanged();
-    partial void OnBodyChanging(string value);
-    partial void OnBodyChanged();
+    partial void OnTransactionCurencyChanging(string value);
+    partial void OnTransactionCurencyChanged();
+    partial void OnMessageIDChanging(System.Nullable<int> value);
+    partial void OnMessageIDChanged();
     #endregion
 		
-		public Message()
+		public Transaction()
 		{
-			this._User = default(EntityRef<User>);
-			this._User1 = default(EntityRef<User>);
+			this._Message = default(EntityRef<Message>);
+			this._Card = default(EntityRef<Card>);
+			this._Card1 = default(EntityRef<Card>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MessageID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int TransactionID
 		{
 			get
 			{
-				return this._MessageID;
+				return this._TransactionID;
 			}
 			set
 			{
-				if ((this._MessageID != value))
+				if ((this._TransactionID != value))
 				{
-					this.OnMessageIDChanging(value);
+					this.OnTransactionIDChanging(value);
 					this.SendPropertyChanging();
-					this._MessageID = value;
-					this.SendPropertyChanged("MessageID");
-					this.OnMessageIDChanged();
+					this._TransactionID = value;
+					this.SendPropertyChanged("TransactionID");
+					this.OnTransactionIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderID", DbType="Int")]
-		public System.Nullable<int> SenderID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardSourceID", DbType="Int")]
+		public System.Nullable<int> CardSourceID
 		{
 			get
 			{
-				return this._SenderID;
+				return this._CardSourceID;
 			}
 			set
 			{
-				if ((this._SenderID != value))
+				if ((this._CardSourceID != value))
 				{
-					if (this._User1.HasLoadedOrAssignedValue)
+					if (this._Card1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnSenderIDChanging(value);
+					this.OnCardSourceIDChanging(value);
 					this.SendPropertyChanging();
-					this._SenderID = value;
-					this.SendPropertyChanged("SenderID");
-					this.OnSenderIDChanged();
+					this._CardSourceID = value;
+					this.SendPropertyChanged("CardSourceID");
+					this.OnCardSourceIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientID", DbType="Int")]
-		public System.Nullable<int> RecipientID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardDestID", DbType="Int")]
+		public System.Nullable<int> CardDestID
 		{
 			get
 			{
-				return this._RecipientID;
+				return this._CardDestID;
 			}
 			set
 			{
-				if ((this._RecipientID != value))
+				if ((this._CardDestID != value))
 				{
-					if (this._User.HasLoadedOrAssignedValue)
+					if (this._Card.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnRecipientIDChanging(value);
+					this.OnCardDestIDChanging(value);
 					this.SendPropertyChanging();
-					this._RecipientID = value;
-					this.SendPropertyChanged("RecipientID");
-					this.OnRecipientIDChanged();
+					this._CardDestID = value;
+					this.SendPropertyChanged("CardDestID");
+					this.OnCardDestIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="VarChar(50)")]
+		public string TransactionType
+		{
+			get
+			{
+				return this._TransactionType;
+			}
+			set
+			{
+				if ((this._TransactionType != value))
+				{
+					this.OnTransactionTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TransactionType = value;
+					this.SendPropertyChanged("TransactionType");
+					this.OnTransactionTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
 				}
 			}
 		}
@@ -1913,47 +1210,318 @@ namespace bankingApp
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Subject", DbType="VarChar(255)")]
-		public string Subject
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionCurency", DbType="VarChar(255)")]
+		public string TransactionCurency
 		{
 			get
 			{
-				return this._Subject;
+				return this._TransactionCurency;
 			}
 			set
 			{
-				if ((this._Subject != value))
+				if ((this._TransactionCurency != value))
 				{
-					this.OnSubjectChanging(value);
+					this.OnTransactionCurencyChanging(value);
 					this.SendPropertyChanging();
-					this._Subject = value;
-					this.SendPropertyChanged("Subject");
-					this.OnSubjectChanged();
+					this._TransactionCurency = value;
+					this.SendPropertyChanged("TransactionCurency");
+					this.OnTransactionCurencyChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Body", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string Body
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageID", DbType="Int")]
+		public System.Nullable<int> MessageID
 		{
 			get
 			{
-				return this._Body;
+				return this._MessageID;
 			}
 			set
 			{
-				if ((this._Body != value))
+				if ((this._MessageID != value))
 				{
-					this.OnBodyChanging(value);
+					if (this._Message.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMessageIDChanging(value);
 					this.SendPropertyChanging();
-					this._Body = value;
-					this.SendPropertyChanged("Body");
-					this.OnBodyChanged();
+					this._MessageID = value;
+					this.SendPropertyChanged("MessageID");
+					this.OnMessageIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Message", Storage="_User", ThisKey="RecipientID", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Message_Transaction", Storage="_Message", ThisKey="MessageID", OtherKey="MessageID", IsForeignKey=true)]
+		public Message Message
+		{
+			get
+			{
+				return this._Message.Entity;
+			}
+			set
+			{
+				Message previousValue = this._Message.Entity;
+				if (((previousValue != value) 
+							|| (this._Message.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Message.Entity = null;
+						previousValue.Transactions.Remove(this);
+					}
+					this._Message.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions.Add(this);
+						this._MessageID = value.MessageID;
+					}
+					else
+					{
+						this._MessageID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Message");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction", Storage="_Card", ThisKey="CardDestID", OtherKey="CardID", IsForeignKey=true)]
+		public Card Card
+		{
+			get
+			{
+				return this._Card.Entity;
+			}
+			set
+			{
+				Card previousValue = this._Card.Entity;
+				if (((previousValue != value) 
+							|| (this._Card.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Card.Entity = null;
+						previousValue.Transactions.Remove(this);
+					}
+					this._Card.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions.Add(this);
+						this._CardDestID = value.CardID;
+					}
+					else
+					{
+						this._CardDestID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Card");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction1", Storage="_Card1", ThisKey="CardSourceID", OtherKey="CardID", IsForeignKey=true)]
+		public Card Card1
+		{
+			get
+			{
+				return this._Card1.Entity;
+			}
+			set
+			{
+				Card previousValue = this._Card1.Entity;
+				if (((previousValue != value) 
+							|| (this._Card1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Card1.Entity = null;
+						previousValue.Transactions1.Remove(this);
+					}
+					this._Card1.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions1.Add(this);
+						this._CardSourceID = value.CardID;
+					}
+					else
+					{
+						this._CardSourceID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Card1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SavingsGoals")]
+	public partial class SavingsGoal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SavingsGoalID;
+		
+		private System.Nullable<int> _UserID;
+		
+		private string _GoalName;
+		
+		private System.Nullable<decimal> _GoalAmount;
+		
+		private System.Nullable<decimal> _CurrentSavings;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSavingsGoalIDChanging(int value);
+    partial void OnSavingsGoalIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnGoalNameChanging(string value);
+    partial void OnGoalNameChanged();
+    partial void OnGoalAmountChanging(System.Nullable<decimal> value);
+    partial void OnGoalAmountChanged();
+    partial void OnCurrentSavingsChanging(System.Nullable<decimal> value);
+    partial void OnCurrentSavingsChanged();
+    #endregion
+		
+		public SavingsGoal()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SavingsGoalID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SavingsGoalID
+		{
+			get
+			{
+				return this._SavingsGoalID;
+			}
+			set
+			{
+				if ((this._SavingsGoalID != value))
+				{
+					this.OnSavingsGoalIDChanging(value);
+					this.SendPropertyChanging();
+					this._SavingsGoalID = value;
+					this.SendPropertyChanged("SavingsGoalID");
+					this.OnSavingsGoalIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalName", DbType="VarChar(255)")]
+		public string GoalName
+		{
+			get
+			{
+				return this._GoalName;
+			}
+			set
+			{
+				if ((this._GoalName != value))
+				{
+					this.OnGoalNameChanging(value);
+					this.SendPropertyChanging();
+					this._GoalName = value;
+					this.SendPropertyChanged("GoalName");
+					this.OnGoalNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalAmount", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> GoalAmount
+		{
+			get
+			{
+				return this._GoalAmount;
+			}
+			set
+			{
+				if ((this._GoalAmount != value))
+				{
+					this.OnGoalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._GoalAmount = value;
+					this.SendPropertyChanged("GoalAmount");
+					this.OnGoalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentSavings", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> CurrentSavings
+		{
+			get
+			{
+				return this._CurrentSavings;
+			}
+			set
+			{
+				if ((this._CurrentSavings != value))
+				{
+					this.OnCurrentSavingsChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentSavings = value;
+					this.SendPropertyChanged("CurrentSavings");
+					this.OnCurrentSavingsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SavingsGoal", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -1970,53 +1538,19 @@ namespace bankingApp
 					if ((previousValue != null))
 					{
 						this._User.Entity = null;
-						previousValue.Messages.Remove(this);
+						previousValue.SavingsGoals.Remove(this);
 					}
 					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.Messages.Add(this);
-						this._RecipientID = value.UserID;
+						value.SavingsGoals.Add(this);
+						this._UserID = value.UserID;
 					}
 					else
 					{
-						this._RecipientID = default(Nullable<int>);
+						this._UserID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Message1", Storage="_User1", ThisKey="SenderID", OtherKey="UserID", IsForeignKey=true)]
-		public User User1
-		{
-			get
-			{
-				return this._User1.Entity;
-			}
-			set
-			{
-				User previousValue = this._User1.Entity;
-				if (((previousValue != value) 
-							|| (this._User1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User1.Entity = null;
-						previousValue.Messages1.Remove(this);
-					}
-					this._User1.Entity = value;
-					if ((value != null))
-					{
-						value.Messages1.Add(this);
-						this._SenderID = value.UserID;
-					}
-					else
-					{
-						this._SenderID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User1");
 				}
 			}
 		}
@@ -2094,7 +1628,7 @@ namespace bankingApp
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthlyStatementID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonthlyStatementID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MonthlyStatementID
 		{
 			get
@@ -2313,151 +1847,174 @@ namespace bankingApp
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SavingsGoals")]
-	public partial class SavingsGoal : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Messages")]
+	public partial class Message : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SavingsGoalID;
+		private int _MessageID;
 		
-		private System.Nullable<int> _UserID;
+		private System.Nullable<int> _SenderID;
 		
-		private string _GoalName;
+		private System.Nullable<int> _RecipientID;
 		
-		private System.Nullable<decimal> _GoalAmount;
+		private System.Nullable<System.DateTime> _Timestamp;
 		
-		private System.Nullable<decimal> _CurrentSavings;
+		private string _Body;
+		
+		private EntitySet<Transaction> _Transactions;
 		
 		private EntityRef<User> _User;
+		
+		private EntityRef<User> _User1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSavingsGoalIDChanging(int value);
-    partial void OnSavingsGoalIDChanged();
-    partial void OnUserIDChanging(System.Nullable<int> value);
-    partial void OnUserIDChanged();
-    partial void OnGoalNameChanging(string value);
-    partial void OnGoalNameChanged();
-    partial void OnGoalAmountChanging(System.Nullable<decimal> value);
-    partial void OnGoalAmountChanged();
-    partial void OnCurrentSavingsChanging(System.Nullable<decimal> value);
-    partial void OnCurrentSavingsChanged();
+    partial void OnMessageIDChanging(int value);
+    partial void OnMessageIDChanged();
+    partial void OnSenderIDChanging(System.Nullable<int> value);
+    partial void OnSenderIDChanged();
+    partial void OnRecipientIDChanging(System.Nullable<int> value);
+    partial void OnRecipientIDChanged();
+    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanged();
+    partial void OnBodyChanging(string value);
+    partial void OnBodyChanged();
     #endregion
 		
-		public SavingsGoal()
+		public Message()
 		{
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
 			this._User = default(EntityRef<User>);
+			this._User1 = default(EntityRef<User>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SavingsGoalID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int SavingsGoalID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MessageID
 		{
 			get
 			{
-				return this._SavingsGoalID;
+				return this._MessageID;
 			}
 			set
 			{
-				if ((this._SavingsGoalID != value))
+				if ((this._MessageID != value))
 				{
-					this.OnSavingsGoalIDChanging(value);
+					this.OnMessageIDChanging(value);
 					this.SendPropertyChanging();
-					this._SavingsGoalID = value;
-					this.SendPropertyChanged("SavingsGoalID");
-					this.OnSavingsGoalIDChanged();
+					this._MessageID = value;
+					this.SendPropertyChanged("MessageID");
+					this.OnMessageIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
-		public System.Nullable<int> UserID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderID", DbType="Int")]
+		public System.Nullable<int> SenderID
 		{
 			get
 			{
-				return this._UserID;
+				return this._SenderID;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((this._SenderID != value))
+				{
+					if (this._User1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSenderIDChanging(value);
+					this.SendPropertyChanging();
+					this._SenderID = value;
+					this.SendPropertyChanged("SenderID");
+					this.OnSenderIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientID", DbType="Int")]
+		public System.Nullable<int> RecipientID
+		{
+			get
+			{
+				return this._RecipientID;
+			}
+			set
+			{
+				if ((this._RecipientID != value))
 				{
 					if (this._User.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnUserIDChanging(value);
+					this.OnRecipientIDChanging(value);
 					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
+					this._RecipientID = value;
+					this.SendPropertyChanged("RecipientID");
+					this.OnRecipientIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalName", DbType="VarChar(255)")]
-		public string GoalName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
 		{
 			get
 			{
-				return this._GoalName;
+				return this._Timestamp;
 			}
 			set
 			{
-				if ((this._GoalName != value))
+				if ((this._Timestamp != value))
 				{
-					this.OnGoalNameChanging(value);
+					this.OnTimestampChanging(value);
 					this.SendPropertyChanging();
-					this._GoalName = value;
-					this.SendPropertyChanged("GoalName");
-					this.OnGoalNameChanged();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalAmount", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> GoalAmount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Body", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Body
 		{
 			get
 			{
-				return this._GoalAmount;
+				return this._Body;
 			}
 			set
 			{
-				if ((this._GoalAmount != value))
+				if ((this._Body != value))
 				{
-					this.OnGoalAmountChanging(value);
+					this.OnBodyChanging(value);
 					this.SendPropertyChanging();
-					this._GoalAmount = value;
-					this.SendPropertyChanged("GoalAmount");
-					this.OnGoalAmountChanged();
+					this._Body = value;
+					this.SendPropertyChanged("Body");
+					this.OnBodyChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentSavings", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> CurrentSavings
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Message_Transaction", Storage="_Transactions", ThisKey="MessageID", OtherKey="MessageID")]
+		public EntitySet<Transaction> Transactions
 		{
 			get
 			{
-				return this._CurrentSavings;
+				return this._Transactions;
 			}
 			set
 			{
-				if ((this._CurrentSavings != value))
-				{
-					this.OnCurrentSavingsChanging(value);
-					this.SendPropertyChanging();
-					this._CurrentSavings = value;
-					this.SendPropertyChanged("CurrentSavings");
-					this.OnCurrentSavingsChanged();
-				}
+				this._Transactions.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SavingsGoal", Storage="_User", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Message", Storage="_User", ThisKey="RecipientID", OtherKey="UserID", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -2474,19 +2031,257 @@ namespace bankingApp
 					if ((previousValue != null))
 					{
 						this._User.Entity = null;
-						previousValue.SavingsGoals.Remove(this);
+						previousValue.Messages.Remove(this);
 					}
 					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.SavingsGoals.Add(this);
+						value.Messages.Add(this);
+						this._RecipientID = value.UserID;
+					}
+					else
+					{
+						this._RecipientID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Message1", Storage="_User1", ThisKey="SenderID", OtherKey="UserID", IsForeignKey=true)]
+		public User User1
+		{
+			get
+			{
+				return this._User1.Entity;
+			}
+			set
+			{
+				User previousValue = this._User1.Entity;
+				if (((previousValue != value) 
+							|| (this._User1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User1.Entity = null;
+						previousValue.Messages1.Remove(this);
+					}
+					this._User1.Entity = value;
+					if ((value != null))
+					{
+						value.Messages1.Add(this);
+						this._SenderID = value.UserID;
+					}
+					else
+					{
+						this._SenderID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("User1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Message = this;
+		}
+		
+		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Message = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Contacts")]
+	public partial class Contact : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private int _FriendID;
+		
+		private System.Nullable<bool> _Pending;
+		
+		private EntityRef<User> _User;
+		
+		private EntityRef<User> _User1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnFriendIDChanging(int value);
+    partial void OnFriendIDChanged();
+    partial void OnPendingChanging(System.Nullable<bool> value);
+    partial void OnPendingChanged();
+    #endregion
+		
+		public Contact()
+		{
+			this._User = default(EntityRef<User>);
+			this._User1 = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					if (this._User1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FriendID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int FriendID
+		{
+			get
+			{
+				return this._FriendID;
+			}
+			set
+			{
+				if ((this._FriendID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFriendIDChanging(value);
+					this.SendPropertyChanging();
+					this._FriendID = value;
+					this.SendPropertyChanged("FriendID");
+					this.OnFriendIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pending", DbType="Bit")]
+		public System.Nullable<bool> Pending
+		{
+			get
+			{
+				return this._Pending;
+			}
+			set
+			{
+				if ((this._Pending != value))
+				{
+					this.OnPendingChanging(value);
+					this.SendPropertyChanging();
+					this._Pending = value;
+					this.SendPropertyChanged("Pending");
+					this.OnPendingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact", Storage="_User", ThisKey="FriendID", OtherKey="UserID", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Contacts.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Contacts.Add(this);
+						this._FriendID = value.UserID;
+					}
+					else
+					{
+						this._FriendID = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Contact1", Storage="_User1", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public User User1
+		{
+			get
+			{
+				return this._User1.Entity;
+			}
+			set
+			{
+				User previousValue = this._User1.Entity;
+				if (((previousValue != value) 
+							|| (this._User1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User1.Entity = null;
+						previousValue.Contacts1.Remove(this);
+					}
+					this._User1.Entity = value;
+					if ((value != null))
+					{
+						value.Contacts1.Add(this);
 						this._UserID = value.UserID;
 					}
 					else
 					{
-						this._UserID = default(Nullable<int>);
+						this._UserID = default(int);
 					}
-					this.SendPropertyChanged("User");
+					this.SendPropertyChanged("User1");
 				}
 			}
 		}
@@ -2512,293 +2307,325 @@ namespace bankingApp
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Transactions")]
-	public partial class Transaction : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cards")]
+	public partial class Card : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _TransactionID;
+		private int _CardID;
 		
-		private System.Nullable<int> _CardSourceID;
+		private System.Nullable<int> _UserID;
 		
-		private System.Nullable<int> _CardDestID;
+		private string _CardNumber;
 		
-		private string _TransactionType;
+		private string _CardType;
 		
-		private System.Nullable<decimal> _Amount;
+		private System.Nullable<decimal> _Balance;
 		
-		private System.Nullable<System.DateTime> _Timestamp;
+		private System.Nullable<bool> _Active;
 		
-		private string _MerchantName;
+		private System.Nullable<System.DateTime> _ExpiryDate;
 		
-		private string _TransactionCategory;
+		private System.Nullable<int> _ManagerID;
 		
-		private EntityRef<Card> _Card;
+		private EntitySet<Transaction> _Transactions;
 		
-		private EntityRef<Card> _Card1;
+		private EntitySet<Transaction> _Transactions1;
+		
+		private EntityRef<User> _User;
+		
+		private EntityRef<User> _User1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnTransactionIDChanging(int value);
-    partial void OnTransactionIDChanged();
-    partial void OnCardSourceIDChanging(System.Nullable<int> value);
-    partial void OnCardSourceIDChanged();
-    partial void OnCardDestIDChanging(System.Nullable<int> value);
-    partial void OnCardDestIDChanged();
-    partial void OnTransactionTypeChanging(string value);
-    partial void OnTransactionTypeChanged();
-    partial void OnAmountChanging(System.Nullable<decimal> value);
-    partial void OnAmountChanged();
-    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
-    partial void OnTimestampChanged();
-    partial void OnMerchantNameChanging(string value);
-    partial void OnMerchantNameChanged();
-    partial void OnTransactionCategoryChanging(string value);
-    partial void OnTransactionCategoryChanged();
+    partial void OnCardIDChanging(int value);
+    partial void OnCardIDChanged();
+    partial void OnUserIDChanging(System.Nullable<int> value);
+    partial void OnUserIDChanged();
+    partial void OnCardNumberChanging(string value);
+    partial void OnCardNumberChanged();
+    partial void OnCardTypeChanging(string value);
+    partial void OnCardTypeChanged();
+    partial void OnBalanceChanging(System.Nullable<decimal> value);
+    partial void OnBalanceChanged();
+    partial void OnActiveChanging(System.Nullable<bool> value);
+    partial void OnActiveChanged();
+    partial void OnExpiryDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnExpiryDateChanged();
+    partial void OnManagerIDChanging(System.Nullable<int> value);
+    partial void OnManagerIDChanged();
     #endregion
 		
-		public Transaction()
+		public Card()
 		{
-			this._Card = default(EntityRef<Card>);
-			this._Card1 = default(EntityRef<Card>);
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			this._Transactions1 = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions1), new Action<Transaction>(this.detach_Transactions1));
+			this._User = default(EntityRef<User>);
+			this._User1 = default(EntityRef<User>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int TransactionID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CardID
 		{
 			get
 			{
-				return this._TransactionID;
+				return this._CardID;
 			}
 			set
 			{
-				if ((this._TransactionID != value))
+				if ((this._CardID != value))
 				{
-					this.OnTransactionIDChanging(value);
+					this.OnCardIDChanging(value);
 					this.SendPropertyChanging();
-					this._TransactionID = value;
-					this.SendPropertyChanged("TransactionID");
-					this.OnTransactionIDChanged();
+					this._CardID = value;
+					this.SendPropertyChanged("CardID");
+					this.OnCardIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardSourceID", DbType="Int")]
-		public System.Nullable<int> CardSourceID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int")]
+		public System.Nullable<int> UserID
 		{
 			get
 			{
-				return this._CardSourceID;
+				return this._UserID;
 			}
 			set
 			{
-				if ((this._CardSourceID != value))
+				if ((this._UserID != value))
 				{
-					if (this._Card1.HasLoadedOrAssignedValue)
+					if (this._User1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnCardSourceIDChanging(value);
+					this.OnUserIDChanging(value);
 					this.SendPropertyChanging();
-					this._CardSourceID = value;
-					this.SendPropertyChanged("CardSourceID");
-					this.OnCardSourceIDChanged();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardDestID", DbType="Int")]
-		public System.Nullable<int> CardDestID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardNumber", DbType="VarChar(16)")]
+		public string CardNumber
 		{
 			get
 			{
-				return this._CardDestID;
+				return this._CardNumber;
 			}
 			set
 			{
-				if ((this._CardDestID != value))
+				if ((this._CardNumber != value))
 				{
-					if (this._Card.HasLoadedOrAssignedValue)
+					this.OnCardNumberChanging(value);
+					this.SendPropertyChanging();
+					this._CardNumber = value;
+					this.SendPropertyChanged("CardNumber");
+					this.OnCardNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CardType", DbType="VarChar(50)")]
+		public string CardType
+		{
+			get
+			{
+				return this._CardType;
+			}
+			set
+			{
+				if ((this._CardType != value))
+				{
+					this.OnCardTypeChanging(value);
+					this.SendPropertyChanging();
+					this._CardType = value;
+					this.SendPropertyChanged("CardType");
+					this.OnCardTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Balance", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Balance
+		{
+			get
+			{
+				return this._Balance;
+			}
+			set
+			{
+				if ((this._Balance != value))
+				{
+					this.OnBalanceChanging(value);
+					this.SendPropertyChanging();
+					this._Balance = value;
+					this.SendPropertyChanged("Balance");
+					this.OnBalanceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit")]
+		public System.Nullable<bool> Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiryDate", DbType="Date")]
+		public System.Nullable<System.DateTime> ExpiryDate
+		{
+			get
+			{
+				return this._ExpiryDate;
+			}
+			set
+			{
+				if ((this._ExpiryDate != value))
+				{
+					this.OnExpiryDateChanging(value);
+					this.SendPropertyChanging();
+					this._ExpiryDate = value;
+					this.SendPropertyChanged("ExpiryDate");
+					this.OnExpiryDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManagerID", DbType="Int")]
+		public System.Nullable<int> ManagerID
+		{
+			get
+			{
+				return this._ManagerID;
+			}
+			set
+			{
+				if ((this._ManagerID != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnCardDestIDChanging(value);
+					this.OnManagerIDChanging(value);
 					this.SendPropertyChanging();
-					this._CardDestID = value;
-					this.SendPropertyChanged("CardDestID");
-					this.OnCardDestIDChanged();
+					this._ManagerID = value;
+					this.SendPropertyChanged("ManagerID");
+					this.OnManagerIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionType", DbType="VarChar(50)")]
-		public string TransactionType
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction", Storage="_Transactions", ThisKey="CardID", OtherKey="CardDestID")]
+		public EntitySet<Transaction> Transactions
 		{
 			get
 			{
-				return this._TransactionType;
+				return this._Transactions;
 			}
 			set
 			{
-				if ((this._TransactionType != value))
-				{
-					this.OnTransactionTypeChanging(value);
-					this.SendPropertyChanging();
-					this._TransactionType = value;
-					this.SendPropertyChanged("TransactionType");
-					this.OnTransactionTypeChanged();
-				}
+				this._Transactions.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> Amount
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction1", Storage="_Transactions1", ThisKey="CardID", OtherKey="CardSourceID")]
+		public EntitySet<Transaction> Transactions1
 		{
 			get
 			{
-				return this._Amount;
+				return this._Transactions1;
 			}
 			set
 			{
-				if ((this._Amount != value))
-				{
-					this.OnAmountChanging(value);
-					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
-				}
+				this._Transactions1.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Timestamp
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card", Storage="_User", ThisKey="ManagerID", OtherKey="UserID", IsForeignKey=true)]
+		public User User
 		{
 			get
 			{
-				return this._Timestamp;
+				return this._User.Entity;
 			}
 			set
 			{
-				if ((this._Timestamp != value))
-				{
-					this.OnTimestampChanging(value);
-					this.SendPropertyChanging();
-					this._Timestamp = value;
-					this.SendPropertyChanged("Timestamp");
-					this.OnTimestampChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MerchantName", DbType="VarChar(255)")]
-		public string MerchantName
-		{
-			get
-			{
-				return this._MerchantName;
-			}
-			set
-			{
-				if ((this._MerchantName != value))
-				{
-					this.OnMerchantNameChanging(value);
-					this.SendPropertyChanging();
-					this._MerchantName = value;
-					this.SendPropertyChanged("MerchantName");
-					this.OnMerchantNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransactionCategory", DbType="VarChar(255)")]
-		public string TransactionCategory
-		{
-			get
-			{
-				return this._TransactionCategory;
-			}
-			set
-			{
-				if ((this._TransactionCategory != value))
-				{
-					this.OnTransactionCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._TransactionCategory = value;
-					this.SendPropertyChanged("TransactionCategory");
-					this.OnTransactionCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction", Storage="_Card", ThisKey="CardDestID", OtherKey="CardID", IsForeignKey=true)]
-		public Card Card
-		{
-			get
-			{
-				return this._Card.Entity;
-			}
-			set
-			{
-				Card previousValue = this._Card.Entity;
+				User previousValue = this._User.Entity;
 				if (((previousValue != value) 
-							|| (this._Card.HasLoadedOrAssignedValue == false)))
+							|| (this._User.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Card.Entity = null;
-						previousValue.Transactions.Remove(this);
+						this._User.Entity = null;
+						previousValue.Cards.Remove(this);
 					}
-					this._Card.Entity = value;
+					this._User.Entity = value;
 					if ((value != null))
 					{
-						value.Transactions.Add(this);
-						this._CardDestID = value.CardID;
+						value.Cards.Add(this);
+						this._ManagerID = value.UserID;
 					}
 					else
 					{
-						this._CardDestID = default(Nullable<int>);
+						this._ManagerID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Card");
+					this.SendPropertyChanged("User");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Card_Transaction1", Storage="_Card1", ThisKey="CardSourceID", OtherKey="CardID", IsForeignKey=true)]
-		public Card Card1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Card1", Storage="_User1", ThisKey="UserID", OtherKey="UserID", IsForeignKey=true)]
+		public User User1
 		{
 			get
 			{
-				return this._Card1.Entity;
+				return this._User1.Entity;
 			}
 			set
 			{
-				Card previousValue = this._Card1.Entity;
+				User previousValue = this._User1.Entity;
 				if (((previousValue != value) 
-							|| (this._Card1.HasLoadedOrAssignedValue == false)))
+							|| (this._User1.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Card1.Entity = null;
-						previousValue.Transactions1.Remove(this);
+						this._User1.Entity = null;
+						previousValue.Cards1.Remove(this);
 					}
-					this._Card1.Entity = value;
+					this._User1.Entity = value;
 					if ((value != null))
 					{
-						value.Transactions1.Add(this);
-						this._CardSourceID = value.CardID;
+						value.Cards1.Add(this);
+						this._UserID = value.UserID;
 					}
 					else
 					{
-						this._CardSourceID = default(Nullable<int>);
+						this._UserID = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Card1");
+					this.SendPropertyChanged("User1");
 				}
 			}
 		}
@@ -2821,6 +2648,30 @@ namespace bankingApp
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Card = this;
+		}
+		
+		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Card = null;
+		}
+		
+		private void attach_Transactions1(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Card1 = this;
+		}
+		
+		private void detach_Transactions1(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Card1 = null;
 		}
 	}
 }

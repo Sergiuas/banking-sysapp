@@ -32,7 +32,8 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     Text="{Binding username, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -44,7 +45,7 @@
                     HorizontalAlignment="Center"
                     Margin="150 10 30 25"
                     Width="150"
-                    ToolTip="First page"
+                    ToolTip="First page" Click="Button_Click"
                     />
         </Grid>
         <Grid>
@@ -64,7 +65,8 @@
                      Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
                      BorderThickness="2"
                      BorderBrush="{DynamicResource MaterialDesignDivider}"
-                     Style="{StaticResource MaterialDesignTextBox}"/>
+                     Style="{StaticResource MaterialDesignTextBox}"
+                     Text="{Binding email, Mode = TwoWay}"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -76,7 +78,7 @@
                     HorizontalAlignment="Center"
                     Margin="150 10 30 25"
                     Width="150"
-                    ToolTip="First page"
+                    ToolTip="First page" Click="Button_Click_1"
                     />
         </Grid>
         <Grid>
@@ -127,7 +129,7 @@
                     HorizontalAlignment="Center"
                     Margin="150 10 30 25"
                     Width="150"
-                    ToolTip="First page"
+                    ToolTip="First page" Click="Button_Click_2"
                     />
         </Grid>
         <TextBlock Margin="25 0 0 5" HorizontalAlignment="Left" FontSize="20"

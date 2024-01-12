@@ -21,31 +21,56 @@ namespace bankingApp.windows
     {
         public string foo {
             set; get; }
+        public List<string> users { set; get; }
 
         bsappDataContext db;
         public selectManagerWindow(bsappDataContext db)
         {
             this.db = db;
             InitializeComponent();
+            users = db.Users.Where(u => u.Type == "manager")
+                .Select(u => u.Username).ToList();
+            cbUsername.ItemsSource = users;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            txtUsername.Text = string.Empty;
+            cbUsername.Text = string.Empty;
             this.Close();
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            User user = db.Users.FirstOrDefault(u => u.Username == txtUsername.Text);
+            User user = db.Users.FirstOrDefault(u => u.Username == cbUsername.Text);
             if (user==null)
-                txtUsername.Text = string.Empty;
+                cbUsername.Text = string.Empty;
             Close();
         }
 
-        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        private void cbUsername_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.foo = txtUsername.Text.Trim();
+            if(cbUsername.SelectedItem!=null)
+            this.foo =cbUsername.SelectedValue.ToString();
+        }
+
+        private void cbUsername_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            string searchText = cbUsername.Text.ToLower();
+
+            if (e.Key == System.Windows.Input.Key.Back || e.Key == System.Windows.Input.Key.Delete)
+            {
+                // If Backspace or Delete is pressed, reset the filtering
+                cbUsername.ItemsSource = users;
+            }
+            else
+            {
+                // Filter the items based on the entered text
+                cbUsername.ItemsSource = users
+                    .Where(item => item.ToLower().Contains(searchText))
+                    .ToList();
+            }
+
+            cbUsername.IsDropDownOpen = true;
         }
     }
 }

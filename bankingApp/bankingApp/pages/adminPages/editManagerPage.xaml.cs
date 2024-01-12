@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using bankingApp.classes;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace bankingApp.pages.adminPages
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
         User user;
-
+        private UserSingleton userInstance = UserSingleton.Instance;
+        string lastUsername;
         public editManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db, string username)
         {
             this.isDarkTheme = isDarkTheme;
@@ -35,8 +37,9 @@ namespace bankingApp.pages.adminPages
             if (username != "")
             {
                 this.user = this.db.Users.SingleOrDefault(u => u.Username == username);
-            } 
+            }
             DataContext = this.user;
+            lastUsername = this.user.Username;
             InitializeComponent();
         }
 
@@ -59,6 +62,23 @@ namespace bankingApp.pages.adminPages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //var user = db.Users.SingleOrDefault(u => u.Username == txtUsername.Text.ToString());
+            //if (user != null)
+            //{
+            //    return;
+            //}
+
+            //user = db.Users.SingleOrDefault(u => u.Email == txtEmail.Text.ToString());
+            //if (user != null)
+            //{
+            //    return;
+            //}
+
+            //if (txtPasword.Text != txtConfirmPasword.Text && txtPasword.Text.Length > 0)
+            //{
+            //    return;
+            //}
+
             string password = txtPasword.Text;
             string confirmPassword = txtConfirmPasword.Text;
 
@@ -79,6 +99,19 @@ namespace bankingApp.pages.adminPages
 
             db.SubmitChanges();
 
+            if (lastUsername == userInstance.username)
+            {
+                userInstance.username = this.user.Username;
+                userInstance.email = this.user.Email;
+                userInstance.firstName = this.user.FirstName;
+                userInstance.lastName = this.user.LastName;
+                userInstance.phoneNumber = this.user.PhoneNumber;
+                userInstance.birthday = this.user.DateOfBirth.ToString();
+                userInstance.address = this.user.Address;
+                userInstance.password = this.user.Password;
+            }
+
+            DataContext = userInstance;
             ManagerListPage Page = new ManagerListPage(isDarkTheme, _paletteHelper, db);
             MainContentFrame.Content = Page;
         }

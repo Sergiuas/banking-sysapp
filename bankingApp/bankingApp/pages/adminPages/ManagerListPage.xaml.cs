@@ -53,7 +53,7 @@ namespace bankingApp.pages.adminPages
             }
             else
             {
-                users = db.Users.Where(u => u.Type == "manager" && u.Username.Contains(searchedUsername))
+                users = db.Users.Where(u => u.Type == "manager" && (u.Username.Contains(searchedUsername) || u.FirstName.Contains(searchedUsername) || u.LastName.Contains(searchedUsername)))
                         .Select(u => new ShowUser
                         {
                             Name = $"{u.FirstName} {u.LastName}",
