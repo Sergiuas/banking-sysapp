@@ -118,7 +118,7 @@ namespace bankingApp
             User newUser = new User();
             newUser.Username = username;
             newUser.Email = email;
-            newUser.Type = "Client";
+            newUser.Type = "user";
             newUser.FirstName = firstName;
             newUser.LastName = lastName;
 

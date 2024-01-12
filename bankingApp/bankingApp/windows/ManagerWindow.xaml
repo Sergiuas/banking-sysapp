@@ -37,6 +37,7 @@
     </Window.Triggers>
     <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}"
                              UniformCornerRadius="15" Margin="25"
+                         MouseLeftButtonDown="WindowDragMove"
                              >
         <Grid x:Name="gridMenu">
             <Grid.ColumnDefinitions>

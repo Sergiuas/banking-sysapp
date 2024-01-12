@@ -33,6 +33,14 @@ namespace bankingApp.windows
             this.db = db;
             InitializeComponent();
         }
+
+        private void WindowDragMove(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
         private void btnOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             btnCloseMenu.Visibility = Visibility.Visible;
@@ -117,7 +125,7 @@ namespace bankingApp.windows
 
         private void btnTransactions_Click(object sender, RoutedEventArgs e)
         {
-            transactionsPage Page = new transactionsPage(db);
+            transactionsPage Page = new transactionsPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page;
         }
 
