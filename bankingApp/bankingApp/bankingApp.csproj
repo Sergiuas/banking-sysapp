@@ -81,11 +81,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bsapp.dbml</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
+    <Compile Include="classes\CardListDataContext.cs" />
+    <Compile Include="classes\ShowCard.cs" />
     <Compile Include="classes\ShowTransaction.cs" />
-=======
     <Compile Include="classes\MessageBody.cs" />
->>>>>>> Stashed changes
     <Compile Include="classes\ShowUser.cs" />
     <Compile Include="classes\TransactionListDataContext.cs" />
     <Compile Include="classes\UserListDataContext.cs" />
@@ -110,6 +109,9 @@
     </Compile>
     <Compile Include="pages\mangerPages\bankAccountsPage.xaml.cs">
       <DependentUpon>bankAccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\mangerPages\managerDashboardPage.xaml.cs">
+      <DependentUpon>managerDashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\mangerPages\ticketsPage.xaml.cs">
       <DependentUpon>ticketsPage.xaml</DependentUpon>
@@ -147,6 +149,9 @@
     <Compile Include="windows\ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\OwnerDetailsWindow.xaml.cs">
+      <DependentUpon>OwnerDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\selectManagerWindow.xaml.cs">
       <DependentUpon>selectManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -181,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\mangerPages\bankAccountsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\mangerPages\managerDashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +250,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="windows\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\OwnerDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

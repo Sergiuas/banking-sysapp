@@ -21,7 +21,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="280"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Accounts Waiting Approval"
+                    <TextBlock Text="Active bank accounts"
                                HorizontalAlignment="Left"
                                FontSize="16" FontWeight="Bold"
                                VerticalAlignment="Center"
@@ -35,16 +35,16 @@
                                    FontSize="16" FontWeight="Bold"
                                    Margin="0 0 5 0"
                                    />
-                        <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
-                                  materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
+                        <TextBox  x:Name="txtCardsSearch" Width="200" FontSize="12"
+                                  materialDesign:HintAssist.Hint="Search in Bank Accounts" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtCardsSearch_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
                           Background="{DynamicResource MaterialDesignCardBackground}"
-                          x:Name="userTable"
+                          x:Name="cardsTable"
                           Height="400"
                           CanUserAddRows="False"
                           IsReadOnly="True"
@@ -129,12 +129,12 @@
                     Margin="0 0 12 0"
                     materialDesign:ButtonAssist.CornerRadius="0 10 10 0"
                     FontSize="18"
-                    Grid.Column="1" Click="btnAccept_Click">
+                    Grid.Column="1" Click="btnDetails_Click">
                 <WrapPanel>
-                    <materialDesign:PackIcon Kind="Tick"
+                    <materialDesign:PackIcon Kind="Help"
                                                      VerticalAlignment="Center"
                                                      Margin="0 0 20 0"/>
-                    <TextBlock Text="Accept"/>
+                    <TextBlock Text="Owner Details"/>
                 </WrapPanel>
             </Button>
         </Grid>
