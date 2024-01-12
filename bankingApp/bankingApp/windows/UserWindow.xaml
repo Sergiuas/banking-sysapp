@@ -92,7 +92,7 @@
                                                      VerticalAlignment="Center"
                                                      Margin="0 0 20 0"
                                                      Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
-                            <TextBlock Text="History"
+                            <TextBlock Text="Transactions"
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
@@ -104,11 +104,27 @@
                             materialDesign:RippleAssist.Feedback="White"
                             Margin="0 0 0 15">
                         <WrapPanel Width="140">
-                            <materialDesign:PackIcon Kind="Contract" 
+                            <materialDesign:PackIcon Kind="Money" 
                                                      VerticalAlignment="Center"
                                                      Margin="0 0 20 0"
                                                      Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
-                            <TextBlock Text="Transaction"
+                            <TextBlock Text="Send Money"
+                                       Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
+                        </WrapPanel>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto"
+                            Height="35"
+                            materialDesign:RippleAssist.Feedback="White"
+                            Margin="0 0 0 15">
+                        <WrapPanel Width="140">
+                            <materialDesign:PackIcon Kind="Contacts" 
+                                                     VerticalAlignment="Center"
+                                                     Margin="0 0 20 0"
+                                                     Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
+                            <TextBlock Text="Contacts"
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>

@@ -114,6 +114,12 @@
     <Compile Include="pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\userPages\sendMoneyPage.xaml.cs">
+      <DependentUpon>sendMoneyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\userPages\transactionsPage.xaml.cs">
+      <DependentUpon>transactionsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\userDashboardPage.xaml.cs">
       <DependentUpon>userDashboardPage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +178,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\sendMoneyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\transactionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
