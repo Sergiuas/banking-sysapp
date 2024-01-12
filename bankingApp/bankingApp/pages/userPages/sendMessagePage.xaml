@@ -3,12 +3,102 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:bankingApp.pages.userPages"
+      xmlns:local2="clr-namespace:bankingApp.classes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="sendMessagePage">
 
-    <Grid>
-        
-    </Grid>
+    <StackPanel TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+        <materialDesign:ColorZone Mode="Light"
+                                  Background="{DynamicResource MaterialDesignCardBackground}"
+                                  CornerRadius="15" Padding="0 20"
+                                  BorderThickness="3"
+                                  BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                                  Margin="0 35 0 0">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Grid>
+                    <TextBlock Grid.Row="0"
+                               Text="User" 
+                               HorizontalAlignment="Center"
+                               FontSize="28" 
+                               FontWeight="Bold"/>
+                </Grid>
+                <Grid Height="5" 
+                      Margin="0 5 0 5"
+                      Background="{StaticResource PrimaryHueDarkBrush}"/>
+                <ListBox x:Name="lbMessage"
+                         Height="450"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         Loaded="ListBox_Loaded">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="200"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel x:Name="msgFriend"
+                                            Grid.Column="0"
+                                            Margin="5"
+                                            Orientation="Vertical"
+                                            HorizontalAlignment="Left"
+                                            Visibility="{Binding isFriend}">
+                                    <TextBlock Text="{Binding sender}" FontSize="10" />
+                                    <materialDesign:ColorZone Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                                                              Padding="10"
+                                                              CornerRadius="5">
+                                    <TextBlock Text="{Binding message}" MaxWidth="200"
+                                               TextWrapping="Wrap"/>
+                                    </materialDesign:ColorZone>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1"/>
+                                <StackPanel x:Name="msgUser"
+                                            Grid.Column="2"
+                                            Margin="5"
+                                            Orientation="Vertical"
+                                            Visibility="{Binding isUser}">
+                                    <TextBlock Text="{Binding sender}"
+                                               FontSize="10"
+                                               HorizontalAlignment="Right"/>
+                                    <materialDesign:ColorZone Background="{StaticResource PrimaryHueDarkBrush}"
+                                                              Padding="10"
+                                                              CornerRadius="5">
+                                        <TextBlock Text="{Binding message}" MaxWidth="200"
+                                               TextWrapping="Wrap"/>
+                                    </materialDesign:ColorZone>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <materialDesign:ColorZone Mode="Light"
+                                  Background="{DynamicResource MaterialDesignCardBackground}"
+                                  CornerRadius="25" Height="56"    
+                                  BorderThickness="3"
+                                  BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                                  Margin="0 35 0 0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Stretch"
+                        Height="50">
+                <TextBox Grid.Column="1"
+                         x:Name="txtMessage"
+                         Width="500" FontSize="20"
+                         Margin="25 0 0 0"
+                         Style="{StaticResource MaterialDesignTextBox}"
+                         VerticalAlignment="Center">
+                
+                </TextBox>
+                <Button Style="{StaticResource MaterialDesignIconButton}"
+                        HorizontalAlignment="Right">
+                    <materialDesign:PackIcon Kind="Send" Height="15" Width="15"/>
+                </Button>
+            </StackPanel>
+        </materialDesign:ColorZone>
+    </StackPanel>
+
 </Page>
