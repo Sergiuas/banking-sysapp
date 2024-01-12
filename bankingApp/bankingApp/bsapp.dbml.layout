@@ -1,138 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17.375" name="bsapp">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17" name="bsapp">
   <DataContextMoniker Name="/bsappDataContext" />
   <nestedChildShapes>
-    <classShape Id="14d98aa1-056a-4161-87e5-121acfe0a490" absoluteBounds="3.5, 4, 2, 1.7708968098958326">
-      <DataClassMoniker Name="/bsappDataContext/Budget" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e8da1361-62f1-49f5-9b83-8e14b2488fff" absoluteBounds="3.515, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a1932d08-bc3b-4277-b436-840820c6704e" absoluteBounds="0.75, 7.5, 2, 3.8862125651041666">
+    <classShape Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" absoluteBounds="0.75, 7.25, 2, 3.8862125651041666">
       <DataClassMoniker Name="/bsappDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="72815e01-d6ff-46c7-b667-3bcee6ac586f" absoluteBounds="0.765, 7.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="12ebee0b-7dd5-47b4-9c7e-5000462c20d7" absoluteBounds="0.765, 7.71, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="0c4e0139-bc22-4e49-9f11-5daf2216536d" absoluteBounds="6.25, 11.875, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/bsappDataContext/Transaction" />
+    <classShape Id="b16d824d-2602-453e-a924-ffceda94e333" absoluteBounds="3.5, 3.75, 2, 1.7708968098958326">
+      <DataClassMoniker Name="/bsappDataContext/Budget" />
       <nestedChildShapes>
-        <elementListCompartment Id="1a6f4bc5-ea3e-4768-aadd-8114725c2de7" absoluteBounds="6.265, 12.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="afacc73a-259e-4b55-b368-883b1256bb8f" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="00461eeb-1059-4fed-bd29-249e76cd7142" absoluteBounds="3.5, 6.5, 2, 1.7708968098958335">
-      <DataClassMoniker Name="/bsappDataContext/SavingsGoal" />
-      <nestedChildShapes>
-        <elementListCompartment Id="b89e9365-43da-488d-976d-709942301298" absoluteBounds="3.515, 6.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="fa8cee6a-1fe5-40eb-9056-b149d378a224" absoluteBounds="3.5, 11.625, 2, 2.3478011067708344">
-      <DataClassMoniker Name="/bsappDataContext/MonthlyStatement" />
-      <nestedChildShapes>
-        <elementListCompartment Id="926efc3b-5a69-4c7c-86c7-f15b6eca4e3a" absoluteBounds="3.515, 12.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7c4f4a4d-5ca1-4454-927e-0de040967bd2" absoluteBounds="3.5, 9.125, 2, 1.7708968098958344">
-      <DataClassMoniker Name="/bsappDataContext/Message" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cb7ab9c1-3cc2-44ad-b1eb-5fb27cdebacc" absoluteBounds="3.515, 9.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="07720b16-55be-4086-9dae-0820f83865f4" absoluteBounds="3.5, 1.875, 2, 1.3862939453125003">
-      <DataClassMoniker Name="/bsappDataContext/Contact" />
-      <nestedChildShapes>
-        <elementListCompartment Id="e2e6b4a8-a815-46c5-b8c7-ce4f7a314bf6" absoluteBounds="3.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7b517656-0b74-4b76-87c5-865fa56e1f81" absoluteBounds="3.5, 14.75, 2, 2.3478011067708344">
+    <classShape Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" absoluteBounds="3.5, 11.25, 2, 2.3478011067708344">
       <DataClassMoniker Name="/bsappDataContext/Card" />
       <nestedChildShapes>
-        <elementListCompartment Id="f81a817b-95c5-4912-943e-c747341ecba6" absoluteBounds="3.515, 15.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b7120aff-638e-4213-945b-79f847cc8b18" absoluteBounds="3.515, 11.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 7.5); (1.75 : 4.88544840494792); (2.19791916666667 : 4.88544840494792 : JumpStart); (2.36458583333333 : 4.88544840494792 : JumpEnd); (3.5 : 4.88544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="ba9e7d95-2308-4baa-b7c0-cbc77181d1a3" absoluteBounds="3.5, 1.625, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/bsappDataContext/Contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3f5db92-c53c-4891-974f-7fdfa055250b" absoluteBounds="3.515, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="43062bf9-f752-45d5-b451-47b39a5d9995" absoluteBounds="3.5, 6.25, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/bsappDataContext/Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="855b155d-43ac-4153-8ff2-0ffb34bdb423" absoluteBounds="3.515, 6.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="029b89df-c953-4612-828d-7e7e6e4ad1eb" absoluteBounds="3.5, 14.375, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/bsappDataContext/MonthlyStatement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4d16589-f294-44ac-bfa2-5272a4ad14f7" absoluteBounds="3.515, 14.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="559db336-5f4d-4431-809e-012ddda29d33" absoluteBounds="3.5, 8.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/bsappDataContext/SavingsGoal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b24f8eb-64ef-416b-b967-7fef89764d19" absoluteBounds="3.515, 9.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="379a225f-6eb4-4aad-8c12-e1bc76a4a054" absoluteBounds="6.25, 8.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/bsappDataContext/Transaction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5f04745-7c86-4a84-894d-9d5142615143" absoluteBounds="6.265, 9.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 7.25); (1.75 : 4.63544840494792); (3.5 : 4.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_Budget" />
       <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="14d98aa1-056a-4161-87e5-121acfe0a490" />
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="b16d824d-2602-453e-a924-ffceda94e333" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.88544840494792); (3.5 : 7.88544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_SavingsGoal" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="00461eeb-1059-4fed-bd29-249e76cd7142" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 11.3862125651042); (1.75 : 12.7989005533854); (2.19791916666667 : 12.7989005533854 : JumpStart); (2.36458583333333 : 12.7989005533854 : JumpEnd); (3.5 : 12.7989005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_MonthlyStatement" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="fa8cee6a-1fe5-40eb-9056-b149d378a224" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.0104484049479); (7.25 : 10.0104484049479); (7.25 : 11.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/Message/Message_Transaction" />
-      <nodes>
-        <classShapeMoniker Id="7c4f4a4d-5ca1-4454-927e-0de040967bd2" />
-        <classShapeMoniker Id="0c4e0139-bc22-4e49-9f11-5daf2216536d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.0104484049479); (3.5 : 10.0104484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_Message" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="7c4f4a4d-5ca1-4454-927e-0de040967bd2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.50522420247396); (3.5 : 9.50522420247396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_Message1" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="7c4f4a4d-5ca1-4454-927e-0de040967bd2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 7.5); (2.2812525 : 2.56814697265625); (3.5 : 2.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_Contact" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="07720b16-55be-4086-9dae-0820f83865f4" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 7.5); (1.2187475 : 2.94597295898438); (2.19791916666667 : 2.94597295898437 : JumpStart); (2.36458583333333 : 2.94597295898438 : JumpEnd); (3.5 : 2.94597295898438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/User/User_Contact1" />
-      <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="07720b16-55be-4086-9dae-0820f83865f4" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 15.9239005533854); (7.25 : 15.9239005533854); (7.25 : 14.2228011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/Card/Card_Transaction" />
-      <nodes>
-        <classShapeMoniker Id="7b517656-0b74-4b76-87c5-865fa56e1f81" />
-        <classShapeMoniker Id="0c4e0139-bc22-4e49-9f11-5daf2216536d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 15.3056977766927); (6.7187475 : 15.3056977766927); (6.7187475 : 14.2228011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/bsappDataContext/Card/Card_Transaction1" />
-      <nodes>
-        <classShapeMoniker Id="7b517656-0b74-4b76-87c5-865fa56e1f81" />
-        <classShapeMoniker Id="0c4e0139-bc22-4e49-9f11-5daf2216536d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 11.3862125651042); (2.2812525 : 15.9239005533854); (3.5 : 15.9239005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 11.1362125651042); (1.75 : 12.4239005533854); (3.5 : 12.4239005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_Card" />
       <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="7b517656-0b74-4b76-87c5-865fa56e1f81" />
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 11.3862125651042); (1.2187475 : 15.3056977766927); (2.19791916666667 : 15.3056977766927 : JumpStart); (2.36458583333333 : 15.3056977766927 : JumpEnd); (3.5 : 15.3056977766927)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.2812525 : 11.1362125651042); (2.2812525 : 11.8056977766927); (3.5 : 11.8056977766927)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_Card1" />
       <nodes>
-        <classShapeMoniker Id="a1932d08-bc3b-4277-b436-840820c6704e" />
-        <classShapeMoniker Id="7b517656-0b74-4b76-87c5-865fa56e1f81" />
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" />
       </nodes>
     </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 7.25); (2.2812525 : 2.31814697265625); (3.5 : 2.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Contact" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="ba9e7d95-2308-4baa-b7c0-cbc77181d1a3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 7.25); (1.2187475 : 2.69597295898438); (2.19791916666667 : 2.69597295898438 : JumpStart); (2.36458583333333 : 2.69597295898438 : JumpEnd); (3.5 : 2.69597295898438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Contact1" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="ba9e7d95-2308-4baa-b7c0-cbc77181d1a3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.63544840494792); (3.5 : 7.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Message" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="43062bf9-f752-45d5-b451-47b39a5d9995" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.38022420247396); (3.5 : 7.38022420247396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Message1" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="43062bf9-f752-45d5-b451-47b39a5d9995" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 11.1362125651042); (1.2187475 : 15.5489005533854); (3.5 : 15.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_MonthlyStatement" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="029b89df-c953-4612-828d-7e7e6e4ad1eb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.63544840494792); (3.5 : 9.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/User/User_SavingsGoal" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="559db336-5f4d-4431-809e-012ddda29d33" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 12.4239005533854); (7.25 : 12.4239005533854); (7.25 : 11.0978011067708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/Card/Card_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" />
+        <classShapeMoniker Id="379a225f-6eb4-4aad-8c12-e1bc76a4a054" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 11.8056977766927); (6.7187475 : 11.8056977766927); (6.7187475 : 11.0978011067708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/Card/Card_Transaction1" />
+      <nodes>
+        <classShapeMoniker Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" />
+        <classShapeMoniker Id="379a225f-6eb4-4aad-8c12-e1bc76a4a054" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 7.13544840494792); (7.25 : 7.13544840494792); (7.25 : 8.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/bsappDataContext/Message/Message_Transaction" />
+      <nodes>
+        <classShapeMoniker Id="43062bf9-f752-45d5-b451-47b39a5d9995" />
+        <classShapeMoniker Id="379a225f-6eb4-4aad-8c12-e1bc76a4a054" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="78ef3121-613b-4233-b5fd-9a2c12804a55" absoluteBounds="6.375, 2.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/bsappDataContext/MessagesView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="602dfa9e-3229-48a7-ac5f-93789764b379" absoluteBounds="6.3900000000000006, 2.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
