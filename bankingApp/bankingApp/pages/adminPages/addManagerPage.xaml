@@ -1,0 +1,230 @@
+﻿<Page x:Class="bankingApp.pages.adminPages.addManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:bankingApp.pages.adminPages"
+      
+           mc:Ignorable="d" 
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     Title="addManagerPage">
+
+    <StackPanel Orientation="Vertical" 
+          HorizontalAlignment="Stretch">
+        <Frame x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
+        <TextBlock Margin="0 25 0 5"
+             HorizontalAlignment="Center"
+             FontSize="28"
+             FontWeight="Bold"
+             Text="Add Manager"/>
+        <TextBlock Margin="25 0 0 5" HorizontalAlignment="Left" FontSize="20"
+                      FontWeight="Bold" Text="Profile"/>
+        <Grid Height="5" Margin="0 0 0 10"
+        Background="{DynamicResource PrimaryHueDarkBrush}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 10 0 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Username" Grid.Column="0"/>
+            <TextBox Margin="0 10 20 25"
+               Grid.Column="1"
+               x:Name="txtUsername"
+               Width="300" FontSize="14"
+               HorizontalAlignment="Stretch"
+               materialDesign:HintAssist.Hint="Enter Username"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding Username, Mode = TwoWay}"
+                  />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 10 0 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Email" Grid.Column="0"/>
+            <TextBox Margin="0 10 20 25"
+               Grid.Column="1"
+               x:Name="txtEmail"
+               Width="300" FontSize="14"
+               materialDesign:HintAssist.Hint="Enter Email"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding Email, Mode = TwoWay}"
+                  />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Password" Grid.Column="0"/>
+            <TextBox Margin="0 10 10 25"
+               Grid.Column="1"
+               x:Name="txtPasword"
+               HorizontalAlignment="Stretch" FontSize="14"
+               materialDesign:HintAssist.Hint="Enter Password"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"/>
+            <TextBlock Margin="10 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Confirm Password" Grid.Column="2"/>
+            <TextBox Margin="0 10 20 25"
+               Grid.Column="3"
+               x:Name="txtConfirmPasword"
+               HorizontalAlignment="Stretch" FontSize="14"
+               materialDesign:HintAssist.Hint="Confirm Password"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"/>
+        </Grid>
+
+
+        <TextBlock Margin="25 30 0 5" HorizontalAlignment="Left" FontSize="20"
+                      FontWeight="Bold" Text="Private Information"/>
+        <Grid Height="5" Margin="0 0 0 10"
+        Background="{DynamicResource PrimaryHueDarkBrush}"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="First Name" Grid.Column="0"/>
+            <TextBox Margin="0 10 10 25"
+               Grid.Column="1"
+               x:Name="txtFirstName"
+               HorizontalAlignment="Stretch" FontSize="14"
+               materialDesign:HintAssist.Hint="Enter First Name"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding FirstName, Mode = TwoWay}"
+                  />
+            <TextBlock Margin="10 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Last Name" Grid.Column="2"/>
+            <TextBox Margin="0 10 20 25"
+               Grid.Column="3"
+               x:Name="txtLastName"
+               HorizontalAlignment="Stretch" FontSize="14"
+               materialDesign:HintAssist.Hint="Enter Last Name"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding LastName, Mode = TwoWay}"
+                  />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 10 0 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Address" Grid.Column="0"/>
+            <TextBox Margin="0 10 20 25"
+               Grid.Column="1"
+               x:Name="txtAddress"
+               Width="300" FontSize="14"
+               HorizontalAlignment="Stretch"
+               materialDesign:HintAssist.Hint="Enter Address"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding Address, Mode = TwoWay}"
+                  />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="30 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Phone" Grid.Column="0"/>
+            <TextBox Margin="0 10 10 25"
+               Grid.Column="1"
+               x:Name="txtPhone"
+               HorizontalAlignment="Stretch" FontSize="14"
+               materialDesign:HintAssist.Hint="Enter First Name"
+               Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+               BorderThickness="2"
+               BorderBrush="{DynamicResource MaterialDesignDivider}"
+               Style="{StaticResource MaterialDesignTextBox}"
+               Text="{Binding PhoneNumber, Mode = TwoWay}"
+                  />
+            <TextBlock Margin="10 15 10 25"
+                 HorizontalAlignment="Left"
+                 FontSize="14" FontWeight="Bold"
+                 Text="Birthday" Grid.Column="2"/>
+            <DatePicker Margin="0 10 20 25"
+                  Grid.Column="3"
+                  x:Name="dateBirthday"
+                  HorizontalAlignment="Stretch" FontSize="14"
+                  materialDesign:HintAssist.Hint="Enter Last Name"
+                  Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
+                  BorderThickness="2"
+                  BorderBrush="{DynamicResource MaterialDesignDivider}"
+                   SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"
+                     />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Submit"
+              Grid.Column="1"
+              HorizontalAlignment="Center"
+              Margin="30 10 30 25"
+              Width="150"
+              ToolTip="First page" Click="Button_Click"
+              />
+            <Button Content="Back"
+             x:Name="backBtn"
+             Grid.Column="0"
+             HorizontalAlignment="Right"
+             Margin="30,10,30,25"
+             Width="150"
+             ToolTip="First page"
+             Style="{StaticResource MaterialDesignFlatDarkButton}" Click="backBtn_Click" 
+                                 BorderBrush="{StaticResource PrimaryHueDarkBrush}" BorderThickness="2"
+                 />
+        </Grid>
+
+    </StackPanel>
+</Page>

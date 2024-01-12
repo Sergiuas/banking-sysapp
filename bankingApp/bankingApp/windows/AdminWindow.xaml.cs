@@ -132,14 +132,22 @@ namespace bankingApp.windows
 
         private void btnAddManager_Click(object sender, RoutedEventArgs e)
         {
-            editManagerPage Page = new editManagerPage(isDarkTheme, _paletteHelper, db, "");
+            addManagerPage Page = new addManagerPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page;
         }
 
         private void btnEditManager_Click(object sender, RoutedEventArgs e)
         {
-            editManagerPage Page = new editManagerPage(isDarkTheme, _paletteHelper, db, "");
-            page.Content = Page;
+            string foo="";
+            var wdw = new selectManagerWindow(db);
+              wdw.ShowDialog();
+            foo = wdw.foo;
+
+            if (!string.IsNullOrEmpty(foo))
+            {
+                editManagerPage Page = new editManagerPage(isDarkTheme, _paletteHelper, db, foo);
+                page.Content = Page;
+            }
         }
     }
 }
