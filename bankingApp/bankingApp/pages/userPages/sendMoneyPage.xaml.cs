@@ -46,5 +46,23 @@ namespace bankingApp.pages.userPages
         {
 
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if(rb == radioBtnContact)
+            {
+                txtReceiver.Text = "Friend Name";
+                cbFriends.Visibility = Visibility.Visible;
+                txtIban.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtReceiver.Text = "Account Number";
+                cbFriends.Visibility = Visibility.Hidden;
+                txtIban.Visibility = Visibility.Visible;
+            }
+
+        }
     }
 }
