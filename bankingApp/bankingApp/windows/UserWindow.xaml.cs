@@ -42,6 +42,13 @@ namespace bankingApp
 
             InitializeComponent();
         }
+        private void WindowDragMove(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
         private void btnOpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -128,7 +135,7 @@ namespace bankingApp
 
         private void btnTransactions_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new transactionsPage(db);
+            var Page = new sendMessagePage(db);
             page.Content = Page;
         }
 

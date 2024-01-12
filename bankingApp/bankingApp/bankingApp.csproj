@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bsapp.dbml</DependentUpon>
     </Compile>
+<<<<<<< Updated upstream
     <Compile Include="classes\ShowTransaction.cs" />
     <Compile Include="classes\ShowUser.cs" />
     <Compile Include="classes\TransactionListDataContext.cs" />
