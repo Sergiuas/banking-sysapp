@@ -19,9 +19,33 @@ namespace bankingApp.windows
     /// </summary>
     public partial class selectManagerWindow : Window
     {
-        public selectManagerWindow()
+        public string foo {
+            set; get; }
+
+        bsappDataContext db;
+        public selectManagerWindow(bsappDataContext db)
         {
+            this.db = db;
             InitializeComponent();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            txtUsername.Text = string.Empty;
+            this.Close();
+        }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            User user = db.Users.FirstOrDefault(u => u.Username == txtUsername.Text);
+            if (user==null)
+                txtUsername.Text = string.Empty;
+            Close();
+        }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.foo = txtUsername.Text.Trim();
         }
     }
 }

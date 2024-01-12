@@ -18,24 +18,20 @@ using System.Windows.Shapes;
 namespace bankingApp.pages.adminPages
 {
     /// <summary>
-    /// Interaction logic for editManagerPage.xaml
+    /// Interaction logic for addAdminPage.xaml
     /// </summary>
-    public partial class editManagerPage : Page
+    public partial class addManagerPage : Page
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
         User user;
-
-        public editManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db, string username)
+        public addManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
             this.db = db;
-            if (username != "")
-            {
-                this.user = this.db.Users.SingleOrDefault(u => u.Username == username);
-            } 
+            user = new User();
             DataContext = this.user;
             InitializeComponent();
         }
@@ -62,7 +58,7 @@ namespace bankingApp.pages.adminPages
             string password = txtPasword.Text;
             string confirmPassword = txtConfirmPasword.Text;
 
-            if (password.Length > 0 && password != confirmPassword)
+            if (password.Length > 0 && password == confirmPassword)
             {
 
                 byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
@@ -71,14 +67,28 @@ namespace bankingApp.pages.adminPages
                    // without dashes
                    .Replace("-", string.Empty)
                    // make lowercase
+
                    .ToLower();
 
                 password = encoded;
-                this.user.Password = password;
             }
+            else return;
 
-            db.SubmitChanges();
+                this.user.Password = password;
+                user.Type = "manager";
 
+            user.UserID = 0;
+            try
+            {
+                db.Users.InsertOnSubmit(this.user);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             ManagerListPage Page = new ManagerListPage(isDarkTheme, _paletteHelper, db);
             MainContentFrame.Content = Page;
         }
