@@ -132,5 +132,11 @@ namespace bankingApp.windows
             waitlistPage Page = new waitlistPage(db);
             page.Content = Page;
         }
+
+        private void btnTickets_Click(object sender, RoutedEventArgs e)
+        {
+            ticketsPage Page = new ticketsPage(db);
+            page.Content = Page;
+        }
     }
 }

@@ -46,5 +46,15 @@ namespace bankingApp.pages.mangerPages
         {
 
         }
+
+        private void btnRezolved_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
