@@ -46,5 +46,15 @@ namespace bankingApp.pages.userPages
         {
 
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRezolved_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
