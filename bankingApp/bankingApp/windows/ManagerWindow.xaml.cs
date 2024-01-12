@@ -1,4 +1,6 @@
-﻿using bankingApp.pages;
+﻿using bankingApp.classes;
+using bankingApp.pages;
+using bankingApp.pages.adminPages;
 using bankingApp.pages.mangerPages;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -26,11 +28,13 @@ namespace bankingApp.windows
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         bsappDataContext db;
+        private UserSingleton userInstance = UserSingleton.Instance;
         public ManagerWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
             this.db = db;
+            DataContext = userInstance;
             InitializeComponent();
         }
 
@@ -131,19 +135,31 @@ namespace bankingApp.windows
 
         private void btnBankAccounts_Click(object sender, RoutedEventArgs e)
         {
-            bankAccountsPage Page = new bankAccountsPage(db);
+            bankAccountsPage Page = new bankAccountsPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page;
         }
 
         private void btnWaitinglist_Click(object sender, RoutedEventArgs e)
         {
-            waitlistPage Page = new waitlistPage(db);
+            waitlistPage Page = new waitlistPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page;
         }
 
         private void btnTickets_Click(object sender, RoutedEventArgs e)
         {
             ticketsPage Page = new ticketsPage(db);
+            page.Content = Page;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            editUserPage Page = new editUserPage(isDarkTheme, _paletteHelper, db, userInstance.username);
+            page.Content = Page;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) // Dashboard
+        {
+            managerDashboardPage Page = new managerDashboardPage();
             page.Content = Page;
         }
     }

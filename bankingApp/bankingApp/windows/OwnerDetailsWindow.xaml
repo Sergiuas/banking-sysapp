@@ -1,0 +1,82 @@
+﻿<Window x:Class="bankingApp.windows.OwnerDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:bankingApp.windows"
+        mc:Ignorable="d"
+        Title="OwnerDetailsWindow" Height="323" Width="300"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        WindowStyle="None"  
+        WindowStartupLocation="CenterScreen">
+    <materialDesign:Card UniformCornerRadius="15" 
+                         Background="{DynamicResource MaterialDesignPaper}"
+                         Margin="25" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+        <Grid VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="62*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label Margin="0,-194,0,207"
+                    Content="Username:"
+                     Grid.Row="0"
+                     x:Name="lblUsername"
+                     FontSize="15"
+                     Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                     BorderThickness="2"
+                     BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                      HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnConfirm"
+                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                        Width="auto" Height="40"
+                        Content="Confirm"
+                        FontSize="20"
+                        materialDesign:RippleAssist.Feedback="Green"
+                        Margin="0,2,0,3" Click="btnConfirm_Click" Grid.ColumnSpan="2"/>
+            <Label Margin="0,-161,0,174"
+                Content="First Name:"
+                Grid.Row="0"
+                x:Name="lblFirstName"
+                FontSize="15"
+                Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                BorderThickness="1"
+                BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <Label Margin="0,-128,0,141"
+                Content="Last Name:"
+                Grid.Row="0"
+                x:Name="lblLastName"
+                FontSize="15"
+                Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                BorderThickness="2"
+                BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <Label Margin="0,-95,0,108"
+                Content="Phone Number:"
+                Grid.Row="0"
+                x:Name="lblPhoneNumber"
+                FontSize="15"
+                Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                BorderThickness="2"
+                BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <Label Margin="0,-62,0,75"
+                Content="Email:"
+                Grid.Row="0"
+                x:Name="lblEmail"
+                FontSize="15"
+                Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                BorderThickness="2"
+                BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        </Grid>
+    </materialDesign:Card>
+</Window>
