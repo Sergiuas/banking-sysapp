@@ -84,6 +84,9 @@
     <Compile Include="classes\ShowUser.cs" />
     <Compile Include="classes\UserListDataContext.cs" />
     <Compile Include="classes\UserSingleton.cs" />
+    <Compile Include="pages\adminPages\addManagerPage.xaml.cs">
+      <DependentUpon>addManagerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\adminPages\adminDashboardPage.xaml.cs">
       <DependentUpon>adminDashboardPage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,12 @@
     <Compile Include="pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\userPages\contactsPage.xaml.cs">
+      <DependentUpon>contactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\userPages\sendMessagePage.xaml.cs">
+      <DependentUpon>sendMessagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\sendMoneyPage.xaml.cs">
       <DependentUpon>sendMoneyPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +150,10 @@
     <Compile Include="windows\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="pages\adminPages\addManagerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="pages\adminPages\adminDashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,6 +191,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\contactsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\sendMessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

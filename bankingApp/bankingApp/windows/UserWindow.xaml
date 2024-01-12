@@ -64,13 +64,13 @@
                                    Margin="10 0 0 0"/>
 
                     </WrapPanel>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnDashboard" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="Green"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnDashboard_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Home" 
                                                      VerticalAlignment="Center"
@@ -80,13 +80,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnTransactions" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnTransactions_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="History" 
                                                      VerticalAlignment="Center"
@@ -96,13 +96,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnSendMoney" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnSendMoney_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Money" 
                                                      VerticalAlignment="Center"
@@ -112,13 +112,13 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnContacts" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnContacts_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Contacts" 
                                                      VerticalAlignment="Center"
@@ -146,13 +146,13 @@
                                             Click="toggleTheme"></ToggleButton>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnSettings" Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
                             Height="35"
                             materialDesign:RippleAssist.Feedback="White"
-                            Margin="0 0 0 15">
+                            Margin="0 0 0 15" Click="btnSettings_Click">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Settings" 
                                                      VerticalAlignment="Center"
@@ -162,7 +162,7 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
-                    <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    <Button x:Name="btnExit"  Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
                             Width="auto"
@@ -208,7 +208,9 @@
                 </StackPanel>
             </materialDesign:ColorZone>
             <StackPanel Margin="30 12 0 0" Grid.Column="1" x:Name="spMenu" >
-                <Frame Source="\pages\userPages\userDashboardPage.xaml"></Frame>
+                <Frame x:Name="page" 
+                       Source="\pages\userPages\userDashboardPage.xaml"
+                       NavigationUIVisibility="Hidden"/>
             </StackPanel>
             <materialDesign:ColorZone Grid.Column="2"
                                       Margin="30 0 0 0"

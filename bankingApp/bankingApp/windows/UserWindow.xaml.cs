@@ -18,6 +18,8 @@ using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Media.Animation;
 using bankingApp.classes;
+using bankingApp.pages.userPages;
+using bankingApp.pages;
 
 namespace bankingApp
 {
@@ -29,11 +31,13 @@ namespace bankingApp
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         private UserSingleton userInstance = UserSingleton.Instance;
+        private bsappDataContext db = new bsappDataContext();
 
-        public UserWindow(bool isDarkTheme, PaletteHelper _paletteHelper)
+        public UserWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
+            this.db = db;
             DataContext = userInstance;
 
             InitializeComponent();
@@ -116,5 +120,34 @@ namespace bankingApp
             _paletteHelper.SetTheme(theme);
         }
 
+        private void btnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            var Page = new userDashboardPage();
+            page.Content = Page;
+        }
+
+        private void btnTransactions_Click(object sender, RoutedEventArgs e)
+        {
+            var Page = new transactionsPage(db);
+            page.Content = Page;
+        }
+
+        private void btnSendMoney_Click(object sender, RoutedEventArgs e)
+        {
+            var Page = new sendMoneyPage(db);
+            page.Content = Page;
+        }
+
+        private void btnContacts_Click(object sender, RoutedEventArgs e)
+        {
+            var Page = new contactsPage(db);
+            page.Content = Page;
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var Page = new SettingsPage(isDarkTheme, _paletteHelper, db);
+            page.Content = Page;
+        }
     }
 }
