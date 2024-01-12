@@ -13,25 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace bankingApp.pages.mangerPages
+namespace bankingApp.pages.userPages
 {
     /// <summary>
-    /// Interaction logic for bankAccountsPage.xaml
+    /// Interaction logic for sendMoneyPage.xaml
     /// </summary>
-    public partial class bankAccountsPage : Page
+    public partial class sendMoneyPage : Page
     {
         bsappDataContext db;
-        public bankAccountsPage(bsappDataContext db)
+        public sendMoneyPage(bsappDataContext db)
         {
             this.db = db;
             InitializeComponent();
         }
 
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -46,12 +42,7 @@ namespace bankingApp.pages.mangerPages
 
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
 
         }

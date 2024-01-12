@@ -10,7 +10,7 @@
 
     <StackPanel>
         <materialDesign:ColorZone Mode="Light"
-                                  Background="{DynamicResource PrimaryHueLightBrush}"
+                                  Background="{DynamicResource MaterialDesignCardBackground}"
                                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                                   CornerRadius="15" Padding="40 20"
                                   Margin="0 35 0 0">
@@ -42,7 +42,7 @@
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
-                          Background="{DynamicResource PrimaryHueLightBrush}"
+                          Background="{DynamicResource MaterialDesignCardBackground}"
                           x:Name="userTable"
                           Height="400"
                           CanUserAddRows="False"
@@ -91,8 +91,49 @@
                             Grid.Column="4"
                             x:Name="btnLastPage" Click="btnLastPage_Click"/>
                 </Grid>
-
             </StackPanel>
         </materialDesign:ColorZone>
+        <Grid Margin="0 30 0 0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnDelete"
+                    Background="{DynamicResource MaterialDesignCardBackground}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Height="53"
+                    Margin="12 0 0 0"
+                    BorderThickness="2"
+                    BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                    materialDesign:ButtonAssist.CornerRadius="10 0 0 10"
+                    FontSize="18"
+                    Grid.Column="0" Click="btnDelete_Click">
+                <WrapPanel>
+                    <materialDesign:PackIcon Kind="Delete"
+                                             VerticalAlignment="Center"
+                                             Margin="0 0 20 0"
+                                             Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                    <TextBlock Text="Delete"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                </WrapPanel>
+            </Button>
+            <Button x:Name="btnAccept"
+                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                    Foreground="{DynamicResource MaterialDesignCardBackground}"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                    Height="53"
+                    Margin="0 0 12 0"
+                    materialDesign:ButtonAssist.CornerRadius="0 10 10 0"
+                    FontSize="18"
+                    Grid.Column="1" Click="btnAccept_Click">
+                <WrapPanel>
+                    <materialDesign:PackIcon Kind="Tick"
+                                                     VerticalAlignment="Center"
+                                                     Margin="0 0 20 0"/>
+                    <TextBlock Text="Accept"/>
+                </WrapPanel>
+            </Button>
+        </Grid>
     </StackPanel>
 </Page>

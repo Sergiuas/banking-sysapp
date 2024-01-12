@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace bankingApp.pages.mangerPages
 {
     /// <summary>
-    /// Interaction logic for bankAccountsPage.xaml
+    /// Interaction logic for ticketsPage.xaml
     /// </summary>
-    public partial class bankAccountsPage : Page
+    public partial class ticketsPage : Page
     {
         bsappDataContext db;
-        public bankAccountsPage(bsappDataContext db)
+        public ticketsPage(bsappDataContext db)
         {
             this.db = db;
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace bankingApp.pages.mangerPages
         {
 
         }
+
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
 
@@ -46,12 +47,12 @@ namespace bankingApp.pages.mangerPages
 
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnRezolved_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }
