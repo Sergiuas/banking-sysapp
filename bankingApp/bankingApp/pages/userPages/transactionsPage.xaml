@@ -47,16 +47,16 @@
                                 <RadioButton Content="Date" Margin="5 5 5 0" x:Name="rdoDate"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
-                        <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
+                        <TextBox  x:Name="txtTransactionsSearch" Width="200" FontSize="12"
                                   materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
                                   BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
+                                  Background="White" TextChanged="txtTransactionsSearch_TextChanged"
                                   />
                     </StackPanel>
                 </Grid>
                 <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
                           Background="{DynamicResource MaterialDesignCardBackground}"
-                          x:Name="userTable"
+                          x:Name="transactionsTable"
                           Height="500"
                           CanUserAddRows="False"
                           IsReadOnly="True"

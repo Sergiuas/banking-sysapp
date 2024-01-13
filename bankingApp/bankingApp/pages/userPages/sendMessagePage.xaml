@@ -93,8 +93,8 @@
                          VerticalAlignment="Center">
                 
                 </TextBox>
-                <Button Style="{StaticResource MaterialDesignIconButton}"
-                        HorizontalAlignment="Right">
+                <Button x:Name="btnSend" Style="{StaticResource MaterialDesignIconButton}"
+                        HorizontalAlignment="Right" Click="btnSend_Click">
                     <materialDesign:PackIcon Kind="Send" Height="15" Width="15"/>
                 </Button>
             </StackPanel>
