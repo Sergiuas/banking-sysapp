@@ -396,8 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-<<<<<<< Updated upstream
 *.csproj
-=======
-bankingApp/bankingApp/bankingApp.csproj
->>>>>>> Stashed changes

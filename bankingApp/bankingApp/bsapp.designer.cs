@@ -157,6 +157,14 @@ namespace bankingApp
 				return this.GetTable<MessagesView>();
 			}
 		}
+		
+		public System.Data.Linq.Table<MessagesView1> MessagesView1s
+		{
+			get
+			{
+				return this.GetTable<MessagesView1>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
@@ -2702,6 +2710,141 @@ namespace bankingApp
 		private string _Body;
 		
 		public MessagesView()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MessageID", DbType="Int NOT NULL")]
+		public int MessageID
+		{
+			get
+			{
+				return this._MessageID;
+			}
+			set
+			{
+				if ((this._MessageID != value))
+				{
+					this._MessageID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderUsername", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string SenderUsername
+		{
+			get
+			{
+				return this._SenderUsername;
+			}
+			set
+			{
+				if ((this._SenderUsername != value))
+				{
+					this._SenderUsername = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenderID", DbType="Int")]
+		public System.Nullable<int> SenderID
+		{
+			get
+			{
+				return this._SenderID;
+			}
+			set
+			{
+				if ((this._SenderID != value))
+				{
+					this._SenderID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientUsername", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string RecipientUsername
+		{
+			get
+			{
+				return this._RecipientUsername;
+			}
+			set
+			{
+				if ((this._RecipientUsername != value))
+				{
+					this._RecipientUsername = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecipientID", DbType="Int")]
+		public System.Nullable<int> RecipientID
+		{
+			get
+			{
+				return this._RecipientID;
+			}
+			set
+			{
+				if ((this._RecipientID != value))
+				{
+					this._RecipientID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this._Timestamp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Body", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Body
+		{
+			get
+			{
+				return this._Body;
+			}
+			set
+			{
+				if ((this._Body != value))
+				{
+					this._Body = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MessagesView")]
+	public partial class MessagesView1
+	{
+		
+		private int _MessageID;
+		
+		private string _SenderUsername;
+		
+		private System.Nullable<int> _SenderID;
+		
+		private string _RecipientUsername;
+		
+		private System.Nullable<int> _RecipientID;
+		
+		private System.Nullable<System.DateTime> _Timestamp;
+		
+		private string _Body;
+		
+		public MessagesView1()
 		{
 		}
 		
