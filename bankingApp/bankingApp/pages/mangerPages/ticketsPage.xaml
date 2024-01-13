@@ -12,130 +12,112 @@
         <materialDesign:ColorZone Mode="Light"
                                   Background="{DynamicResource MaterialDesignCardBackground}"
                                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
-                                  CornerRadius="15" Padding="40 20"
+                                  CornerRadius="15" Padding="0 20"
                                   Margin="0 35 0 0">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-                <Grid Margin="0 0 0 12">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="280"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Accounts Waiting Approval"
-                               HorizontalAlignment="Left"
-                               FontSize="16" FontWeight="Bold"
-                               VerticalAlignment="Center"
-                               Grid.Column="0"
-                               x:Name="lblWaitlist"/>
-                    <StackPanel Grid.Column="1"
-                                HorizontalAlignment="Stretch"
-                                Orientation="Horizontal">
-                        <TextBlock Text="Filter By"
-                                   VerticalAlignment="Center"
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical"
+                            Grid.Column="0">
+                    <TextBlock Text="Tickets"
+                                   HorizontalAlignment="Center"
                                    FontSize="16" FontWeight="Bold"
-                                   Margin="0 0 5 0"
-                                   />
-                        <TextBox  x:Name="txtTransactions" Width="200" FontSize="12"
-                                  materialDesign:HintAssist.Hint="Search in Transactions" BorderThickness="2"
-                                  BorderBrush="{DynamicResource MaterialDesignDivider}"
-                                  Background="White"
-                                  />
+                                   Grid.Row="0"
+                                   x:Name="lblWaitlist"/>
+                    <TextBox  x:Name="txtTransactions"
+                              FontSize="12" 
+                              materialDesign:HintAssist.Hint="Search in Transactions"
+                              BorderThickness="2"
+                              BorderBrush="{DynamicResource MaterialDesignDivider}"/>
+                    <ListBox x:Name="lbTickets"
+                         Height="450"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         Loaded="ListBox_Loaded" SelectionChanged="lbTickets_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" Width="200">
+                                    <TextBlock Text="{Binding Path=subject}"
+                                               FontSize="16" FontWeight="Bold"
+                                               HorizontalAlignment="Center"
+                                               Grid.Row="0"/>
+                                    <TextBlock Text="{Binding Path=username}"
+                                               FontSize="14"
+                                               HorizontalAlignment="Center"
+                                               Grid.Row="0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+                        <TextBlock Text="{Binding Path=date}"
+                                   FontSize="12" FontWeight="Bold"
+                                   Margin="0 10 10 0"
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock Text="{Binding Path=subject}"
+                                   FontSize="25" FontWeight="Bold"
+                                   Margin="0 70 0 30"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=username}"
+                                   FontSize="20" Margin="20 0"
+                                   HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Path=body}"
+                                   FontSize="16" Margin="30 20"
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Left"/>
+                        <Grid Margin="0 70 0 0" VerticalAlignment="Bottom">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnDelete"
+                                    Background="{DynamicResource MaterialDesignCardBackground}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                    Height="53"
+                                    Margin="12 0 0 0"
+                                    BorderThickness="2"
+                                    BorderBrush="{StaticResource PrimaryHueDarkBrush}"
+                                    materialDesign:ButtonAssist.CornerRadius="10 0 0 10"
+                                    FontSize="18"
+                                    Grid.Column="0">
+                                <WrapPanel>
+                                    <materialDesign:PackIcon Kind="Delete"
+                                                             VerticalAlignment="Center"
+                                                             Margin="0 0 20 0"
+                                                             Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                                    <TextBlock Text="Delete"
+                                               Foreground="{StaticResource PrimaryHueDarkBrush}"/>
+                                </WrapPanel>
+                            </Button>
+                            <Button x:Name="btnAccept"
+                                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                                    Foreground="{DynamicResource MaterialDesignCardBackground}"
+                                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                    Height="53"
+                                    Margin="0 0 12 0"
+                                    materialDesign:ButtonAssist.CornerRadius="0 10 10 0"
+                                    FontSize="18"
+                                    Grid.Column="1">
+                                <WrapPanel>
+                                    <materialDesign:PackIcon Kind="Tick"
+                                                             VerticalAlignment="Center"
+                                                             Margin="0 0 20 0"/>
+                                    <TextBlock Text="Accept"/>
+                                </WrapPanel>
+                            </Button>
+                        </Grid>
                     </StackPanel>
                 </Grid>
-                <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"
-                          Background="{DynamicResource MaterialDesignCardBackground}"
-                          x:Name="userTable"
-                          Height="400"
-                          CanUserAddRows="False"
-                          IsReadOnly="True"
-                          />
-                <Grid HorizontalAlignment="Right">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="&lt;&lt;"
-                            IsEnabled="{Binding IsFirstEnabled}"
-                            ToolTip="First page" Margin="5"
-                            Command="{Binding FirstCommand}"
-                            Grid.Column="0"
-                            x:Name="btnFirstPage" Click="btnFirstPage_Click"/>
-                    <Button Content="&lt;" 
-                            Margin="5"
-                            IsEnabled="{Binding IsPreviousEnabled}"
-                            ToolTip="Previous page"
-                            Command="{Binding PreviousCommand}"
-                            Grid.Column="1"
-                            x:Name="btnPrevPage" Click="btnPrevPage_Click"/>
-                    <Button Grid.Column="2"
-                            Margin="5">
-                        <TextBlock VerticalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}Page {0} of {1}">
-                                    <Binding Path="CurrentPage"/>
-                                    <Binding Path="NumberOfPages"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                    </Button>
-                    <Button Content=">"  Margin="5"
-                            ToolTip="Next page"
-                            Grid.Column="3"
-                            x:Name="btnNextPage" Click="btnNextPage_Click"/>
-                    <Button Content=">>"
-                            Margin="5" IsEnabled="{Binding IsLastEnabled}"
-                            ToolTip="Last page"
-                            Command="{Binding LastCommand}"
-                            Grid.Column="4"
-                            x:Name="btnLastPage" Click="btnLastPage_Click"/>
-                </Grid>
-
-            </StackPanel>
+            </Grid>
         </materialDesign:ColorZone>
-        <Grid Margin="0 30 0 0">
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="btnDelete"
-                    Background="{DynamicResource MaterialDesignCardBackground}"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                    Height="53"
-                    BorderThickness="2"
-                    BorderBrush="{StaticResource PrimaryHueDarkBrush}"
-                    Margin="12 0 0 0"
-                    materialDesign:ButtonAssist.CornerRadius="10 0 0 10"
-                    FontSize="18"
-                    Grid.Column="0" Click="btnDelete_Click">
-                <WrapPanel>
-                    <materialDesign:PackIcon Kind="Delete"
-                                             VerticalAlignment="Center"
-                                             Margin="0 0 20 0"
-                                             Foreground="{StaticResource PrimaryHueDarkBrush}"/>
-                    <TextBlock Text="Delete"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"/>
-                </WrapPanel>
-            </Button>
-            <Button x:Name="btnRezolved"
-                    Style="{StaticResource MaterialDesignFlatDarkBgButton}"
-                    Foreground="{DynamicResource MaterialDesignCardBackground}"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                    Height="53"
-                    Margin="0 0 12 0"
-                    materialDesign:ButtonAssist.CornerRadius="0 10 10 0"
-                    FontSize="18"
-                    Grid.Column="1" Click="btnRezolved_Click">
-                <WrapPanel>
-                    <materialDesign:PackIcon Kind="Tick"
-                                             VerticalAlignment="Center"
-                                             Margin="0 0 20 0"/>
-                    <TextBlock Text="Rezolved"/>
-                </WrapPanel>
-            </Button>
-        </Grid>
     </StackPanel>
 
 </Page>
