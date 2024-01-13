@@ -130,6 +130,22 @@
                                        Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
                         </WrapPanel>
                     </Button>
+                    <Button x:Name="btnTickets" Style="{StaticResource MaterialDesignFlatDarkButton}"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+                            materialDesign:ButtonAssist.CornerRadius="6"
+                            Width="auto"
+                            Height="35"
+                            materialDesign:RippleAssist.Feedback="White"
+                            Margin="0 0 0 15" Click="btnTickets_Click">
+                        <WrapPanel Width="140">
+                            <materialDesign:PackIcon Kind="Ticket" 
+                                                     VerticalAlignment="Center"
+                                                     Margin="0 0 20 0"
+                                                     Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
+                            <TextBlock Text="Tickets"
+                                       Foreground="{DynamicResource MaterialDesignTextAreaBorder}"/>
+                        </WrapPanel>
+                    </Button>
                     <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
                             materialDesign:ButtonAssist.CornerRadius="6"
@@ -222,7 +238,7 @@
                             Margin="0 24 0 0">
                         <materialDesign:PackIcon Kind="Menu"/>
                     </Button>
-                    <StackPanel Margin="25 12 25 0">
+                    <StackPanel Margin="25 12 25 0" Width="190">
 
                         <DockPanel Margin="0 12 5 0">
 
