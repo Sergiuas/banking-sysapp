@@ -163,5 +163,11 @@ namespace bankingApp
             editUserPage Page = new editUserPage(isDarkTheme, _paletteHelper, db, userInstance.username);
             page.Content = Page;
         }
+
+        private void btnTickets_Click(object sender, RoutedEventArgs e)
+        {
+            ticketPage Page = new ticketPage(db);
+            page.Content = Page;
+        }
     }
 }

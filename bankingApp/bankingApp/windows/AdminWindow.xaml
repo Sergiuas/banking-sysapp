@@ -235,7 +235,7 @@
                             Margin="0 24 0 0">
                         <materialDesign:PackIcon Kind="Menu"/>
                     </Button>
-                    <StackPanel Margin="25 12 25 0">
+                    <StackPanel Margin="25 12 25 0" Width="190">
 
                         <DockPanel Margin="0 12 5 0">
 

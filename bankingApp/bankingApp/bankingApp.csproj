@@ -136,6 +136,9 @@
     <Compile Include="pages\userPages\sendMoneyPage.xaml.cs">
       <DependentUpon>sendMoneyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\userPages\ticketPage.xaml.cs">
+      <DependentUpon>ticketPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\transactionsPage.xaml.cs">
       <DependentUpon>transactionsPage.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\userPages\sendMoneyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\ticketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
