@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using bankingApp.classes;
 
 namespace bankingApp.pages.userPages
@@ -24,14 +25,32 @@ namespace bankingApp.pages.userPages
         bsappDataContext db;
         public int userID { get; set; }
         public int friendID { get; set; }
+
+        private DispatcherTimer timer;
         public sendMessagePage(int userID,int friendID,bsappDataContext db)
         {
             this.db = db;
             this.userID = userID;
             this.friendID = friendID;
             InitializeComponent();
+            Initialize_MessageBox(userID, friendID, db);
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += Timer_Tick;
+            timer.Start(); // Need to destroy this after closing the page
+        }
+
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Call the method to refresh the message box
+            Initialize_MessageBox(userID, friendID, db);
+        }
+        private void Initialize_MessageBox(int userID, int friendID, bsappDataContext db)
+        {
             List<MessageBody> list = db.MessagesViews.Where(x => (x.SenderID == userID && x.RecipientID == friendID) || (x.RecipientID == userID && x.SenderID == friendID))
-                .OrderBy(x => x.Timestamp).Select(x => new MessageBody
+            .OrderBy(x => x.Timestamp).Select(x => new MessageBody
             {
                 message = x.Body,
                 sender = x.SenderID == UserSingleton.Instance.UserID ? "You" : x.SenderUsername,
@@ -39,8 +58,7 @@ namespace bankingApp.pages.userPages
                 isFriend = x.RecipientID == UserSingleton.Instance.UserID ? Visibility.Visible : Visibility.Hidden,
                 isUser = x.RecipientID == UserSingleton.Instance.UserID ? Visibility.Hidden : Visibility.Visible
             }).ToList();
-            lbMessage.ItemsSource = list;
-
+                    lbMessage.ItemsSource = list;
         }
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
         {
@@ -80,5 +98,23 @@ namespace bankingApp.pages.userPages
             return null;
         }
 
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtMessage.Text.Trim().Length > 0)
+            {
+                Message message = new Message();
+                message.SenderID = this.userID;
+                message.RecipientID = this.friendID;
+                message.Timestamp = DateTime.Now;
+                message.Body = txtMessage.Text;
+
+                db.Messages.InsertOnSubmit(message);
+                db.SubmitChanges();
+
+                txtMessage.Clear();
+                Initialize_MessageBox(this.userID, this.friendID, this.db);
+            }
+            else return;
+        }
     }
 }

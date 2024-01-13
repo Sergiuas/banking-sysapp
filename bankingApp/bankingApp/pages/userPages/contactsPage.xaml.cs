@@ -38,9 +38,10 @@ namespace bankingApp.pages.userPages
         {
             if (string.IsNullOrEmpty(searchedFriend))
             {
-                friends = db.Contacts.Where(c => c.UserID == UserSingleton.Instance.UserID)
+                friends = db.Contacts.Where(c => c.UserID == UserSingleton.Instance.UserID )
                     .Join(db.Users, c => c.UserID, u => u.UserID, (c, u) => new 
                 {
+                    
                     id = c.FriendID,
                 }).Join(db.Users, c => c.id, u => u.UserID, (c, u) => new Friend
                 {

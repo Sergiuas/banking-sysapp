@@ -118,8 +118,16 @@ namespace bankingApp.pages.adminPages
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserListPage Page = new UserListPage(isDarkTheme, _paletteHelper, db);
-            MainContentFrame.Content = Page;
+            if (userInstance.type == "admin")
+            {
+                UserListPage Page = new UserListPage(isDarkTheme, _paletteHelper, db);
+                MainContentFrame.Content = Page;
+            }
+            else
+            {
+                SettingsPage Page = new SettingsPage(isDarkTheme, _paletteHelper, db);
+                MainContentFrame.Content = Page;
+            }
         }
     }
 }

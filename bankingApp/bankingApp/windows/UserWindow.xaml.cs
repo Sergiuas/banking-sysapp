@@ -20,6 +20,7 @@ using System.Windows.Media.Animation;
 using bankingApp.classes;
 using bankingApp.pages.userPages;
 using bankingApp.pages;
+using bankingApp.pages.adminPages;
 
 namespace bankingApp
 {
@@ -135,7 +136,7 @@ namespace bankingApp
 
         private void btnTransactions_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new transactionsPage(db);
+            var Page = new transactionsPage(isDarkTheme, _paletteHelper, db);
             page.Content = Page;
         }
 
@@ -154,6 +155,12 @@ namespace bankingApp
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
             var Page = new SettingsPage(isDarkTheme, _paletteHelper, db);
+            page.Content = Page;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            editUserPage Page = new editUserPage(isDarkTheme, _paletteHelper, db, userInstance.username);
             page.Content = Page;
         }
     }
