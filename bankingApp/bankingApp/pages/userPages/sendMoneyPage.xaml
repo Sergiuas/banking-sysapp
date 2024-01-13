@@ -20,7 +20,7 @@
                                HorizontalAlignment="Center"
                                FontSize="28" 
                                FontWeight="Bold"
-                               Margin="0 25 0 0"/>
+                               Margin="0 70 0 30"/>
                 </Grid>
                 <TextBlock Text="Receiver" 
                            HorizontalAlignment="Left"
@@ -31,62 +31,161 @@
                       Margin="0 5 0 5"
                       Background="{StaticResource PrimaryHueDarkBrush}"/>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="txtReceiver" Grid.Column="0"
-                               Text="Friend Name" 
-                               Width="130"
-                               VerticalAlignment="Center"
-                               FontSize="16" 
-                               FontWeight="Bold"
-                               Margin="35 0 20 0"/>
-                    <ComboBox Grid.Column="1" 
-                              x:Name="cbFriends"
-                              Width="190" FontSize="16"
-                              Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
-                              BorderThickness="2"
-                              BorderBrush="{DynamicResource MaterialDesignDivider}"
-                              Style="{StaticResource MaterialDesignComboBox}"
-                              Visibility="Visible"/>
-                    <TextBox Grid.Column="1"
-                             x:Name="txtIban"
-                             Width="190" FontSize="16"
-                             materialDesign:HintAssist.Hint="Enter IBAN"
-                             Background="{DynamicResource MaterialDesignTextFieldBoxBackground}"
-                             BorderThickness="2"
-                             BorderBrush="{DynamicResource MaterialDesignDivider}"
-                             Style="{StaticResource MaterialDesignTextBox}"
-                             Visibility="Hidden"/>
-                    <StackPanel Grid.Column="2"
-                                Orientation="Horizontal"
-                                Margin="25 0 0 0">
-                        <RadioButton x:Name="radioBtnContact" 
-                                     Margin="0 0 15 0"
-                                     IsChecked="True"
-                                     Checked="RadioButton_Checked"
-                                     GroupName="OptionsGroup">
-                            <TextBlock Text="Contact"
-                                       FontWeight="Bold"
-                                       FontSize="14"
-                                       VerticalAlignment="Center"
-                                       />
-                        </RadioButton>
-                        <RadioButton Checked="RadioButton_Checked"
-                                     x:Name="radioBtnIban"
-                                     GroupName="OptionsGroup">
-                            <TextBlock Text="IBAN"
-                                       FontWeight="Bold"
-                                       FontSize="14"
-                                       VerticalAlignment="Center"/>
-                        </RadioButton>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                        <TextBlock x:Name="txtIban" Grid.Column="0"
+                                   Text="Friend Account" 
+                                   Width="130"
+                                   VerticalAlignment="Center"
+                                   FontSize="16" 
+                                   FontWeight="Bold"
+                                   Margin="35 0 20 0"
+                                   Visibility="Visible"/>
+                        <ComboBox Margin="0 0 0 0"
+                                  Width="190"
+                                  x:Name="cbIban"
+                                  FontSize="16" 
+                                  materialDesign:HintAssist.Hint="Enter IBAN"
+                                  Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                                  BorderThickness="2"
+                                  BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                  IsEditable="True" IsTextSearchEnabled="False"
+                                  SelectionChanged="cbIban_SelectionChanged"
+                                  PreviewKeyUp="cbIban_PreviewKeyUp"
+                                  Visibility="Visible">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="txtReceiver" Grid.Column="0"
+                                   Text="Friend Name" 
+                                   Width="130"
+                                   VerticalAlignment="Center"
+                                   FontSize="16" 
+                                   FontWeight="Bold"
+                                   Margin="35 0 20 0"/>
+                        <ComboBox Margin="0 0 0 0"
+                                  Width="190" Grid.Column="1"
+                                  x:Name="cbFriendname"
+                                  FontSize="16" 
+                                  materialDesign:HintAssist.Hint="Enter Friend Name"
+                                  Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                                  BorderThickness="2"
+                                  BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                  IsEditable="True" IsTextSearchEnabled="False"
+                                  SelectionChanged="cbFriendname_SelectionChanged"
+                                  PreviewKeyUp="cbFriendname_PreviewKeyUp"
+                                  Visibility="Visible">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Grid.Column="1"
+                                 x:Name="tbIban"
+                                 Width="190" FontSize="16"
+                                 materialDesign:HintAssist.Hint="Enter IBAN"
+                                 Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                                 BorderThickness="2"
+                                 BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignTextBox}"
+                                 Visibility="Hidden"/>
+                        <StackPanel Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    Margin="25 0 0 0">
+                            <RadioButton x:Name="radioBtnContact" 
+                                         Margin="0 0 15 0"
+                                         IsChecked="True"
+                                         Checked="RadioButton_Checked"
+                                         GroupName="OptionsGroup"
+                                         Panel.ZIndex="1">
+                                <TextBlock Text="Contact"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"
+                                           />
+                            </RadioButton>
+                            <RadioButton Checked="RadioButton_Checked"
+                                         x:Name="radioBtnIban"
+                                         GroupName="OptionsGroup"
+                                         Panel.ZIndex="1">
+                                <TextBlock Text="IBAN"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           VerticalAlignment="Center"/>
+                            </RadioButton>
+                        </StackPanel>
 
+                    </Grid>
+                    
                 </Grid>
-                
-                
+                <TextBlock Text="Sender" 
+                           HorizontalAlignment="Left"
+                           FontSize="20" 
+                           FontWeight="Bold"
+                           Margin="25 30 25 0"/>
+                <Grid Height="5" 
+                      Margin="0 5 0 5"
+                      Background="{StaticResource PrimaryHueDarkBrush}"/>
+                <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                    <TextBlock Grid.Column="0"
+                                Text="Account" 
+                                Width="130"
+                                VerticalAlignment="Center"
+                                FontSize="16" 
+                                FontWeight="Bold"
+                                Margin="35 0 20 0"/>
+                    <ComboBox Margin="0 0 0 0"
+                                Width="190"
+                                FontSize="16" 
+                                materialDesign:HintAssist.Hint="Enter IBAN"
+                                Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                                BorderThickness="2"
+                                BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                IsEditable="True" IsTextSearchEnabled="False"
+                                SelectionChanged="cbIban_SelectionChanged"
+                                PreviewKeyUp="cbIban_PreviewKeyUp">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0"
+                                Text="Sum" 
+                                Width="130"
+                                VerticalAlignment="Center"
+                                FontSize="16" 
+                                FontWeight="Bold"
+                                Margin="35 0 20 0"/>
+                    <TextBox Grid.Column="1"
+                                 Width="190" FontSize="16"
+                                 materialDesign:HintAssist.Hint="Enter Ammount"
+                                 Background="{DynamicResource MaterialDesignComboBoxBackground}"
+                                 BorderThickness="2"
+                                 BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                 Style="{StaticResource MaterialDesignTextBox}"/>
+                </StackPanel>
+                <Button Content="Send"
+                        Background="{StaticResource PrimaryHueDarkBrush}"
+                        Margin="0 130 0 0"/>
             </StackPanel>
         </materialDesign:ColorZone>
     </StackPanel>
