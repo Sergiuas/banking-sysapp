@@ -11,14 +11,17 @@
     <StackPanel>
 
         <DockPanel Margin="0 12 5 0">
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Text="Dashboard"/>
-            <Button Style="{StaticResource MaterialDesignIconButton}" Height="40" Width="40" materialDesign:ButtonAssist.CornerRadius="6" DockPanel.Dock="Right">
-                <materialDesign:PackIcon Kind="Search"/>
-            </Button>
-            <TextBlock Text="20 Sep 2022, Monday" Foreground="SlateGray" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0 0 20 0"/>
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       FontWeight="Bold"
+                       Text="Dashboard"/>
         </DockPanel>
 
-        <materialDesign:ColorZone Mode="Custom" Background="MistyRose" Foreground="LightSalmon" CornerRadius="15" Padding="40 20" Margin="0 35 0 0">
+        <materialDesign:ColorZone Mode="Custom"
+                                  Background="{StaticResource PrimaryHueLightBrush}"
+                                  Foreground="{StaticResource PrimaryHueLightForegroundBrush}"
+                                  CornerRadius="15" Padding="40 20" Margin="0 35 0 0">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,16 +31,13 @@
 
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Welcome back Admin!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="You have learned 80% of your goal this week!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="Keep it up and improve your results!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
+                    <TextBlock Text="You have been away for ." Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
+                    <TextBlock Text="We are happy that you returned!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                 </StackPanel>
-
-                <Image RenderOptions.BitmapScalingMode="HighQuality"
-                               Source="/resources/welcome.png"
-                               Grid.Column="1"
-                               HorizontalAlignment="Right"
-                               Height="190" Width="190"
-                               Margin="0 -85 0 -25"/>
+                <materialDesign:PackIcon Kind="Bank" Grid.Column="1"
+                                         HorizontalAlignment="Right"
+                                         Height="150" Width="190"
+                                         Foreground="{StaticResource PrimaryHueDarkBrush}"/>
             </Grid>
         </materialDesign:ColorZone>
 
@@ -47,80 +47,95 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <materialDesign:ColorZone Margin="0 35 0 0" Grid.Column="0" Mode="Custom" Background="White" Foreground="Black" CornerRadius="15" Padding="20">
+            <materialDesign:ColorZone Margin="0 35 0 0" Height="235"
+                                      Grid.Column="0" Mode="Custom" 
+                                      Background="White" Foreground="Black"
+                                      CornerRadius="15" Padding="20">
                 <StackPanel>
                     <DockPanel>
-                        <TextBlock Text="Latest Results" FontSize="12" FontWeight="bold"/>
-                        <TextBlock Text="More" FontSize="11" FontWeight="SemiBold" Margin="135 0 0 0"/>
-                        <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                        <TextBlock Text="Cards" FontSize="12" FontWeight="bold"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock Text="Add new Card"
+                                   FontSize="11" FontWeight="SemiBold"
+                                   Margin="130 0 0 0" VerticalAlignment="Center"/>
+                        <Button Style="{StaticResource MaterialDesignIconButton}"
+                                Width="20" Height="20"
+                                DockPanel.Dock="Right">
+                            <materialDesign:PackIcon Kind="Plus" 
+                                                     Width="17" Height="17"/>
+                        </Button>
                     </DockPanel>
 
-                    <DockPanel Margin="0 30 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 5</Bold> - Technology</TextBlock>
-                        <ProgressBar Value="25" Width="60" Height="4" BorderThickness="0" Foreground="LightCoral" Background="Gainsboro" Margin="65 0 0 0"/>
-                        <TextBlock Text="25%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 12</Bold> - Ecology</TextBlock>
-                        <ProgressBar Value="44" Width="60" Height="4" BorderThickness="0" Foreground="DodgerBlue" Background="Gainsboro" Margin="76 0 0 0"/>
-                        <TextBlock Text="44%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 9</Bold> - Real Estate</TextBlock>
-                        <ProgressBar Value="40" Width="60" Height="4" BorderThickness="0" Foreground="DodgerBlue" Background="Gainsboro" Margin="67 0 0 0"/>
-                        <TextBlock Text="40%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 8</Bold> - Education</TextBlock>
-                        <ProgressBar Value="75" Width="60" Height="4" BorderThickness="0" Foreground="MediumSeaGreen" Background="Gainsboro" Margin="72 0 0 0"/>
-                        <TextBlock Text="75%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
+                    <ListBox Margin="0 5 0 0"
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel HorizontalAlignment="Stretch">
+                                    <materialDesign:PackIcon Kind="CreditCard" Height="20" Width="20" Margin="0 0 10 0"/>
+                                    <TextBlock Text="**** **** **** 1234"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="DimGray"/>
+                                    <TextBlock Text="Balance:"
+                                       Margin="25 0 0 0"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="DimGray"/>
+                                    <TextBlock Text="N 100,000"
+                                       Margin="5 0 0 0"
+                                       FontSize="11" FontWeight="SemiBold"
+                                       Foreground="DimGray"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                    </ListBox>
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <materialDesign:ColorZone Grid.Column="1" Margin="15 35 0 0" Mode="Custom" Background="White" Foreground="Black" CornerRadius="15" Padding="20 20">
+            <materialDesign:ColorZone Grid.Column="1" 
+                                      Margin="15 35 0 0" Mode="Custom" 
+                                      Background="White" Foreground="Black"
+                                      CornerRadius="15" Padding="20 20"
+                                       Height="235">
                 <StackPanel>
                     <DockPanel>
-                        <TextBlock FontSize="12" FontWeight="Bold" Text="Reviews"/>
+                        <TextBlock FontSize="12" FontWeight="Bold" Text="Contacts"/>
                         <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </DockPanel>
 
-                    <DockPanel Margin="0 30 0 7">
-                        <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="Gray"><Bold Foreground="Black">John Carter</Bold> - Student</TextBlock>
-                        <materialDesign:RatingBar IsReadOnly="True" Max="5" Value="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <materialDesign:RatingBar.ValueItemTemplate>
-                                <DataTemplate DataType="system:Int32">
-                                    <Grid>
-                                        <materialDesign:PackIcon Kind="Star" Height="15" Width="15"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </materialDesign:RatingBar.ValueItemTemplate>
-                        </materialDesign:RatingBar>
-                    </DockPanel>
-                    <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="DimGray">Contrary to popular belief, Lorem Ipsum <LineBreak/>is not simply random text.</TextBlock>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
+                    <ListBox Margin="0 5 0 0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock HorizontalAlignment="Left" 
+                                                FontSize="11" FontWeight="SemiBold"
+                                                Foreground="Gray">
+                                        <Bold Foreground="Black">John Carter</Bold>
+                                        <TextBlock>User1</TextBlock>
+                                    </TextBlock>
+
+                                                <TextBlock HorizontalAlignment="Left"
+                                               FontSize="11" FontWeight="SemiBold"
+                                               Foreground="DimGray"
+                                               Text="Friend since"/>
+                                                <Separator Background="WhiteSmoke" Margin="0 5 0 0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                        <ListItem/>
+                    </ListBox>
+                    
 
 
-                    <DockPanel Margin="0 15 0 10">
-                        <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="Gray"><Bold Foreground="Black">Walter White</Bold> - Lecturer</TextBlock>
-                        <materialDesign:RatingBar IsReadOnly="True" Max="5" Value="3" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <materialDesign:RatingBar.ValueItemTemplate>
-                                <DataTemplate DataType="system:Int32">
-                                    <Grid>
-                                        <materialDesign:PackIcon Kind="Star" Height="15" Width="15"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </materialDesign:RatingBar.ValueItemTemplate>
-                        </materialDesign:RatingBar>
-                    </DockPanel>
-                    <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="DimGray">There are many variations of passages of<LineBreak/> Lorem Ipsum available, but the majority<LineBreak/> have suffered alteration</TextBlock>
-
+                    
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>
