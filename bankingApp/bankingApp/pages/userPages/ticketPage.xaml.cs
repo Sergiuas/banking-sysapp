@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bankingApp.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,12 +61,32 @@ namespace bankingApp.pages.userPages
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
+           if (string.IsNullOrEmpty(tbBody.Text) || string.IsNullOrEmpty(tbSubject.Text) || string.IsNullOrEmpty(cbManagerName.Text))
+            { return; }
+
+           Ticket ticket = new Ticket();
+            ticket.Subject = tbSubject.Text;
+            ticket.Body = tbBody.Text;
+            ticket.UserID = UserSingleton.Instance.UserID;
+
+            var manager = db.Users.SingleOrDefault(u=> u.Username == cbManagerName.Text.ToString());
+            ticket.ManagerID = manager.UserID;
+
+            ticket.Timestamp = DateTime.Now;
+            ticket.Resolved = false;
+
+            db.Tickets.InsertOnSubmit(ticket);
+            db.SubmitChanges();
+
+            tbBody.Clear();
+            tbSubject.Clear();
 
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            userDashboardPage page = new userDashboardPage();
+            MainContentFrame.Content = page;
         }
     }
 }

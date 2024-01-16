@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 17" name="bsapp">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 17.375" name="bsapp">
   <DataContextMoniker Name="/bsappDataContext" />
   <nestedChildShapes>
     <classShape Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" absoluteBounds="0.75, 7.25, 2, 3.8862125651041666">
@@ -57,14 +57,14 @@
         <classShapeMoniker Id="b16d824d-2602-453e-a924-ffceda94e333" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 11.1362125651042); (1.75 : 12.4239005533854); (3.5 : 12.4239005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 11.1362125651042); (1.75 : 12.4239005533854); (1.93229291666667 : 12.4239005533854 : JumpStart); (2.09895958333333 : 12.4239005533854 : JumpEnd); (2.46354541666667 : 12.4239005533854 : JumpStart); (2.63021208333333 : 12.4239005533854 : JumpEnd); (3.5 : 12.4239005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_Card" />
       <nodes>
         <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
         <classShapeMoniker Id="ef17f260-aa69-4dbb-92f6-c08abc1e738f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 11.1362125651042); (2.2812525 : 11.8056977766927); (3.5 : 11.8056977766927)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.2812525 : 11.1362125651042); (2.2812525 : 11.8056977766927); (2.46354541666667 : 11.8056977766927 : JumpStart); (2.63021208333333 : 11.8056977766927 : JumpEnd); (3.5 : 11.8056977766927)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_Card1" />
       <nodes>
         <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
@@ -99,7 +99,7 @@
         <classShapeMoniker Id="43062bf9-f752-45d5-b451-47b39a5d9995" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 11.1362125651042); (1.2187475 : 15.5489005533854); (3.5 : 15.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.2187475 : 11.1362125651042); (1.2187475 : 15.5489005533854); (1.93229291666667 : 15.5489005533854 : JumpStart); (2.09895958333333 : 15.5489005533854 : JumpEnd); (2.46354541666667 : 15.5489005533854 : JumpStart); (2.63021208333333 : 15.5489005533854 : JumpEnd); (3.5 : 15.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/bsappDataContext/User/User_MonthlyStatement" />
       <nodes>
         <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
@@ -146,5 +146,25 @@
         <elementListCompartment Id="0b1371aa-629f-4dd3-9f8f-b220b8a0a83f" absoluteBounds="9.64, 6.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="aa0fd9eb-4872-40ba-bb18-3d34a51c7256" absoluteBounds="7.5, 14.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/bsappDataContext/Ticket" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1274c26-1940-4e9b-861b-7a225342e675" absoluteBounds="7.515, 15.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.54687875 : 11.1362125651042); (2.54687875 : 16.845400390625); (7.5 : 16.845400390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Ticket" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="aa0fd9eb-4872-40ba-bb18-3d34a51c7256" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.01562625 : 11.1362125651042); (2.01562625 : 16.8153507486979); (7.5 : 16.8153507486979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/bsappDataContext/User/User_Ticket1" />
+      <nodes>
+        <classShapeMoniker Id="7fc6dc09-3d9a-4ce7-b088-03bbafc47fdb" />
+        <classShapeMoniker Id="aa0fd9eb-4872-40ba-bb18-3d34a51c7256" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
