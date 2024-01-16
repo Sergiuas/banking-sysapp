@@ -9,6 +9,7 @@
       Title="ticketPage">
 
     <StackPanel>
+        <Frame x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
         <materialDesign:ColorZone Mode="Light"
                                   Background="{DynamicResource MaterialDesignCardBackground}"
                                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"

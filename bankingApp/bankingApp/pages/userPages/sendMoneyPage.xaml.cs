@@ -22,29 +22,60 @@ namespace bankingApp.pages.userPages
     public partial class sendMoneyPage : Page
     {
         bsappDataContext db;
+        Card card;
         public string friendName;
         public string iban;
         public List<string> friends;
-        public List<string> ibans;
+        public List<string> useribans;
+        public List<string> friendibans;
         public sendMoneyPage(bsappDataContext db)
         {
             this.db = db;
+            card = new Card();
+            card.Balance = 0;
+            DataContext = card;
             InitializeComponent();
-            friends = friends = db.Contacts
-                .Where(f => f.UserID == UserSingleton.Instance.UserID)
-                .Join(db.Users,
-                      contact => contact.FriendID,
-                      user => user.UserID,
-                      (contact, user) => user.Username)
-                .ToList();
-            ibans = db.Cards
-                .Select(a => a.CardNumber)
-                .ToList();
+            //friends = db.Contacts
+            //    .Where(f => f.UserID == UserSingleton.Instance.UserID)
+            //    .Join(db.Users,
+            //          contact => contact.FriendID,
+            //          user => user.UserID,
+            //          (contact, user) => user.Username)
+            //    .ToList();
+            //ibans = db.Cards
+            //    .Select(a => a.CardNumber)
+            //    .ToList();
+
+            this.useribans = db.Cards.Where(u =>  u.UserID == UserSingleton.Instance.UserID)
+                            .Select(u => u.CardNumber)
+                            .ToList();
+
+            cbUserIban.ItemsSource = useribans;
+
+            //this.useribans = (from cards in db.Cards
+            //                  where cards.UserID == UserSingleton.Instance.UserID
+            //                  select cards.CardNumber.ToString()).ToList();
+
+            this.friends = (from contacts in db.Contacts
+                      join users in db.Users on contacts.FriendID equals users.UserID
+                      where contacts.UserID == UserSingleton.Instance.UserID && users.Type=="user"
+                      select users.Username.ToString()).ToList();
+
+            cbFriendname.ItemsSource = friends;
+            
         }
         private void cbFriendname_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbFriendname.SelectedItem != null)
                 this.friendName = cbFriendname.SelectedValue.ToString();
+
+            this.friendibans = (from cards in db.Cards
+                                        join users in db.Users on cards.UserID equals users.UserID
+                                        where users.Username == this.friendName
+                                        select cards.CardNumber
+                                        ).ToList() ;
+
+            cbIban.ItemsSource = friendibans;
         }
 
         private void cbFriendname_PreviewKeyUp(object sender, KeyEventArgs e)
@@ -72,6 +103,9 @@ namespace bankingApp.pages.userPages
         {
             if (cbIban.SelectedItem != null)
                 this.iban = cbIban.SelectedValue.ToString();
+
+            //List<string> useriban = (from cards in db.Cards
+            //                  where cards.UserID == UserSingleton.Instance.UserID).ToList();
         }
 
         private void cbIban_PreviewKeyUp(object sender, KeyEventArgs e)
@@ -82,12 +116,12 @@ namespace bankingApp.pages.userPages
             {
                 // If Backspace or Delete is pressed, reset the filtering
                 iban = "";
-                cbIban.ItemsSource = ibans;
+                cbIban.ItemsSource = friendibans;
             }
             else
             {
                 // Filter the items based on the entered text
-                cbIban.ItemsSource = ibans
+                cbIban.ItemsSource = friendibans
                     .Where(item => item.Contains(searchText))
                     .ToList();
             }
@@ -95,6 +129,27 @@ namespace bankingApp.pages.userPages
             cbIban.IsDropDownOpen = true;
         }
 
+
+        private void cbUserIban_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            string searchText = cbIban.Text.ToLower();
+
+            if (e.Key == System.Windows.Input.Key.Back || e.Key == System.Windows.Input.Key.Delete)
+            {
+                // If Backspace or Delete is pressed, reset the filtering
+                iban = "";
+                cbIban.ItemsSource = useribans;
+            }
+            else
+            {
+                // Filter the items based on the entered text
+                cbIban.ItemsSource = friendibans
+                    .Where(item => item.Contains(searchText))
+                    .ToList();
+            }
+
+            cbIban.IsDropDownOpen = true;
+        }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton rb = sender as RadioButton;
@@ -117,6 +172,17 @@ namespace bankingApp.pages.userPages
                 tbIban.Visibility = Visibility.Visible;
             }
 
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbUserIban_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            card = db.Cards.Single(u => u.CardNumber == cbUserIban.SelectedItem.ToString());
+            balanceLabel.Text = card.Balance.ToString();
         }
     }
 }

@@ -28,23 +28,62 @@ namespace bankingApp.pages.mangerPages
             
             this.db = db;
             InitializeComponent();
-            List<TicketBody> tickets = new List<TicketBody> { 
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody(),
-                new TicketBody()
-            };
+            List<TicketBody> tickets = (from t in db.Tickets
+                                       join u in db.Users on t.UserID equals u.UserID
+                                       where t.ManagerID == UserSingleton.Instance.UserID
+                                       select new TicketBody
+                                       {
+                                           username = u.Username,
+                                           subject = t.Subject,
+                                           body = t.Body,
+                                           id = t.TicketID,
+                                           status = (bool)t.Resolved,
+                                           date =(DateTime)t.Timestamp
+                                       }
+                                       ).ToList();
+
+            lbTickets.ItemsSource = tickets;
+        }
+
+        private void Initiliaze_Tickets(string searched="")
+        {
+            List<TicketBody> tickets;
+            if (!string.IsNullOrEmpty(searched))
+            {
+
+                 tickets = (from t in db.Tickets
+                                            join u in db.Users on t.UserID equals u.UserID
+                                            where t.ManagerID == UserSingleton.Instance.UserID && (t.Subject.Contains(searched) || u.Username.Contains(searched))
+                                            select new TicketBody
+                                            {
+                                                username = u.Username,
+                                                subject = t.Subject,
+                                                body = t.Body,
+                                                id = t.TicketID,
+                                                status = (bool)t.Resolved,
+                                                date = (DateTime)t.Timestamp
+                                            }
+                                            ).ToList();
+
+                lbTickets.ItemsSource = tickets;
+
+                return;
+            }
+
+            tickets = (from t in db.Tickets
+                                        join u in db.Users on t.UserID equals u.UserID
+                                        where t.ManagerID == UserSingleton.Instance.UserID
+                                        select new TicketBody
+                                        {
+                                            username = u.Username,
+                                            subject = t.Subject,
+                                            body = t.Body,
+                                            id = t.TicketID,
+                                            status = (bool)t.Resolved,
+                                            date = (DateTime)t.Timestamp
+                                        }
+                           ).ToList();
+
             lbTickets.ItemsSource = tickets;
         }
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
@@ -89,6 +128,40 @@ namespace bankingApp.pages.mangerPages
         {
             selectedTicket = (TicketBody)lbTickets.SelectedItem;
             DataContext = selectedTicket;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            selectedTicket = (TicketBody)lbTickets.SelectedItem;
+            var ticket = db.Tickets.SingleOrDefault(u => u.TicketID == selectedTicket.id);
+            if (ticket != null)
+            {
+                return;
+            }
+
+            db.Tickets.DeleteOnSubmit(ticket);
+
+            db.SubmitChanges();
+            Initiliaze_Tickets();
+        }
+
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            selectedTicket = (TicketBody)lbTickets.SelectedItem;
+            var ticket = db.Tickets.SingleOrDefault(u => u.TicketID == selectedTicket.id);
+            if (ticket != null)
+            {
+                return;
+            }
+            ticket.Resolved = true;
+
+            db.SubmitChanges();
+            Initiliaze_Tickets();
+        }
+
+        private void txtTransactions_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Initiliaze_Tickets(txtTransactions.Text.Trim());
         }
     }
 }
