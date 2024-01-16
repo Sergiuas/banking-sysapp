@@ -30,7 +30,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <TextBlock Text="Welcome back Admin!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
+                    <TextBlock Text="Welcome back!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                     <TextBlock Text="You have been away for ." Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                     <TextBlock Text="We are happy that you returned!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                 </StackPanel>
@@ -140,60 +140,6 @@
             </materialDesign:ColorZone>
         </Grid>
 
-        <TextBlock Text="Your Courses" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Margin="0 30 0 25"/>
-        <Grid>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <materialDesign:ColorZone Grid.Column="0" CornerRadius="15" Height="65" Mode="Custom" Background="CornflowerBlue" Margin="0 0 15 0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Bookshelf" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Business English" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Grammar" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:ColorZone Grid.Column="1" CornerRadius="15" Height="65" Mode="Custom" Background="LightSalmon" Margin="0 0 15 0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Pencil" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Common English" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Phrasal Verbs" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:ColorZone Grid.Column="2" CornerRadius="15" Height="65" Mode="Custom" Background="SlateGray" Margin="0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Announcement" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Business Spanish" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Vocabulary" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-        </Grid>
+        
     </StackPanel>
 </Page>

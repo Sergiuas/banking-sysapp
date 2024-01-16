@@ -70,7 +70,8 @@
                             Height="35"
                             materialDesign:RippleAssist.Feedback="Green"
                             Margin="0 0 0 15" 
-                            x:Name="btnDashboard" Click="btnDashboard_Click">
+                            x:Name="btnDashboard" Click="btnDashboard_Click"
+                            Visibility="Hidden">
                         <WrapPanel Width="140">
                             <materialDesign:PackIcon Kind="Home" 
                                                      VerticalAlignment="Center"
@@ -198,7 +199,7 @@
                 </StackPanel>
             </materialDesign:ColorZone>
             <StackPanel Margin="30 12 0 0" Grid.Column="1" x:Name="spMenu" >
-                <Frame Source="\pages\adminPages\adminDashboardPage.xaml"
+                <Frame 
                        x:Name="page"
                        NavigationUIVisibility="Hidden"></Frame>
             </StackPanel>
