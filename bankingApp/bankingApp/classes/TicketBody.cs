@@ -14,14 +14,5 @@ namespace bankingApp.classes
         public string body { get; set; }
         public DateTime date { get; set; }
         public bool status { get; set; }
-        public TicketBody()
-        {
-            id = 0;
-            username = "username";
-            subject = "subject";
-            body = "bodyasdassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
-            date = DateTime.Now;
-            status = false;
-        }
     }
 }

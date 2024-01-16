@@ -151,6 +151,7 @@
                                 FontWeight="Bold"
                                 Margin="35 0 20 0"/>
                     <ComboBox Margin="0 0 0 0"
+                              x:Name="cbUserIban"
                                 Width="190"
                                 FontSize="16" 
                                 materialDesign:HintAssist.Hint="Enter IBAN"
@@ -158,8 +159,7 @@
                                 BorderThickness="2"
                                 BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                 IsEditable="True" IsTextSearchEnabled="False"
-                                SelectionChanged="cbIban_SelectionChanged"
-                                PreviewKeyUp="cbIban_PreviewKeyUp">
+                                PreviewKeyUp="cbUserIban_PreviewKeyUp" SelectionChanged="cbUserIban_SelectionChanged">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}" HorizontalAlignment="Center" />
@@ -182,10 +182,28 @@
                                  BorderThickness="2"
                                  BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  Style="{StaticResource MaterialDesignTextBox}"/>
+                    <TextBlock
+                        Margin="5 5 0 0"
+                        Text="Balance:" 
+                        Width="60"
+                        FontSize="16" 
+                        FontWeight="Bold"
+                                />
+                    <TextBlock
+                        Margin="5 5 0 0"
+                        x:Name="balanceLabel"
+                        Text="{Binding Balance, Mode = TwoWay, UpdateSourceTrigger=Explicit}"
+                        Width="60"
+                        FontSize="16" 
+                        FontWeight="Bold"
+                                />
+                    
+                    
                 </StackPanel>
-                <Button Content="Send"
+                <Button x:Name="btnSend"
+                    Content="Send"
                         Background="{StaticResource PrimaryHueDarkBrush}"
-                        Margin="0 130 0 0"/>
+                        Margin="0 130 0 0" Click="btnSend_Click"/>
             </StackPanel>
         </materialDesign:ColorZone>
     </StackPanel>
