@@ -68,7 +68,7 @@
                     <ListBox Margin="0 5 0 0"
                              x:Name="lbCarduri"
                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                             Loaded="lbCarduri_Loaded" SelectionChanged="lbCarduri_SelectionChanged"
+                             Loaded="lbCarduri_Loaded" SelectionChanged="lbCarduri_SelectionChanged" MouseDoubleClick="lbCarduri_MouseDoubleClick"
                              >
                         
                         <ListBox.ItemTemplate>
@@ -99,10 +99,22 @@
                                       CornerRadius="15" Padding="20 20"
                                        Height="235">
                 <StackPanel>
-                    <DockPanel>
-                        <TextBlock FontSize="12" FontWeight="Bold" Text="Contacts"/>
-                        <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                    </DockPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   FontSize="12" FontWeight="Bold"
+                                   Text="Contacts"/>
+                        <Button x:Name="btnContacts" Style="{StaticResource MaterialDesignIconButton}"
+                                Width="20" Height="20" Margin="150 0 0 0"
+                                DockPanel.Dock="Right" Click="btnContacts_Click"
+                                Grid.Column="1">
+                            <materialDesign:PackIcon Kind="ArrowRight"  
+                                                     Width="17" Height="17"/>
+                        </Button>
+                    </Grid>
 
                     <ListBox Margin="0 5 0 0"
                              x:Name="lbFriends"
