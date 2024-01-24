@@ -202,7 +202,6 @@
                         Grid.Column="1"
                         x:Name="spMenu" >
                 <Frame x:Name="page" 
-                       Source="\pages\userPages\userDashboardPage.xaml"
                        NavigationUIVisibility="Hidden"/>
             </StackPanel>
             <materialDesign:ColorZone Grid.Column="2"

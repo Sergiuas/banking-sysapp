@@ -85,7 +85,7 @@ namespace bankingApp.pages.userPages
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            userDashboardPage page = new userDashboardPage();
+            userDashboardPage page = new userDashboardPage(db);
             MainContentFrame.Content = page;
         }
     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using bankingApp.pages.adminPages;
+using bankingApp.windows;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,24 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class userDashboardPage : Page
     {
-        public userDashboardPage()
+        bsappDataContext db;
+        public userDashboardPage(bsappDataContext db)
         {
+            this.db = db;
             InitializeComponent();
+        }
+
+        private void btnAddCard_Click(object sender, RoutedEventArgs e)
+        {
+            string foo = "";
+            var wdw = new selectManagerWindow(db);
+            wdw.ShowDialog();
+            foo = wdw.foo;
+
+            if (!string.IsNullOrEmpty(foo))
+            {
+                
+            }
         }
     }
 }

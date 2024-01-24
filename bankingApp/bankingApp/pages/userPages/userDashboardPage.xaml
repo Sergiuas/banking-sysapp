@@ -58,9 +58,9 @@
                         <TextBlock Text="Add new Card"
                                    FontSize="11" FontWeight="SemiBold"
                                    Margin="130 0 0 0" VerticalAlignment="Center"/>
-                        <Button Style="{StaticResource MaterialDesignIconButton}"
+                        <Button x:Name="btnAddCard" Style="{StaticResource MaterialDesignIconButton}"
                                 Width="20" Height="20"
-                                DockPanel.Dock="Right">
+                                DockPanel.Dock="Right" Click="btnAddCard_Click">
                             <materialDesign:PackIcon Kind="Plus" 
                                                      Width="17" Height="17"/>
                         </Button>
