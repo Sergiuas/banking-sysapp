@@ -152,6 +152,9 @@
     <Compile Include="MonthlyStatement.cs">
       <DependentUpon>].tt</DependentUpon>
     </Compile>
+    <Compile Include="pages\userPages\showCardPage.xaml.cs">
+      <DependentUpon>showCardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SavingsGoal.cs">
       <DependentUpon>].tt</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\userPages\sendMoneyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\userPages\showCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,7 +7,6 @@
       xmlns:local="clr-namespace:bankingApp.pages.userPages"
       xmlns:local2="clr-namespace:bankingApp.classes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="sendMessagePage">
 
     <StackPanel TextElement.Foreground="{DynamicResource MaterialDesignBody}">
