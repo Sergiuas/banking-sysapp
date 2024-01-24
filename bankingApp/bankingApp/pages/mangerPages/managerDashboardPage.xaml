@@ -28,8 +28,7 @@
 
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Welcome back Manager!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="You have learned 80% of your goal this week!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="Keep it up and improve your results!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
+                    <TextBlock Text="Keep it up!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                 </StackPanel>
 
                 <materialDesign:PackIcon Kind="Bank" Grid.Column="1"
@@ -59,16 +58,16 @@
                                   DataTooltip="{x:Null}"
                                   Height="230">
                         <lvc:PieChart.Series>
-                            <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
+                            <lvc:PieSeries x:Name="pieActiveCards" Title="Active" DataLabels="True"
                                    LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Others" Values="4" DataLabels="True" 
+                            <lvc:PieSeries x:Name="piePendingCards" Title="Pending" DataLabels="True" 
                                    LabelPoint="{Binding PointLabel}"/>
                         </lvc:PieChart.Series>
                     </lvc:PieChart>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Orientation="Vertical">
-                    <TextBlock Text="Total Tickets Solved"
+                    <TextBlock Text="Total Tickets"
                                FontSize="15" FontWeight="Bold"
                                HorizontalAlignment="Center"
                                Margin="0 5 0 0"/>
@@ -77,9 +76,9 @@
                                   DataTooltip="{x:Null}"
                                   Height="230">
                         <lvc:PieChart.Series>
-                            <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
+                            <lvc:PieSeries x:Name="pieTicketsSolved" Title="Solved" DataLabels="True"
                                    LabelPoint="{Binding PointLabel}"/>
-                            <lvc:PieSeries Title="Others" Values="4" DataLabels="True" 
+                            <lvc:PieSeries x:Name="pieTicketsUnsolved" Title="Unsolved" DataLabels="True" 
                                    LabelPoint="{Binding PointLabel}"/>
                         </lvc:PieChart.Series>
                     </lvc:PieChart>
