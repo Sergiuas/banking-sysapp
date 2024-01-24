@@ -174,9 +174,25 @@ namespace bankingApp.pages.userPages
 
         }
 
-        private void btnSend_Click(object sender, RoutedEventArgs e)
+        private void btnSend_Click(object sender, RoutedEventArgs e) // De verificat sumele
         {
+            float sum = float.Parse(txtSum.Text.ToString());
+            card.Balance = card.Balance - (decimal)sum;
 
+            Card destCard = db.Cards.Single(u => u.CardNumber == cbIban.SelectedItem.ToString());
+            destCard.Balance = destCard.Balance + (decimal)sum;
+
+            Transaction t = new Transaction();
+            t.CardSourceID = card.CardID;
+            t.CardDestID = destCard.CardID;
+            t.Amount = (decimal)sum;
+            t.Timestamp = DateTime.Now;
+
+            db.Transactions.InsertOnSubmit(t);
+            db.SubmitChanges();
+
+            // De adaugat mesaj pentru tranzactie
+            balanceLabel.Text = card.Balance.ToString();
         }
 
         private void cbUserIban_SelectionChanged(object sender, SelectionChangedEventArgs e)

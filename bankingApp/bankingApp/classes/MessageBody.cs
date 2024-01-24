@@ -19,11 +19,7 @@ namespace bankingApp.classes
         public Visibility isUser { get; set; }
         public MessageBody()
         {
-            message = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello";
-            sender = "sender";
-            date = DateTime.Now;
-            isFriend= Visibility.Visible;
-            isUser = Visibility.Hidden;
+
         }
     }
 }
