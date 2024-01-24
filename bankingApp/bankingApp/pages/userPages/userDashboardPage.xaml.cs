@@ -23,8 +23,8 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class userDashboardPage : Page
     {
-        bsappDataContext db;
-        public userDashboardPage(bsappDataContext db)
+        bsappEntities db;
+        public userDashboardPage(bsappEntities db)
         {
             this.db = db;
             InitializeComponent();
