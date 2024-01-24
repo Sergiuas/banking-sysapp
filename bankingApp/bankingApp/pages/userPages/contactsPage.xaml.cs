@@ -46,7 +46,7 @@ namespace bankingApp.pages.userPages
                 }).Join(db.Users, c => c.id, u => u.UserID, (c, u) => new Friend
                 {
                     id = u.UserID,
-                    name = $"{u.FirstName} {u.LastName}",
+                    name = u.FirstName + " " + u.LastName,
                     username = u.Username,
                     email = u.Email
                 }).ToList();
@@ -60,13 +60,13 @@ namespace bankingApp.pages.userPages
                 }).Join(db.Users, c => c.id, u => u.UserID, (c, u) => new Friend
                 {
                     id = u.UserID,
-                    name = $"{u.FirstName} {u.LastName}",
+                    name = u.FirstName + " " + u.LastName,
                     username = u.Username,
                     email = u.Email
                 }).Where(f => f.username.Contains(searchedFriend) || f.name.Contains(searchedFriend) || f.email.Contains(searchedFriend)).ToList();
             }
 
-            lblFriends.Text = $"{friends.Count} Users";
+            lblFriends.Text = friends.Count.ToString() + " Users";
             
             if (friends.Count > 10)
             {

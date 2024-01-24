@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+using System.Net.Mail;
 
 namespace bankingApp.pages.mangerPages
 {
@@ -28,21 +30,7 @@ namespace bankingApp.pages.mangerPages
             
             this.db = db;
             InitializeComponent();
-            List<TicketBody> tickets = (from t in db.Tickets
-                                       join u in db.Users on t.UserID equals u.UserID
-                                       where t.ManagerID == UserSingleton.Instance.UserID
-                                       select new TicketBody
-                                       {
-                                           username = u.Username,
-                                           subject = t.Subject,
-                                           body = t.Body,
-                                           id = t.TicketID,
-                                           status = (bool)t.Resolved,
-                                           date =(DateTime)t.Timestamp
-                                       }
-                                       ).ToList();
-
-            lbTickets.ItemsSource = tickets;
+            Initiliaze_Tickets();
         }
 
         private void Initiliaze_Tickets(string searched="")
@@ -159,6 +147,27 @@ namespace bankingApp.pages.mangerPages
 
             db.SaveChanges();
             Initiliaze_Tickets();
+
+            var user = db.Users.SingleOrDefault(u => u.UserID == ticket.UserID);
+
+            string fromMail = "hamsik569@gmail.com";
+            string fromPassword = "vjcoxfvzihgzlfpu";
+
+            MailMessage message = new MailMessage();
+            message.From= new MailAddress(fromMail);
+            message.Subject = "[BankingSystems]Ticket " + ticket.TicketID.ToString() + " solved";
+            message.To.Add(new MailAddress(user.Email.ToString())); 
+            message.Body = "<html><body> Ticket-ul a fost solutionat. </body></html>";
+            message.IsBodyHtml = true;
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail, fromPassword),
+                EnableSsl = true,
+            };
+
+            smtpClient.Send(message);
         }
 
         private void txtTransactions_TextChanged(object sender, TextChangedEventArgs e)

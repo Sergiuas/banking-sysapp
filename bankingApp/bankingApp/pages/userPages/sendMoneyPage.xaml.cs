@@ -195,6 +195,17 @@ namespace bankingApp.pages.userPages
 
             // De adaugat mesaj pentru tranzactie
             balanceLabel.Text = card.Balance.ToString();
+
+            var user = db.Users.SingleOrDefault(u => u.Username == friendName);
+
+            Message message = new Message();
+            message.SenderID = UserSingleton.Instance.UserID;
+            message.RecipientID = user.UserID;
+            message.Timestamp = DateTime.Now;
+            message.Body = "Sent " + t.Amount.ToString();
+
+            db.Messages.Add(message);
+            db.SaveChanges();
         }
 
         private void cbUserIban_SelectionChanged(object sender, SelectionChangedEventArgs e)
