@@ -1,4 +1,6 @@
-﻿using System;
+﻿using bankingApp.classes;
+using LiveCharts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,27 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class showCardPage : Page
     {
-        public showCardPage()
+        bsappEntities db;
+        public showCardPage(bsappEntities db, ShowCard card)
         {
+            this.db = db;
+            Card cardData = (from c in db.Cards
+                             where c.CardNumber == card.cardnumber
+                             select c).FirstOrDefault();
             InitializeComponent();
+            PointLabel = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            DataContext = this;
+            tbFirstName.Text = UserSingleton.Instance.firstName;
+            tbLastName.Text = UserSingleton.Instance.lastName;
+            //tbBirthDate.Text = UserSingleton.Instance.birthdate;
+            tbCardNumber.Text = card.cardnumber;
+            tbAmmount.Text = card.balance.ToString();
+            tbExpiryDate.Text = card.expirydate.ToString();
+            tbCardStatus.Text = cardData.Active.ToString();
         }
+
+        public Func<ChartPoint, string> PointLabel { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace bankingApp.classes
 {
-    internal class ShowCard
+    public class ShowCard
     {
             public string username { get; set; }
 
