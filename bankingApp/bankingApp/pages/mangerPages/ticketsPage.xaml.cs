@@ -53,7 +53,7 @@ namespace bankingApp.pages.mangerPages
 
                  tickets = (from t in db.Tickets
                                             join u in db.Users on t.UserID equals u.UserID
-                                            where t.ManagerID == UserSingleton.Instance.UserID && (t.Subject.Contains(searched) || u.Username.Contains(searched))
+                                            where t.ManagerID == UserSingleton.Instance.UserID && (t.Subject.Contains(searched) || u.Username.Contains(searched) && t.Resolved==false)
                                             select new TicketBody
                                             {
                                                 username = u.Username,
@@ -72,7 +72,7 @@ namespace bankingApp.pages.mangerPages
 
             tickets = (from t in db.Tickets
                                         join u in db.Users on t.UserID equals u.UserID
-                                        where t.ManagerID == UserSingleton.Instance.UserID
+                                        where t.ManagerID == UserSingleton.Instance.UserID && t.Resolved == false
                                         select new TicketBody
                                         {
                                             username = u.Username,
@@ -134,7 +134,7 @@ namespace bankingApp.pages.mangerPages
         {
             selectedTicket = (TicketBody)lbTickets.SelectedItem;
             var ticket = db.Tickets.SingleOrDefault(u => u.TicketID == selectedTicket.id);
-            if (ticket != null)
+            if (ticket == null)
             {
                 return;
             }
@@ -149,7 +149,7 @@ namespace bankingApp.pages.mangerPages
         {
             selectedTicket = (TicketBody)lbTickets.SelectedItem;
             var ticket = db.Tickets.SingleOrDefault(u => u.TicketID == selectedTicket.id);
-            if (ticket != null)
+            if (ticket == null)
             {
                 return;
             }

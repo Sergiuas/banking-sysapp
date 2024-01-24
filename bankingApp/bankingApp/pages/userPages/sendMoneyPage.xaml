@@ -176,6 +176,7 @@
                                 FontWeight="Bold"
                                 Margin="35 0 20 0"/>
                     <TextBox Grid.Column="1"
+                             x:Name="txtSum"
                                  Width="190" FontSize="16"
                                  materialDesign:HintAssist.Hint="Enter Ammount"
                                  Background="{DynamicResource MaterialDesignComboBoxBackground}"
