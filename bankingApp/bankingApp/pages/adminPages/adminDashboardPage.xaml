@@ -28,8 +28,7 @@
 
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Welcome back Admin!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="You have learned 80% of your goal this week!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="Keep it up and improve your results!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
+                    <TextBlock Text="Keep it up!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                 </StackPanel>
 
                 <materialDesign:PackIcon Kind="Bank" Grid.Column="1"
