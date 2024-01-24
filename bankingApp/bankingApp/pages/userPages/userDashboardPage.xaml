@@ -31,7 +31,6 @@
 
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Welcome back!" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
-                    <TextBlock Text="You have been away for ." Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                     <TextBlock Text="We are happy that you returned!" Foreground="SlateGray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 5 0 0"/>
                 </StackPanel>
                 <materialDesign:PackIcon Kind="Bank" Grid.Column="1"
@@ -67,32 +66,29 @@
                     </DockPanel>
 
                     <ListBox Margin="0 5 0 0"
-                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                             x:Name="lbCarduri"
+                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                             Loaded="lbCarduri_Loaded" SelectionChanged="lbCarduri_SelectionChanged"
+                             >
+                        
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel HorizontalAlignment="Stretch">
                                     <materialDesign:PackIcon Kind="CreditCard" Height="20" Width="20" Margin="0 0 10 0"/>
-                                    <TextBlock Text="**** **** **** 1234"
+                                    <TextBlock Text="{Binding Path=cardnumber}"
                                        FontSize="11" FontWeight="SemiBold"
                                        Foreground="DimGray"/>
                                     <TextBlock Text="Balance:"
                                        Margin="25 0 0 0"
                                        FontSize="11" FontWeight="SemiBold"
                                        Foreground="DimGray"/>
-                                    <TextBlock Text="N 100,000"
+                                    <TextBlock Text="{Binding Path=balance}"
                                        Margin="5 0 0 0"
                                        FontSize="11" FontWeight="SemiBold"
                                        Foreground="DimGray"/>
                                 </DockPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
                     </ListBox>
                 </StackPanel>
             </materialDesign:ColorZone>
@@ -108,29 +104,29 @@
                         <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </DockPanel>
 
-                    <ListBox Margin="0 5 0 0">
+                    <ListBox Margin="0 5 0 0"
+                             x:Name="lbFriends"
+                             Loaded="lbFriends_Loaded" SelectionChanged="lbFriends_SelectionChanged"
+                             >
+
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
                                     <TextBlock HorizontalAlignment="Left" 
-                                                FontSize="11" FontWeight="SemiBold"
-                                                Foreground="Gray">
-                                        <Bold Foreground="Black">John Carter</Bold>
-                                        <TextBlock>User1</TextBlock>
+                                                Text="{Binding Path=name}"
+                                                FontSize="11" FontWeight="Bold"
+                                                Foreground="Black">
+
                                     </TextBlock>
 
-                                                <TextBlock HorizontalAlignment="Left"
+                                    <TextBlock HorizontalAlignment="Left"
                                                FontSize="11" FontWeight="SemiBold"
                                                Foreground="DimGray"
-                                               Text="Friend since"/>
-                                                <Separator Background="WhiteSmoke" Margin="0 5 0 0"/>
+                                              Text="{Binding Path=username}"/>
+                                    <Separator Background="WhiteSmoke" Margin="0 5 0 0"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
-                        <ListItem/>
                     </ListBox>
                     
 
