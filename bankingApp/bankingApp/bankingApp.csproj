@@ -179,6 +179,9 @@
     <Compile Include="pages\userPages\userDashboardPage.xaml.cs">
       <DependentUpon>userDashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\selectFriendWindow.xaml.cs">
+      <DependentUpon>selectFriendWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="].Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -312,6 +315,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\OwnerDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\selectFriendWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

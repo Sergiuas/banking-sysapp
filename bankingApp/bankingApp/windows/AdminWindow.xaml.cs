@@ -35,6 +35,7 @@ namespace bankingApp.windows
             this.db = db;
             DataContext = userInstance;
             InitializeComponent();
+            page.Content = new adminDashboardPage(db);
         }
 
         private void WindowDragMove(object sender, MouseButtonEventArgs e)
@@ -168,7 +169,7 @@ namespace bankingApp.windows
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            adminDashboardPage Page = new adminDashboardPage();
+            adminDashboardPage Page = new adminDashboardPage(db);
             page.Content = Page;
         }
     }

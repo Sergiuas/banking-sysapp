@@ -39,7 +39,7 @@ namespace bankingApp.pages.userPages
 
             if (!string.IsNullOrEmpty(foo))
             {
-                
+
             }
         }
     }
