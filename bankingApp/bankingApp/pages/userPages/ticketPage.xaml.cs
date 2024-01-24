@@ -1,4 +1,4 @@
-﻿using bankingApp.classes;
+using bankingApp.classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +21,10 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class ticketPage : Page
     {
-        bsappDataContext db = new bsappDataContext();
+        bsappEntities db = new bsappEntities();
         public string managerName { get; set; }
         public List<string> managers { set; get; }
-        public ticketPage(bsappDataContext db)
+        public ticketPage(bsappEntities db)
         {
             this.db = db;
             InitializeComponent();
@@ -75,8 +75,10 @@ namespace bankingApp.pages.userPages
             ticket.Timestamp = DateTime.Now;
             ticket.Resolved = false;
 
-            db.Tickets.InsertOnSubmit(ticket);
-            db.SubmitChanges();
+            //db.Tickets.InsertOnSubmit(ticket);
+            //db.SubmitChanges();
+            db.Tickets.Add(ticket);
+            db.SaveChanges();
 
             tbBody.Clear();
             tbSubject.Clear();
@@ -85,7 +87,7 @@ namespace bankingApp.pages.userPages
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            userDashboardPage page = new userDashboardPage(db);
+            userDashboardPage page = new userDashboardPage();
             MainContentFrame.Content = page;
         }
     }
