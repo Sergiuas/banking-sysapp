@@ -152,5 +152,22 @@ namespace bankingApp.pages.userPages
         {
 
         }
+
+        private void lbCarduri_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ShowCard card = (ShowCard)lbCarduri.SelectedItem;
+            if (card != null)
+            {
+                var page = new showCardPage(db, card);
+                NavigationService.Navigate(page);
+
+            }
+        }
+
+        private void btnContacts_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new contactsPage(db);
+            NavigationService.Navigate(page);
+        }
     }
 }
