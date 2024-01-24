@@ -36,6 +36,8 @@ namespace bankingApp.windows
             this.db = db;
             DataContext = userInstance;
             InitializeComponent();
+            Page dash = new managerDashboardPage(db);
+            page.Content = dash;
         }
 
         private void WindowDragMove(object sender, MouseButtonEventArgs e)
@@ -159,7 +161,7 @@ namespace bankingApp.windows
 
         private void Button_Click(object sender, RoutedEventArgs e) // Dashboard
         {
-            managerDashboardPage Page = new managerDashboardPage();
+            managerDashboardPage Page = new managerDashboardPage(db);
             page.Content = Page;
         }
     }
