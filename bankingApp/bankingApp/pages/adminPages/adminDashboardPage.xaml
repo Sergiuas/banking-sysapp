@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:bankingApp.pages.adminPages"
       mc:Ignorable="d" 
       Title="adminDashboardPage">
@@ -40,145 +41,20 @@
                                Margin="0 -85 0 -25"/>
             </Grid>
         </materialDesign:ColorZone>
+        <materialDesign:ColorZone Margin="0 35 0 0" Height="400"
+                                  Mode="Custom" Background="White"
+                                  Foreground="Black" CornerRadius="15"
+                                  Padding="20">
+            <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Managers" Labels="{Binding Labels}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Cards Created" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </materialDesign:ColorZone>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <materialDesign:ColorZone Margin="0 35 0 0" Grid.Column="0" Mode="Custom" Background="White" Foreground="Black" CornerRadius="15" Padding="20">
-                <StackPanel>
-                    <DockPanel>
-                        <TextBlock Text="Latest Results" FontSize="12" FontWeight="bold"/>
-                        <TextBlock Text="More" FontSize="11" FontWeight="SemiBold" Margin="135 0 0 0"/>
-                        <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
-                    </DockPanel>
-
-                    <DockPanel Margin="0 30 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 5</Bold> - Technology</TextBlock>
-                        <ProgressBar Value="25" Width="60" Height="4" BorderThickness="0" Foreground="LightCoral" Background="Gainsboro" Margin="65 0 0 0"/>
-                        <TextBlock Text="25%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 12</Bold> - Ecology</TextBlock>
-                        <ProgressBar Value="44" Width="60" Height="4" BorderThickness="0" Foreground="DodgerBlue" Background="Gainsboro" Margin="76 0 0 0"/>
-                        <TextBlock Text="44%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 9</Bold> - Real Estate</TextBlock>
-                        <ProgressBar Value="40" Width="60" Height="4" BorderThickness="0" Foreground="DodgerBlue" Background="Gainsboro" Margin="67 0 0 0"/>
-                        <TextBlock Text="40%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-                    <DockPanel Margin="0 15 0 0">
-                        <TextBlock Foreground="Gray" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Left"><Bold Foreground="Black">Unit 8</Bold> - Education</TextBlock>
-                        <ProgressBar Value="75" Width="60" Height="4" BorderThickness="0" Foreground="MediumSeaGreen" Background="Gainsboro" Margin="72 0 0 0"/>
-                        <TextBlock Text="75%" FontSize="11" FontWeight="SemiBold" HorizontalAlignment="Right"/>
-                    </DockPanel>
-                </StackPanel>
-            </materialDesign:ColorZone>
-
-            <materialDesign:ColorZone Grid.Column="1" Margin="15 35 0 0" Mode="Custom" Background="White" Foreground="Black" CornerRadius="15" Padding="20 20">
-                <StackPanel>
-                    <DockPanel>
-                        <TextBlock FontSize="12" FontWeight="Bold" Text="Reviews"/>
-                        <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                    </DockPanel>
-
-                    <DockPanel Margin="0 30 0 7">
-                        <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="Gray"><Bold Foreground="Black">John Carter</Bold> - Student</TextBlock>
-                        <materialDesign:RatingBar IsReadOnly="True" Max="5" Value="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <materialDesign:RatingBar.ValueItemTemplate>
-                                <DataTemplate DataType="system:Int32">
-                                    <Grid>
-                                        <materialDesign:PackIcon Kind="Star" Height="15" Width="15"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </materialDesign:RatingBar.ValueItemTemplate>
-                        </materialDesign:RatingBar>
-                    </DockPanel>
-                    <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="DimGray">Contrary to popular belief, Lorem Ipsum <LineBreak/>is not simply random text.</TextBlock>
-                    <Separator Background="WhiteSmoke" Margin="0 15 0 0"/>
-
-
-                    <DockPanel Margin="0 15 0 10">
-                        <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="Gray"><Bold Foreground="Black">Walter White</Bold> - Lecturer</TextBlock>
-                        <materialDesign:RatingBar IsReadOnly="True" Max="5" Value="3" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <materialDesign:RatingBar.ValueItemTemplate>
-                                <DataTemplate DataType="system:Int32">
-                                    <Grid>
-                                        <materialDesign:PackIcon Kind="Star" Height="15" Width="15"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </materialDesign:RatingBar.ValueItemTemplate>
-                        </materialDesign:RatingBar>
-                    </DockPanel>
-                    <TextBlock HorizontalAlignment="Left" FontSize="11" FontWeight="SemiBold" Foreground="DimGray">There are many variations of passages of<LineBreak/> Lorem Ipsum available, but the majority<LineBreak/> have suffered alteration</TextBlock>
-
-                </StackPanel>
-            </materialDesign:ColorZone>
-        </Grid>
-
-        <TextBlock Text="Your Courses" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Margin="0 30 0 25"/>
-        <Grid>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <materialDesign:ColorZone Grid.Column="0" CornerRadius="15" Height="65" Mode="Custom" Background="CornflowerBlue" Margin="0 0 15 0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Bookshelf" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Business English" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Grammar" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:ColorZone Grid.Column="1" CornerRadius="15" Height="65" Mode="Custom" Background="LightSalmon" Margin="0 0 15 0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Pencil" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Common English" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Phrasal Verbs" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-            <materialDesign:ColorZone Grid.Column="2" CornerRadius="15" Height="65" Mode="Custom" Background="SlateGray" Margin="0" Foreground="White" Padding="20 10">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*"/>
-                        <ColumnDefinition Width="52*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Announcement" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="0 8 0 7"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="31" Margin="0 7">
-                        <TextBlock Text="Business Spanish" FontSize="11" FontWeight="Regular"/>
-                        <TextBlock Text="Vocabulary" FontSize="12" FontWeight="Bold"/>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:ColorZone>
-
-        </Grid>
+            
     </StackPanel>
 </Page>
