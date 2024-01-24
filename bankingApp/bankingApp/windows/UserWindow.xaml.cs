@@ -43,6 +43,9 @@ namespace bankingApp
             DataContext = userInstance;
 
             InitializeComponent();
+            userDashboardPage Page = new userDashboardPage(db);
+            page.Content = Page;
+
         }
         private void WindowDragMove(object sender, MouseButtonEventArgs e)
         {
@@ -131,7 +134,7 @@ namespace bankingApp
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new userDashboardPage();
+            var Page = new userDashboardPage(db);
             page.Content = Page;
         }
 

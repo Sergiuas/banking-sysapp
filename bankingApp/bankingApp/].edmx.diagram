@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6572e1be29143c1bfcb0744c1c9abbd" Name="Diagram1">
+        <EntityTypeShape EntityType="bsappModel.Budget" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.Card" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.Contact" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.Message" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.MonthlyStatement" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.SavingsGoal" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.Ticket" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.Transaction" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.User" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bsappModel.MessagesView" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="bsappModel.FK__Budgets__UserID__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Cards__ManagerID__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Cards__UserID__1EA48E88" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Transacti__CardD__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Transacti__CardS__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Contacts__Friend__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Contacts__UserID__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Messages__Recipi__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Messages__Sender__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Transacti__Messa__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__MonthlySt__UserI__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__SavingsGo__UserI__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Tickets__Manager__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="bsappModel.FK__Tickets__UserID__41EDCAC5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

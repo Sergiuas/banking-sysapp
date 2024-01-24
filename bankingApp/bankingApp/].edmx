@@ -1,0 +1,936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bsappModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Budgets">
+          <Key>
+            <PropertyRef Name="BudgetID" />
+          </Key>
+          <Property Name="BudgetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="BudgetAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CurrentSpending" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="16" />
+          <Property Name="CardType" Type="varchar" MaxLength="50" />
+          <Property Name="Balance" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="ManagerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FriendID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FriendID" Type="int" Nullable="false" />
+          <Property Name="Pending" Type="bit" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderID" Type="int" />
+          <Property Name="RecipientID" Type="int" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Body" Type="text" />
+        </EntityType>
+        <EntityType Name="MonthlyStatements">
+          <Key>
+            <PropertyRef Name="MonthlyStatementID" />
+          </Key>
+          <Property Name="MonthlyStatementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="TotalDeposits" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalWithdrawals" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalTransfers" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="NetBalance" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="SavingsGoals">
+          <Key>
+            <PropertyRef Name="SavingsGoalID" />
+          </Key>
+          <Property Name="SavingsGoalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="GoalName" Type="varchar" MaxLength="255" />
+          <Property Name="GoalAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CurrentSavings" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="Subject" Type="varchar" MaxLength="255" />
+          <Property Name="Body" Type="text" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Resolved" Type="bit" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardSourceID" Type="int" />
+          <Property Name="CardDestID" Type="int" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="TransactionCurency" Type="varchar" MaxLength="255" />
+          <Property Name="MessageID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="ProfilePicture" Type="varchar" MaxLength="255" />
+          <Property Name="TwoFactorAuthEnabled" Type="bit" />
+          <Property Name="SecurityQuestion" Type="varchar" MaxLength="255" />
+          <Property Name="SecurityAnswer" Type="varchar" MaxLength="255" />
+          <Property Name="RememberMe" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bsapp.dbo.MessagesView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MessagesView">
+          <Key>
+            <PropertyRef Name="MessageID" />
+            <PropertyRef Name="SenderUsername" />
+            <PropertyRef Name="RecipientUsername" />
+          </Key>
+          <Property Name="MessageID" Type="int" Nullable="false" />
+          <Property Name="SenderUsername" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SenderID" Type="int" />
+          <Property Name="RecipientUsername" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RecipientID" Type="int" />
+          <Property Name="Timestamp" Type="datetime" />
+          <Property Name="Body" Type="text" />
+        </EntityType>
+        <Association Name="FK__Budgets__UserID__2FCF1A8A">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budgets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cards__ManagerID__1DB06A4F">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cards__UserID__1EA48E88">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contacts__Friend__1AD3FDA4">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contacts__UserID__19DFD96B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Recipi__22751F6C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="RecipientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Sender__2180FB33">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonthlySt__UserI__2CF2ADDF">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="MonthlyStatements" Type="Self.MonthlyStatements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MonthlyStatements">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SavingsGo__UserI__2A164134">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="SavingsGoals" Type="Self.SavingsGoals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SavingsGoals">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__Manager__42E1EEFE">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__UserID__41EDCAC5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__CardD__2739D489">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="CardDestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__CardS__2645B050">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="CardSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Messa__25518C17">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bsappModelStoreContainer">
+          <EntitySet Name="Budgets" EntityType="Self.Budgets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonthlyStatements" EntityType="Self.MonthlyStatements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SavingsGoals" EntityType="Self.SavingsGoals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessagesView" EntityType="Self.MessagesView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MessagesView].[MessageID] AS [MessageID], 
+    [MessagesView].[SenderUsername] AS [SenderUsername], 
+    [MessagesView].[SenderID] AS [SenderID], 
+    [MessagesView].[RecipientUsername] AS [RecipientUsername], 
+    [MessagesView].[RecipientID] AS [RecipientID], 
+    [MessagesView].[Timestamp] AS [Timestamp], 
+    [MessagesView].[Body] AS [Body]
+    FROM [dbo].[MessagesView] AS [MessagesView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Budgets__UserID__2FCF1A8A" Association="Self.FK__Budgets__UserID__2FCF1A8A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cards__ManagerID__1DB06A4F" Association="Self.FK__Cards__ManagerID__1DB06A4F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cards__UserID__1EA48E88" Association="Self.FK__Cards__UserID__1EA48E88">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contacts__Friend__1AD3FDA4" Association="Self.FK__Contacts__Friend__1AD3FDA4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contacts__UserID__19DFD96B" Association="Self.FK__Contacts__UserID__19DFD96B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Recipi__22751F6C" Association="Self.FK__Messages__Recipi__22751F6C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Sender__2180FB33" Association="Self.FK__Messages__Sender__2180FB33">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonthlySt__UserI__2CF2ADDF" Association="Self.FK__MonthlySt__UserI__2CF2ADDF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MonthlyStatements" EntitySet="MonthlyStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SavingsGo__UserI__2A164134" Association="Self.FK__SavingsGo__UserI__2A164134">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SavingsGoals" EntitySet="SavingsGoals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__Manager__42E1EEFE" Association="Self.FK__Tickets__Manager__42E1EEFE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__UserID__41EDCAC5" Association="Self.FK__Tickets__UserID__41EDCAC5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__CardD__2739D489" Association="Self.FK__Transacti__CardD__2739D489">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__CardS__2645B050" Association="Self.FK__Transacti__CardS__2645B050">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Messa__25518C17" Association="Self.FK__Transacti__Messa__25518C17">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bsappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Budget">
+          <Key>
+            <PropertyRef Name="BudgetID" />
+          </Key>
+          <Property Name="BudgetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BudgetAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CurrentSpending" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Budgets__UserID__2FCF1A8A" FromRole="Budgets" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardID" />
+          </Key>
+          <Property Name="CardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CardNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CardType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="ManagerID" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Cards__ManagerID__1DB06A4F" FromRole="Cards" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Cards__UserID__1EA48E88" FromRole="Cards" ToRole="Users" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__CardD__2739D489" FromRole="Cards" ToRole="Transactions" />
+          <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__CardS__2645B050" FromRole="Cards" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FriendID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FriendID" Type="Int32" Nullable="false" />
+          <Property Name="Pending" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Contacts__Friend__1AD3FDA4" FromRole="Contacts" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Contacts__UserID__19DFD96B" FromRole="Contacts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderID" Type="Int32" />
+          <Property Name="RecipientID" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Messages__Recipi__22751F6C" FromRole="Messages" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Messages__Sender__2180FB33" FromRole="Messages" ToRole="Users" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Messa__25518C17" FromRole="Messages" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="MonthlyStatement">
+          <Key>
+            <PropertyRef Name="MonthlyStatementID" />
+          </Key>
+          <Property Name="MonthlyStatementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="TotalDeposits" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalWithdrawals" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalTransfers" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="NetBalance" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="User" Relationship="Self.FK__MonthlySt__UserI__2CF2ADDF" FromRole="MonthlyStatements" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="SavingsGoal">
+          <Key>
+            <PropertyRef Name="SavingsGoalID" />
+          </Key>
+          <Property Name="SavingsGoalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="GoalName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GoalAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CurrentSavings" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="User" Relationship="Self.FK__SavingsGo__UserI__2A164134" FromRole="SavingsGoals" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketID" />
+          </Key>
+          <Property Name="TicketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Resolved" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Tickets__Manager__42E1EEFE" FromRole="Tickets" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Tickets__UserID__41EDCAC5" FromRole="Tickets" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardSourceID" Type="Int32" />
+          <Property Name="CardDestID" Type="Int32" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="TransactionCurency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MessageID" Type="Int32" />
+          <NavigationProperty Name="Card" Relationship="Self.FK__Transacti__CardD__2739D489" FromRole="Transactions" ToRole="Cards" />
+          <NavigationProperty Name="Card1" Relationship="Self.FK__Transacti__CardS__2645B050" FromRole="Transactions" ToRole="Cards" />
+          <NavigationProperty Name="Message" Relationship="Self.FK__Transacti__Messa__25518C17" FromRole="Transactions" ToRole="Messages" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="ProfilePicture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TwoFactorAuthEnabled" Type="Boolean" />
+          <Property Name="SecurityQuestion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityAnswer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RememberMe" Type="Boolean" />
+          <NavigationProperty Name="Budgets" Relationship="Self.FK__Budgets__UserID__2FCF1A8A" FromRole="Users" ToRole="Budgets" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK__Cards__ManagerID__1DB06A4F" FromRole="Users" ToRole="Cards" />
+          <NavigationProperty Name="Cards1" Relationship="Self.FK__Cards__UserID__1EA48E88" FromRole="Users" ToRole="Cards" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK__Contacts__Friend__1AD3FDA4" FromRole="Users" ToRole="Contacts" />
+          <NavigationProperty Name="Contacts1" Relationship="Self.FK__Contacts__UserID__19DFD96B" FromRole="Users" ToRole="Contacts" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK__Messages__Recipi__22751F6C" FromRole="Users" ToRole="Messages" />
+          <NavigationProperty Name="Messages1" Relationship="Self.FK__Messages__Sender__2180FB33" FromRole="Users" ToRole="Messages" />
+          <NavigationProperty Name="MonthlyStatements" Relationship="Self.FK__MonthlySt__UserI__2CF2ADDF" FromRole="Users" ToRole="MonthlyStatements" />
+          <NavigationProperty Name="SavingsGoals" Relationship="Self.FK__SavingsGo__UserI__2A164134" FromRole="Users" ToRole="SavingsGoals" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK__Tickets__Manager__42E1EEFE" FromRole="Users" ToRole="Tickets" />
+          <NavigationProperty Name="Tickets1" Relationship="Self.FK__Tickets__UserID__41EDCAC5" FromRole="Users" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="MessagesView">
+          <Key>
+            <PropertyRef Name="MessageID" />
+            <PropertyRef Name="SenderUsername" />
+            <PropertyRef Name="RecipientUsername" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" />
+          <Property Name="SenderUsername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SenderID" Type="Int32" />
+          <Property Name="RecipientUsername" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RecipientID" Type="Int32" />
+          <Property Name="Timestamp" Type="DateTime" Precision="3" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Budgets__UserID__2FCF1A8A">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Budgets" Type="Self.Budget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Budgets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cards__ManagerID__1DB06A4F">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cards__UserID__1EA48E88">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__CardD__2739D489">
+          <End Role="Cards" Type="Self.Card" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="CardDestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__CardS__2645B050">
+          <End Role="Cards" Type="Self.Card" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="CardSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contacts__Friend__1AD3FDA4">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="FriendID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contacts__UserID__19DFD96B">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Contacts" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Recipi__22751F6C">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="RecipientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Messages__Sender__2180FB33">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Messa__25518C17">
+          <End Role="Messages" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="Transactions">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonthlySt__UserI__2CF2ADDF">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="MonthlyStatements" Type="Self.MonthlyStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MonthlyStatements">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SavingsGo__UserI__2A164134">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="SavingsGoals" Type="Self.SavingsGoal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SavingsGoals">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__Manager__42E1EEFE">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tickets__UserID__41EDCAC5">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bsappEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Budgets" EntityType="Self.Budget" />
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Messages" EntityType="Self.Message" />
+          <EntitySet Name="MonthlyStatements" EntityType="Self.MonthlyStatement" />
+          <EntitySet Name="SavingsGoals" EntityType="Self.SavingsGoal" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="MessagesViews" EntityType="Self.MessagesView" />
+          <AssociationSet Name="FK__Budgets__UserID__2FCF1A8A" Association="Self.FK__Budgets__UserID__2FCF1A8A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Budgets" EntitySet="Budgets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cards__ManagerID__1DB06A4F" Association="Self.FK__Cards__ManagerID__1DB06A4F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cards__UserID__1EA48E88" Association="Self.FK__Cards__UserID__1EA48E88">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__CardD__2739D489" Association="Self.FK__Transacti__CardD__2739D489">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__CardS__2645B050" Association="Self.FK__Transacti__CardS__2645B050">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contacts__Friend__1AD3FDA4" Association="Self.FK__Contacts__Friend__1AD3FDA4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contacts__UserID__19DFD96B" Association="Self.FK__Contacts__UserID__19DFD96B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Recipi__22751F6C" Association="Self.FK__Messages__Recipi__22751F6C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Messages__Sender__2180FB33" Association="Self.FK__Messages__Sender__2180FB33">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Messa__25518C17" Association="Self.FK__Transacti__Messa__25518C17">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="Transactions" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonthlySt__UserI__2CF2ADDF" Association="Self.FK__MonthlySt__UserI__2CF2ADDF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MonthlyStatements" EntitySet="MonthlyStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SavingsGo__UserI__2A164134" Association="Self.FK__SavingsGo__UserI__2A164134">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SavingsGoals" EntitySet="SavingsGoals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__Manager__42E1EEFE" Association="Self.FK__Tickets__Manager__42E1EEFE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tickets__UserID__41EDCAC5" Association="Self.FK__Tickets__UserID__41EDCAC5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bsappModelStoreContainer" CdmEntityContainer="bsappEntities">
+          <EntitySetMapping Name="Budgets">
+            <EntityTypeMapping TypeName="bsappModel.Budget">
+              <MappingFragment StoreEntitySet="Budgets">
+                <ScalarProperty Name="BudgetID" ColumnName="BudgetID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="BudgetAmount" ColumnName="BudgetAmount" />
+                <ScalarProperty Name="CurrentSpending" ColumnName="CurrentSpending" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="bsappModel.Card">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="CardID" ColumnName="CardID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="bsappModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FriendID" ColumnName="FriendID" />
+                <ScalarProperty Name="Pending" ColumnName="Pending" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="bsappModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="RecipientID" ColumnName="RecipientID" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthlyStatements">
+            <EntityTypeMapping TypeName="bsappModel.MonthlyStatement">
+              <MappingFragment StoreEntitySet="MonthlyStatements">
+                <ScalarProperty Name="MonthlyStatementID" ColumnName="MonthlyStatementID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="TotalDeposits" ColumnName="TotalDeposits" />
+                <ScalarProperty Name="TotalWithdrawals" ColumnName="TotalWithdrawals" />
+                <ScalarProperty Name="TotalTransfers" ColumnName="TotalTransfers" />
+                <ScalarProperty Name="NetBalance" ColumnName="NetBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SavingsGoals">
+            <EntityTypeMapping TypeName="bsappModel.SavingsGoal">
+              <MappingFragment StoreEntitySet="SavingsGoals">
+                <ScalarProperty Name="SavingsGoalID" ColumnName="SavingsGoalID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoalName" ColumnName="GoalName" />
+                <ScalarProperty Name="GoalAmount" ColumnName="GoalAmount" />
+                <ScalarProperty Name="CurrentSavings" ColumnName="CurrentSavings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="bsappModel.Ticket">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Resolved" ColumnName="Resolved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="bsappModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="CardSourceID" ColumnName="CardSourceID" />
+                <ScalarProperty Name="CardDestID" ColumnName="CardDestID" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="TransactionCurency" ColumnName="TransactionCurency" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="bsappModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="TwoFactorAuthEnabled" ColumnName="TwoFactorAuthEnabled" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+                <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+                <ScalarProperty Name="RememberMe" ColumnName="RememberMe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessagesViews">
+            <EntityTypeMapping TypeName="bsappModel.MessagesView">
+              <MappingFragment StoreEntitySet="MessagesView">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="SenderUsername" ColumnName="SenderUsername" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="RecipientUsername" ColumnName="RecipientUsername" />
+                <ScalarProperty Name="RecipientID" ColumnName="RecipientID" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

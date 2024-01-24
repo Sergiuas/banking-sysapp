@@ -61,15 +61,15 @@ namespace bankingApp.pages.userPages
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-           if (string.IsNullOrEmpty(tbBody.Text) || string.IsNullOrEmpty(tbSubject.Text) || string.IsNullOrEmpty(cbManagerName.Text))
+            if (string.IsNullOrEmpty(tbBody.Text) || string.IsNullOrEmpty(tbSubject.Text) || string.IsNullOrEmpty(cbManagerName.Text))
             { return; }
 
-           Ticket ticket = new Ticket();
+            Ticket ticket = new Ticket();
             ticket.Subject = tbSubject.Text;
             ticket.Body = tbBody.Text;
             ticket.UserID = UserSingleton.Instance.UserID;
 
-            var manager = db.Users.SingleOrDefault(u=> u.Username == cbManagerName.Text.ToString());
+            var manager = db.Users.SingleOrDefault(u => u.Username == cbManagerName.Text.ToString());
             ticket.ManagerID = manager.UserID;
 
             ticket.Timestamp = DateTime.Now;
@@ -87,7 +87,7 @@ namespace bankingApp.pages.userPages
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            userDashboardPage page = new userDashboardPage();
+            userDashboardPage page = new userDashboardPage(db);
             MainContentFrame.Content = page;
         }
     }

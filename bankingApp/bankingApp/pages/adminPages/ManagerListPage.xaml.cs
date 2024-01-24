@@ -24,9 +24,9 @@ namespace bankingApp.pages.adminPages
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         private List<ShowUser> users;
-        public ManagerListPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public ManagerListPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -43,7 +43,7 @@ namespace bankingApp.pages.adminPages
                 users = db.Users.Where(u => u.Type == "manager")
                     .Select(u => new ShowUser
                     {
-                        Name = $"{u.FirstName} {u.LastName}",
+                        Name = u.FirstName + " " + u.LastName,
                         Email = u.Email,
                         Username = u.Username,
                         Cards = 0,
@@ -56,7 +56,7 @@ namespace bankingApp.pages.adminPages
                 users = db.Users.Where(u => u.Type == "manager" && (u.Username.Contains(searchedUsername) || u.FirstName.Contains(searchedUsername) || u.LastName.Contains(searchedUsername)))
                         .Select(u => new ShowUser
                         {
-                            Name = $"{u.FirstName} {u.LastName}",
+                            Name = u.FirstName + " " + u.LastName,
                             Email = u.Email,
                             Username = u.Username,
                             Cards = 0,
@@ -161,8 +161,11 @@ namespace bankingApp.pages.adminPages
             string selectedUsername = selectedUser.Username;
 
             User user = db.Users.Single(u => u.Username == selectedUsername);
-            db.Users.DeleteOnSubmit(user);
-            db.SubmitChanges();
+            //db.Users.DeleteOnSubmit(user);
+            //db.SubmitChanges();
+
+            db.Users.Remove(user);
+            db.SaveChanges();
 
             string searchText = txtSearchUsername.Text.Trim();
             InitializeDataGrid(searchText);

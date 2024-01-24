@@ -114,7 +114,7 @@ namespace bankingApp
                     break;
             }
 
-            bsappDataContext db = new bsappDataContext();
+            bsappEntities db = new bsappEntities();
             User newUser = new User();
             newUser.Username = username;
             newUser.Email = email;
@@ -131,8 +131,8 @@ namespace bankingApp
                .ToLower();
 
             newUser.Password = encoded;
-            db.Users.InsertOnSubmit(newUser);
-            db.SubmitChanges();
+            db.Users.Add(newUser);
+            db.SaveChanges();
 
             MessageBox.Show("Signup successful!");
             MainWindow login = new MainWindow();
@@ -142,7 +142,7 @@ namespace bankingApp
         }
         private SignUpError checkSignUp(string username, string email, string firstName, string lastName, string password, string confirmPassword)
         {
-            bsappDataContext db = new bsappDataContext();
+            bsappEntities db = new bsappEntities();
 
             if (password != confirmPassword)
                 return SignUpError.PASSWORD_MATCH;
@@ -158,8 +158,6 @@ namespace bankingApp
             if (user != null)
                 return SignUpError.USERNAME_USED;
 
-            //if (!password.Any(char.IsDigit) || !password.Any(char.IsSymbol))
-            //    return SignUpError.PASSWORD_FORMAT;
 
             return SignUpError.OK;
         }
