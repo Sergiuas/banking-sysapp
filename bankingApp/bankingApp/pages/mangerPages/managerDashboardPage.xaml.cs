@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts.Wpf;
+using LiveCharts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,18 @@ namespace bankingApp.pages.mangerPages
     /// </summary>
     public partial class managerDashboardPage : Page
     {
-        public managerDashboardPage()
+        bsappEntities db;
+        public managerDashboardPage(bsappEntities db)
         {
+            this.db = db;
             InitializeComponent();
+            PointLabel = chartPoint =>
+                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            DataContext = this;
         }
+
+        public Func<ChartPoint, string> PointLabel { get; set; }
+        
     }
 }

@@ -30,7 +30,7 @@ namespace bankingApp.windows
         {
             this.db = db;
             InitializeComponent();
-            users = db.Users.Where(u => u.Type == "manager")
+            users = db.Users.Where(u => u.Type == "user")
                 .Select(u => u.Username).ToList();
             cbUsername.ItemsSource = users;
         }
