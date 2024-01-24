@@ -1,4 +1,4 @@
-﻿using LiveCharts.Defaults;
+using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using LiveCharts;
 using System;
@@ -32,9 +32,10 @@ namespace bankingApp
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         private UserSingleton userInstance = UserSingleton.Instance;
-        private bsappDataContext db = new bsappDataContext();
+        private bsappEntities db = new bsappEntities();
+        
 
-        public UserWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public UserWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -42,9 +43,6 @@ namespace bankingApp
             DataContext = userInstance;
 
             InitializeComponent();
-            userDashboardPage Page = new userDashboardPage(db);
-            page.Content = Page;
-            
         }
         private void WindowDragMove(object sender, MouseButtonEventArgs e)
         {
@@ -133,7 +131,7 @@ namespace bankingApp
 
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            var Page = new userDashboardPage(db);
+            var Page = new userDashboardPage();
             page.Content = Page;
         }
 
