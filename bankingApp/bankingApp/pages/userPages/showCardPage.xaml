@@ -145,9 +145,9 @@
                                   DataTooltip="{x:Null}"
                                   Height="230">
                             <lvc:PieChart.Series>
-                                <lvc:PieSeries Title="Deposited Ammount" Values="3" DataLabels="True"
+                                <lvc:PieSeries x:Name="pieDeposited" Title="Deposited Ammount" DataLabels="True"
                                    LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Expenditure Ammount" Values="4" DataLabels="True" 
+                                <lvc:PieSeries x:Name="pieExpended" Title="Expenditure Ammount" DataLabels="True" 
                                    LabelPoint="{Binding PointLabel}"/>
                             </lvc:PieChart.Series>
                         </lvc:PieChart>

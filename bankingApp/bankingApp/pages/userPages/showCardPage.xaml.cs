@@ -41,6 +41,28 @@ namespace bankingApp.pages.userPages
             tbAmmount.Text = card.balance.ToString();
             tbExpiryDate.Text = card.expirydate.ToString();
             tbCardStatus.Text = cardData.Active.ToString();
+
+            List<int> depositedList = (from t in db.Transactions
+                             where t.CardDestID == cardData.CardID
+                             select (int)t.Amount).ToList();
+
+            List<int> expendedList = (from t in db.Transactions
+                            where t.CardSourceID == cardData.CardID
+                            select (int)t.Amount).ToList();
+
+            int deposited=0, expended=0;
+            for (int i = 0; i<depositedList.Count; i++)
+            {
+                deposited += depositedList[i];
+            }
+
+            for (int i = 0; i < expendedList.Count; i++)
+            {
+                expended += expendedList[i];
+            }
+
+            pieDeposited.Values = new LiveCharts.ChartValues<int> { deposited };
+            pieExpended.Values = new LiveCharts.ChartValues<int> { expended };
         }
 
         public Func<ChartPoint, string> PointLabel { get; set; }

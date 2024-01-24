@@ -1,5 +1,6 @@
 ﻿using bankingApp.classes;
 using bankingApp.pages.adminPages;
+using bankingApp.windows;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -134,12 +135,35 @@ namespace bankingApp.pages.userPages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var friend = userTable.SelectedItem as Friend;
+            var user = db.Contacts.SingleOrDefault(u => u.FriendID == friend.id);
+
+            if (user==null) return;
+            db.Contacts.Remove(user);
+            db.SaveChanges();
+            InitializeDataGrid();
 
         }
 
         private void btnRezolved_Click(object sender, RoutedEventArgs e)
         {
+            string foo = "";
+            var wdw = new selectFriendWindow(db);
+            wdw.ShowDialog();
+            foo = wdw.foo;
 
+            if (string.IsNullOrEmpty(foo)) return;
+
+            var contact = db.Users.SingleOrDefault(u => u.Username == foo);
+            if (contact==null) return;
+
+            var con = new Contact();
+            con.UserID = UserSingleton.Instance.UserID;
+            con.FriendID = contact.UserID;
+            con.Pending = true;
+
+            db.Contacts.Add(con);
+            db.SaveChanges();
         }
 
         private void txtFriends_TextChanged(object sender, TextChangedEventArgs e)
