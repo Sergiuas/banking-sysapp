@@ -17,7 +17,7 @@ namespace bankingApp.windows
 
     public partial class OwnerDetailsWindow : Window
     {
-        bsappDataContext db;
+        bsappEntities db;
         public OwnerDetailsWindow(User user)
         {
             

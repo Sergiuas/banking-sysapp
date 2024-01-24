@@ -37,6 +37,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -53,8 +59,11 @@
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -76,11 +85,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="bsapp.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bsapp.dbml</DependentUpon>
-    </Compile>
     <Compile Include="classes\CardListDataContext.cs" />
     <Compile Include="classes\ShowCard.cs" />
     <Compile Include="classes\Friend.cs" />
@@ -127,8 +131,29 @@
     <Compile Include="pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Budget.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="Card.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\contactsPage.xaml.cs">
       <DependentUpon>contactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesView.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlyStatement.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="SavingsGoal.cs">
+      <DependentUpon>].tt</DependentUpon>
     </Compile>
     <Compile Include="pages\userPages\sendMessagePage.xaml.cs">
       <DependentUpon>sendMessagePage.xaml</DependentUpon>
@@ -136,14 +161,38 @@
     <Compile Include="pages\userPages\sendMoneyPage.xaml.cs">
       <DependentUpon>sendMoneyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ticket.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\ticketPage.xaml.cs">
       <DependentUpon>ticketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>].tt</DependentUpon>
     </Compile>
     <Compile Include="pages\userPages\transactionsPage.xaml.cs">
       <DependentUpon>transactionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
     <Compile Include="pages\userPages\userDashboardPage.xaml.cs">
       <DependentUpon>userDashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="].Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>].Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="].cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>].tt</DependentUpon>
+    </Compile>
+    <Compile Include="].Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>].edmx</DependentUpon>
     </Compile>
     <Compile Include="windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
@@ -297,15 +346,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bsapp.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>bsapp.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bsapp.dbml.layout">
-      <DependentUpon>bsapp.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="].edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>].Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="].edmx.diagram">
+      <DependentUpon>].edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -331,8 +379,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="].Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>].Context.cs</LastGenOutput>
+      <DependentUpon>].edmx</DependentUpon>
+    </Content>
+    <Content Include="].tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>].edmx</DependentUpon>
+      <LastGenOutput>].cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

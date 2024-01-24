@@ -21,20 +21,15 @@ using bankingApp.classes;
 
 namespace bankingApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private bsappDataContext db;
+        private bsappEntities db;
         public MainWindow()
         {
             InitializeComponent();
-            this.db = new bsappDataContext();
+            this.db = new bsappEntities();
 
         }
-
-
 
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
@@ -75,12 +70,6 @@ namespace bankingApp
             User user = CheckLogin(username, password);
 
             UserSingleton userInstance = UserSingleton.Instance;
-            //if (auth!=UserTypes.INVALID)
-            //{
-
-            //    userInstance.build(user.Username, user.PasswordHash, user.Email, user.FirstName, user.LastName, user.PhoneNumber, user.Address, user.DateOfBirth.ToString(), type);
-
-            //}
             if (user == null)
             {
                 incorrectDataLabel.Visibility = Visibility.Visible;
@@ -138,22 +127,6 @@ namespace bankingApp
             var user = db.Users.SingleOrDefault(u => (u.Username == username && u.Password == encoded) || (u.Email == username && u.Password == encoded));
 
             return user;
-            //if (user == null)
-            //{
-            //    return UserTypes.INVALID;
-            //}
-
-            //switch (user.Type)
-            //{
-            //    case "admin":
-            //        return UserTypes.ADMIN;
-            //    case "manager":
-            //        return UserTypes.MANAGER;
-            //    case "user":
-            //        return UserTypes.USER;
-            //    default:
-            //        return UserTypes.INVALID;
-            //}
 
         }
     }

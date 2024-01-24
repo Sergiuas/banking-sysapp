@@ -25,11 +25,11 @@ namespace bankingApp.pages.adminPages
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         User user;
         private UserSingleton userInstance = UserSingleton.Instance;
         string lastUsername;
-        public editManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db, string username)
+        public editManagerPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db, string username)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -97,7 +97,7 @@ namespace bankingApp.pages.adminPages
                 this.user.Password = password;
             }
 
-            db.SubmitChanges();
+            db.SaveChanges();
 
             if (lastUsername == userInstance.username)
             {

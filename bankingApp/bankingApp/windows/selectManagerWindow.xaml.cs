@@ -23,8 +23,8 @@ namespace bankingApp.windows
             set; get; }
         public List<string> users { set; get; }
 
-        bsappDataContext db;
-        public selectManagerWindow(bsappDataContext db)
+        bsappEntities db;
+        public selectManagerWindow( bsappEntities db)
         {
             this.db = db;
             InitializeComponent();

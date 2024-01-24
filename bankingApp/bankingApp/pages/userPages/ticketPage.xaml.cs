@@ -1,4 +1,4 @@
-﻿using bankingApp.classes;
+using bankingApp.classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +21,10 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class ticketPage : Page
     {
-        bsappDataContext db = new bsappDataContext();
+        bsappEntities db = new bsappEntities();
         public string managerName { get; set; }
         public List<string> managers { set; get; }
-        public ticketPage(bsappDataContext db)
+        public ticketPage(bsappEntities db)
         {
             this.db = db;
             InitializeComponent();
@@ -61,22 +61,24 @@ namespace bankingApp.pages.userPages
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
-           if (string.IsNullOrEmpty(tbBody.Text) || string.IsNullOrEmpty(tbSubject.Text) || string.IsNullOrEmpty(cbManagerName.Text))
+            if (string.IsNullOrEmpty(tbBody.Text) || string.IsNullOrEmpty(tbSubject.Text) || string.IsNullOrEmpty(cbManagerName.Text))
             { return; }
 
-           Ticket ticket = new Ticket();
+            Ticket ticket = new Ticket();
             ticket.Subject = tbSubject.Text;
             ticket.Body = tbBody.Text;
             ticket.UserID = UserSingleton.Instance.UserID;
 
-            var manager = db.Users.SingleOrDefault(u=> u.Username == cbManagerName.Text.ToString());
+            var manager = db.Users.SingleOrDefault(u => u.Username == cbManagerName.Text.ToString());
             ticket.ManagerID = manager.UserID;
 
             ticket.Timestamp = DateTime.Now;
             ticket.Resolved = false;
 
-            db.Tickets.InsertOnSubmit(ticket);
-            db.SubmitChanges();
+            //db.Tickets.InsertOnSubmit(ticket);
+            //db.SubmitChanges();
+            db.Tickets.Add(ticket);
+            db.SaveChanges();
 
             tbBody.Clear();
             tbSubject.Clear();

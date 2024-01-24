@@ -25,9 +25,9 @@ namespace bankingApp.pages.userPages
 
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         private List<ShowTransaction> transactions;
-        public transactionsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public transactionsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;

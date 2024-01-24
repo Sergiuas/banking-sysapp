@@ -27,9 +27,9 @@ namespace bankingApp.windows
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         private UserSingleton userInstance = UserSingleton.Instance;
-        public ManagerWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public ManagerWindow(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
