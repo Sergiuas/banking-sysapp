@@ -21,9 +21,9 @@ namespace bankingApp.pages.mangerPages
     /// </summary>
     public partial class ticketsPage : Page
     {
-        bsappDataContext db;
+        bsappEntities db;
         TicketBody selectedTicket;
-        public ticketsPage(bsappDataContext db)
+        public ticketsPage(bsappEntities db)
         {
             
             this.db = db;
@@ -139,9 +139,11 @@ namespace bankingApp.pages.mangerPages
                 return;
             }
 
-            db.Tickets.DeleteOnSubmit(ticket);
+            //db.Tickets.DeleteOnSubmit(ticket);
+            //db.SubmitChanges();
 
-            db.SubmitChanges();
+            db.Tickets.Remove(ticket);
+            db.SaveChanges();
             Initiliaze_Tickets();
         }
 
@@ -155,7 +157,7 @@ namespace bankingApp.pages.mangerPages
             }
             ticket.Resolved = true;
 
-            db.SubmitChanges();
+            db.SaveChanges();
             Initiliaze_Tickets();
         }
 

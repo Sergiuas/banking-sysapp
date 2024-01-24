@@ -22,12 +22,12 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class sendMessagePage : Page
     {
-        bsappDataContext db;
+        bsappEntities db;
         public int userID { get; set; }
         public int friendID { get; set; }
 
         private DispatcherTimer timer;
-        public sendMessagePage(int userID,int friendID,bsappDataContext db)
+        public sendMessagePage(int userID,int friendID,bsappEntities db)
         {
             this.db = db;
             this.userID = userID;
@@ -47,7 +47,7 @@ namespace bankingApp.pages.userPages
             // Call the method to refresh the message box
             Initialize_MessageBox(userID, friendID, db);
         }
-        private void Initialize_MessageBox(int userID, int friendID, bsappDataContext db)
+        private void Initialize_MessageBox(int userID, int friendID, bsappEntities db)
         {
             List<MessageBody> list = db.MessagesViews.Where(x => (x.SenderID == userID && x.RecipientID == friendID) || (x.RecipientID == userID && x.SenderID == friendID))
             .OrderBy(x => x.Timestamp).Select(x => new MessageBody
@@ -108,8 +108,10 @@ namespace bankingApp.pages.userPages
                 message.Timestamp = DateTime.Now;
                 message.Body = txtMessage.Text;
 
-                db.Messages.InsertOnSubmit(message);
-                db.SubmitChanges();
+                //db.Messages.InsertOnSubmit(message);
+                //db.SubmitChanges();
+                db.Messages.Add(message);
+                db.SaveChanges();
 
                 txtMessage.Clear();
                 Initialize_MessageBox(this.userID, this.friendID, this.db);

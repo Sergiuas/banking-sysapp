@@ -24,9 +24,9 @@ namespace bankingApp.pages
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         private UserSingleton userInstance = UserSingleton.Instance;
-        public SettingsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public SettingsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -58,7 +58,7 @@ namespace bankingApp.pages
             {
                 return;
             }
-                db.SubmitChanges();
+                db.SaveChanges(); //db.submitchanges
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) //email
@@ -68,7 +68,7 @@ namespace bankingApp.pages
             {
                 return;
             }
-            db.SubmitChanges();
+            db.SaveChanges();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e) // pass
@@ -77,7 +77,7 @@ namespace bankingApp.pages
             {
                 return;
             }
-            db.SubmitChanges();
+            db.SaveChanges();
         }
     }
 }

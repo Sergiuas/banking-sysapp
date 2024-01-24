@@ -25,9 +25,9 @@ namespace bankingApp.pages.mangerPages
     {
         public bool isDarkTheme { get; set; }
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
-        bsappDataContext db;
+        bsappEntities db;
         private List<ShowCard> cards;
-        public bankAccountsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappDataContext db)
+        public bankAccountsPage(bool isDarkTheme, PaletteHelper _paletteHelper, bsappEntities db)
         {
             this.isDarkTheme = isDarkTheme;
             this._paletteHelper = _paletteHelper;
@@ -83,7 +83,7 @@ namespace bankingApp.pages.mangerPages
                          }).ToList();
             }
 
-            lblWaitlist.Text = $"{cards.Count} Bank accounts";
+            lblWaitlist.Text = cards.Count.ToString() + " Bank accounts";
 
             if (cards.Count > 10)
             {
@@ -155,8 +155,10 @@ namespace bankingApp.pages.mangerPages
             string selectedNumber = selectedCard.cardnumber;
 
             Card card = db.Cards.Single(u => u.CardNumber == selectedNumber);
-            db.Cards.DeleteOnSubmit(card);
-            db.SubmitChanges();
+            //db.Cards.DeleteOnSubmit(card);
+            //db.SubmitChanges();
+            db.Cards.Remove(card);
+            db.SaveChanges();
 
             string searchText = txtCardsSearch.Text.Trim();
             InitializeDataGrid(searchText);

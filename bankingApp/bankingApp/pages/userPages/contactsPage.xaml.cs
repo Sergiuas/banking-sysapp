@@ -24,9 +24,9 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class contactsPage : Page
     {
-        bsappDataContext db;
+        bsappEntities db;
         private List<Friend> friends;
-        public contactsPage(bsappDataContext db)
+        public contactsPage(bsappEntities db)
         {
             this.db = db;
             this.DataContext = new UserListDataContext();

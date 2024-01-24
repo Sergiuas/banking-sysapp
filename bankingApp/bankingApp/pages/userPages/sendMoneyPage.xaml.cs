@@ -21,14 +21,14 @@ namespace bankingApp.pages.userPages
     /// </summary>
     public partial class sendMoneyPage : Page
     {
-        bsappDataContext db;
+        bsappEntities db;
         Card card;
         public string friendName;
         public string iban;
         public List<string> friends;
         public List<string> useribans;
         public List<string> friendibans;
-        public sendMoneyPage(bsappDataContext db)
+        public sendMoneyPage(bsappEntities db)
         {
             this.db = db;
             card = new Card();
@@ -188,8 +188,10 @@ namespace bankingApp.pages.userPages
             t.Amount = (decimal)sum;
             t.Timestamp = DateTime.Now;
 
-            db.Transactions.InsertOnSubmit(t);
-            db.SubmitChanges();
+            //db.Transactions.InsertOnSubmit(t);
+            //db.SubmitChanges();
+            db.Transactions.Add(t);
+            db.SaveChanges();
 
             // De adaugat mesaj pentru tranzactie
             balanceLabel.Text = card.Balance.ToString();
